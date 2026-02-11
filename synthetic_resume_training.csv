@@ -1,0 +1,601 @@
+txt_char_count,txt_word_count,txt_avg_word_length,txt_sentence_count,txt_words_per_sentence,txt_uppercase_ratio,txt_punctuation_count,txt_starts_with_verb,txt_ends_with_period,txt_has_parentheses,quant_number_count,quant_has_percentage,quant_has_dollar,quant_has_multiplier,quant_verb_count,quant_first_word_is_verb,quant_has_weak_language,quant_metric_density,struct_has_bullet,struct_comma_count,struct_has_list_structure,struct_and_count,struct_clause_count,struct_has_comparison,struct_is_experience,struct_is_project,struct_is_summary,struct_is_education,struct_is_skills,sem_num_keywords,sem_has_language,sem_has_framework,sem_has_database,sem_has_cloud,sem_has_concept,sem_tech_breadth,sem_token_count,clarity_score,clarity_has_action_verb,clarity_has_metrics,clarity_word_count,label,text
+50,6,6.67,1,6.0,0.08,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,11,0.38,1,0,6,1,Built  authentication  service  using  JWT  tokens
+50,7,6.29,1,7.0,0.04,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,7,0.12,0,0,7,1,Added Redis support to existing inventory tracking
+48,8,5.12,1,8.0,0.0208,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on notification service
+45,6,6.67,1,6.0,0.0889,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Built authentication service using JWT tokens
+51,5,8.6,1,5.0,0.0196,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,Responsible  for  analytics  dashboard  maintenance
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built monitoring for order management automation
+40,7,4.86,1,7.0,0.1,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with API gateway work
+64,8,7.12,3,2.67,0.0469,2,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,11,0.12,0,0,8,1,Utilized cutting edge technologies including Node.js and Node.js
+64,11,4.91,1,11.0,0.1406,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,11,0.12,0,0,11,0,Set up automated CI pipeline with GitHub Actions for API gateway
+76,8,8.62,1,8.0,0.0132,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,8,1,Employed industry standard frameworks for authentication service development
+51,7,6.43,1,7.0,0.0196,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with authentication service work
+43,5,7.8,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,contributed to notification service efforts
+54,7,6.86,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,10,0.12,0,0,7,1,applied best-in-class django solutions for api gateway
+59,6,8.17,1,6.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,12,0.12,0,0,6,0,Introduced  structured  logging  across  all  microservices
+55,9,5.22,1,9.0,0.2,0,1,0,0,1,0,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,2,0,0,0,1,1,2,12,0.88,1,1,9,0,Developed REST APIs serving 17000 daily users using AWS
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+58,7,7.43,1,7.0,0.0172,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,Implemented role-based access control for order management
+40,4,8.5,1,4.0,0.05,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,8,0.05,0,0,4,1,Containerized  application  with  Docker
+67,8,7.5,1,8.0,0.0448,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,8,1,Implemented highly scalable platform leveraging modern DevOps tools
+29,5,5.0,1,5.0,0.1034,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Wrote unit tests using PyTest
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed database schema for inventory system
+40,5,7.2,2,2.5,0.05,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,0,Integrated Node.js with order management
+38,5,6.8,1,5.0,0.1053,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Participated in API gateway activities
+58,7,7.43,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0,0,1,8,0.12,0,0,7,0,added typescript support to existing recommendation system
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+38,5,6.8,1,5.0,0.0526,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,6,0.38,1,0,5,0,Developed order management using Flask
+62,8,6.88,1,8.0,0.0323,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,9,0.12,0,0,8,0,Engineered caching strategy for payment processing using Redis
+81,10,6.3,1,10.0,0.0494,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,0,0,0,1,0,1,23,0.62,0,1,10,0,"Migrated  payment  processing  to  AWS,  reducing  infrastructure  costs  by  80%"
+41,5,7.4,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Tasked with inventory tracking operations
+50,6,6.67,1,6.0,0.04,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,11,0.38,1,0,6,1,Implemented  Docker  solution  for  search  engine
+46,5,8.4,1,5.0,0.0217,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Responsible for inventory tracking maintenance
+36,4,8.25,1,4.0,0.1111,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Managed API gateway responsibilities
+45,5,8.2,1,5.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Participated in inventory tracking activities
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,0,Set up logging and monitoring for services
+78,12,5.58,1,12.0,0.0256,0,1,0,0,2,0,0,0,1,1,0,0.1667,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,14,0.88,1,1,12,0,Implemented Docker integration reducing deployment time from 8 days to 5 hours
+53,7,6.71,1,7.0,0.0755,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,Implemented role-based access control for API gateway
+82,11,5.64,1,11.0,0.0732,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,21,0.12,0,0,11,0,Set  up  automated  CI  pipeline  with  GitHub  Actions  for  analytics  dashboard
+58,7,7.43,1,7.0,0.0345,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,7,0,Added Kubernetes support to existing recommendation system
+59,9,5.67,1,9.0,0.1525,1,1,0,0,2,0,0,0,1,1,0,0.2222,0,1,0,0,2,0,0,1,0,0,0,2,1,0,0,0,1,2,13,0.88,1,1,9,0,"Developed REST APIs serving 19,000 daily users using Python"
+60,8,6.62,2,4.0,0.05,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,9,0.38,1,0,8,0,Created recommendation system module using Flask and Node.js
+48,7,6.0,1,7.0,0.0208,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with analytics dashboard work
+53,6,8.0,1,6.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,1,designed analytics dashboard architecture for caching
+40,6,5.83,1,6.0,0.125,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,8,0.38,1,0,6,0,Built CI/CD for search engine automation
+66,11,5.09,1,11.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,0,0,1,1,2,11,0.12,0,0,11,0,set up automated ci pipeline with github actions for data pipeline
+55,8,6.0,1,8.0,0.0364,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,0,1,0,1,2,8,0.38,1,0,8,0,Implemented caching layer using Redis for data pipeline
+63,8,7.0,1,8.0,0.0952,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,1,0,0,0,0,1,8,0.38,1,0,8,0,Created notification service module using Python and PostgreSQL
+52,7,6.57,1,7.0,0.0385,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,7,0.12,0,0,7,0,Added Redis support to existing notification service
+49,7,6.14,1,7.0,0.3265,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,1,0,0,1,2,8,0.38,1,0,7,0,Implemented REST API using FastAPI and PostgreSQL
+71,11,5.55,1,11.0,0.0845,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,11,0.12,0,0,11,0,Set up automated CI pipeline with GitHub Actions for payment processing
+32,5,5.6,1,5.0,0.0625,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,6,0.12,0,0,5,1,Helped with Django related tasks
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+41,6,6.0,2,3.0,0.0732,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,0,Created dashboard with React and Chart.js
+39,5,7.0,1,5.0,0.0513,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,6,0.38,1,0,5,0,Developed search engine with Kubernetes
+70,8,7.88,1,8.0,0.0286,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,8,0,Implemented event-driven architecture using Kafka for order management
+74,10,6.5,2,5.0,0.027,1,0,0,0,1,1,0,0,0,0,0,0.1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,14,0.62,0,1,10,0,Automated recommendation system using Node.js cutting manual effort by 71%
+49,6,7.33,1,6.0,0.0612,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,2,1,0,0,0,1,2,6,0.38,1,0,6,0,Implemented TypeScript solution for data pipeline
+53,7,6.71,1,7.0,0.0755,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,7,0.12,0,0,7,1,Updated authentication service backend to use MongoDB
+68,10,5.9,1,10.0,0.0147,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,10,0,Implemented retry logic and circuit breaker pattern in search engine
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,1,Added Redis caching layer to API
+71,11,5.55,1,11.0,0.0845,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,11,0.12,0,0,11,0,Set up automated CI pipeline with GitHub Actions for inventory tracking
+69,6,10.67,1,6.0,0.0145,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,Spearheaded transformational initiatives across recommendation system
+52,6,7.83,1,6.0,0.0385,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,6,0.38,1,0,6,1,Implemented React solution for recommendation system
+49,6,7.33,1,6.0,0.0204,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Created caching for inventory tracking automation
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Integrated Stripe payment gateway
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Containerized application with Docker
+48,6,7.17,1,6.0,0.0208,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various recommendation system projects
+55,8,6.0,1,8.0,0.0364,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,8,0.38,1,0,8,0,Implemented caching layer using Redis for search engine
+66,9,6.44,1,9.0,0.0758,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,1,1,0,0,1,0,0,0,3,0,0,0,1,1,2,11,0.12,0,0,9,1,Worked on scalable microservices architecture using AWS and Docker
+76,10,6.7,1,10.0,0.0263,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,0,1,0,0,0,1,14,0.62,0,1,10,0,"Migrated analytics dashboard to Django, reducing infrastructure costs by 26%"
+45,7,5.57,1,7.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with order management work
+51,7,6.43,1,7.0,0.0196,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with authentication service work
+94,16,4.94,1,16.0,0.0106,1,1,0,0,2,1,0,0,1,1,0,0.125,0,1,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0,20,1.0,1,1,16,0,"Led a team of 6 engineers to redesign the analytics dashboard, reducing processing time by 35%"
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+52,8,5.62,1,8.0,0.1154,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,1,0,0,0,1,9,0.38,1,0,8,0,Created search engine module using Flask and FastAPI
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+79,12,5.67,1,12.0,0.0,0,1,0,0,2,0,0,0,1,1,0,0.1667,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,15,0.88,1,1,12,0,implemented fastapi integration reducing deployment time from 3 days to 5 hours
+70,9,6.89,1,9.0,0.0286,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,12,0.62,0,1,9,0,Achieved 50% test coverage for authentication service using Kubernetes
+44,5,8.0,1,5.0,0.0227,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to recommendation system efforts
+76,9,7.56,1,9.0,0.0263,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.38,1,0,9,1,Implemented distributed system with cloud native technologies and Kubernetes
+59,5,11.0,1,5.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,5,0,Refactored authentication service improving maintainability
+62,8,6.88,1,8.0,0.0645,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,10,0.12,0,0,8,1,Leveraged agile methodologies to deliver API gateway solutions
+75,10,6.6,1,10.0,0.0,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,1,0,0,0,0,1,14,0.62,0,1,10,0,"automated authentication service using python, cutting manual effort by 28%"
+45,7,5.57,1,7.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with order management work
+31,4,7.0,1,4.0,0.0323,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Handled order management duties
+69,9,6.78,1,9.0,0.0435,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,1,1,0,0,1,0,0,0,3,1,0,0,1,1,3,11,0.12,0,0,9,1,Worked on scalable microservices architecture using Python and Docker
+68,9,6.67,1,9.0,0.0735,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.62,0,1,9,0,Achieved 21% test coverage for notification service using PostgreSQL
+64,8,7.12,1,8.0,0.0625,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,1,0,0,0,1,8,0.38,1,0,8,1,Created authentication service module using Flask and TensorFlow
+47,6,7.0,1,6.0,0.1277,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,6,0.38,1,0,6,0,Implemented TensorFlow solution for API gateway
+60,8,6.62,1,8.0,0.1167,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,0,1,1,0,2,9,0.12,0,0,8,1,Utilized cutting edge technologies including AWS and MongoDB
+54,6,8.17,1,6.0,0.0185,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,7,0.12,0,0,6,0,Introduced structured logging across all microservices
+43,6,6.33,1,6.0,0.0233,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various order management projects
+85,15,4.73,1,15.0,0.0,1,1,0,0,2,1,0,0,1,1,0,0.1333,0,1,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,19,1.0,1,1,15,0,"led a team of 3 engineers to redesign the analytics dashboard, reducing errors by 28%"
+64,7,8.29,1,7.0,0.0156,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,7,0,Wrote comprehensive integration tests for authentication service
+58,9,5.56,1,9.0,0.1552,1,1,0,0,2,0,0,0,1,1,0,0.2222,0,1,0,0,2,0,1,0,0,0,0,2,0,1,0,0,1,2,13,0.88,1,1,9,0,"Developed REST APIs serving 3,000 daily users using Django"
+46,6,6.83,1,6.0,0.0217,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various analytics dashboard projects
+66,8,7.38,1,8.0,0.0909,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,1,0,0,0,0,1,9,0.12,0,0,8,1,Utilized cutting edge technologies including Python and PostgreSQL
+53,6,8.0,1,6.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,6,0,built real-time notification service using websockets
+45,6,6.67,1,6.0,0.0889,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built authentication service using JWT tokens
+36,5,6.4,1,5.0,0.0278,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,6,0.12,0,0,5,1,Contributed to data pipeline efforts
+46,6,6.83,1,6.0,0.0217,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Planned search engine architecture for testing
+54,6,8.17,1,6.0,0.0185,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,7,0.12,0,0,6,0,Introduced structured logging across all microservices
+66,6,10.17,1,6.0,0.0152,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,Spearheaded transformational initiatives across payment processing
+67,8,7.5,1,8.0,0.0149,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,9,0.12,0,0,8,1,Employed industry standard frameworks for data pipeline development
+60,7,6.86,1,7.0,0.05,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,13,0.12,0,0,7,0,Updated  notification  service  backend  to  use  TypeScript
+30,4,6.75,1,4.0,0.1333,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Involved in AWS implementation
+40,4,8.5,1,4.0,0.05,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,8,0.05,0,0,4,0,Containerized  application  with  Docker
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,1,Added Redis caching layer to API
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed database schema for inventory system
+49,5,9.0,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,responsible for recommendation system maintenance
+68,9,6.67,1,9.0,0.0,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,11,0.88,1,1,9,0,optimized analytics dashboard queries improving response time by 80%
+69,9,6.78,1,9.0,0.0725,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,9,1,Designed enterprise level solution with best practices and PostgreSQL
+45,5,8.2,1,5.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.38,1,0,5,1,developed recommendation system using mongodb
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+47,6,6.17,1,6.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,11,0.38,1,0,6,1,implemented  aws  solution  for  data  pipeline
+56,6,8.5,1,6.0,0.0179,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Designed analytics dashboard architecture for monitoring
+75,11,5.91,1,11.0,0.04,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,13,0.62,0,1,11,0,Scaled analytics dashboard from 16 to 200 concurrent users using TypeScript
+33,5,5.8,1,5.0,0.1212,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,5,1,Helped with MongoDB related tasks
+33,5,5.8,1,5.0,0.1515,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.12,0,0,5,1,Helped with FastAPI related tasks
+56,6,8.5,1,6.0,0.0179,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,Architected payment processing architecture for alerting
+56,8,6.12,1,8.0,0.125,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,8,1,Utilized cutting edge technologies including AWS and AWS
+62,10,5.3,1,10.0,0.0484,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,0,1,1,11,0.38,1,0,10,1,Developed AI powered system with machine learning and big data
+59,7,7.57,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,8,0.12,0,0,7,0,containerized entire application stack using docker compose
+75,11,5.91,1,11.0,0.04,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,13,0.62,0,1,11,0,Scaled notification service from 7 to 500 concurrent users using TypeScript
+63,8,7.0,1,8.0,0.0952,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,1,0,0,0,1,10,0.12,0,0,8,1,Utilized cutting edge technologies including FastAPI and Django
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,0,Integrated Stripe payment gateway
+49,7,6.14,1,7.0,0.3265,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,1,0,0,1,2,8,0.38,1,0,7,0,Implemented REST API using FastAPI and PostgreSQL
+47,6,7.0,1,6.0,0.0851,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Engineered API gateway architecture for testing
+40,7,4.86,1,7.0,0.1,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with API gateway work
+48,7,5.14,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,13,0.12,0,0,7,1,supported  the  team  with  data  pipeline  work
+61,8,6.75,2,4.0,0.0492,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,9,0.38,1,0,8,0,Created recommendation system module using Django and Node.js
+59,5,11.0,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,5,0,refactored authentication service improving maintainability
+64,8,7.12,1,8.0,0.1406,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,11,0.12,0,0,8,1,Utilized cutting edge technologies including FastAPI and FastAPI
+57,7,7.29,1,7.0,0.0175,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Created reusable component library for frontend dashboard
+55,8,6.0,1,8.0,0.0364,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,8,0.38,1,0,8,0,Implemented caching layer using Redis for search engine
+55,6,8.33,1,6.0,0.0182,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,6,1,Architected payment processing architecture for testing
+28,4,6.25,1,4.0,0.0357,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,4,0.05,0,0,4,1,Handled data pipeline duties
+80,11,6.36,1,11.0,0.0,0,1,0,0,1,0,0,0,1,1,0,0.0909,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,14,0.88,1,1,11,0,built a recommendation system processing 19+ requests per second with typescript
+55,7,6.14,2,3.5,0.0364,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,14,0.12,0,0,7,1,Updated  payment  processing  backend  to  use  Node.js
+44,5,8.0,1,5.0,0.0455,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,5,0.12,0,0,5,0,Integrated Django with recommendation system
+39,5,7.0,1,5.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,6,0.38,1,0,5,1,developed search engine with tensorflow
+59,6,8.17,1,6.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,12,0.12,0,0,6,0,Introduced  structured  logging  across  all  microservices
+54,6,8.17,1,6.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,8,0.12,0,0,6,0,introduced structured logging across all microservices
+45,6,6.67,1,6.0,0.1111,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,8,0.38,1,0,6,1,Built CI/CD for payment processing automation
+63,8,7.0,2,4.0,0.0476,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,1,0,0,0,0,1,10,0.12,0,0,8,1,Utilized cutting edge technologies including Node.js and Python
+54,8,5.88,1,8.0,0.0556,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,0,1,1,0,2,8,0.38,1,0,8,0,Created search engine module with Kubernetes and Redis
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+43,6,6.33,1,6.0,0.0233,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various order management projects
+80,12,5.75,1,12.0,0.0625,0,1,0,0,2,0,0,0,1,1,0,0.1667,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,15,0.88,1,1,12,0,Implemented FastAPI integration reducing deployment time from 16 days to 4 hours
+72,11,5.64,1,11.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,11,0.12,0,0,11,0,set up automated ci pipeline with github actions for analytics dashboard
+67,9,5.67,2,4.5,0.1343,1,1,0,0,1,0,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,21,0.88,1,1,9,0,Developed  REST  APIs  serving  10000  daily  users  using  Node.js
+32,6,4.5,1,6.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,added redis caching layer to api
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+48,7,6.0,1,7.0,0.3333,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,1,0,0,1,2,8,0.38,1,0,7,0,Implemented REST API with FastAPI and PostgreSQL
+50,7,6.29,1,7.0,0.06,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,1,0,0,0,1,2,7,0.12,0,0,7,0,Added TypeScript support to existing data pipeline
+57,7,7.29,1,7.0,0.0175,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Created reusable component library for frontend dashboard
+44,8,4.62,1,8.0,0.0227,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on order management
+41,4,9.5,1,4.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Managed order management responsibilities
+54,7,6.86,1,7.0,0.037,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,7,0.12,0,0,7,1,Added Flask support to existing authentication service
+40,4,8.5,1,4.0,0.05,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,8,0.05,0,0,4,0,Containerized  application  with  Docker
+42,6,6.17,2,3.0,0.0714,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,0,Created dashboard using React and Chart.js
+50,6,7.5,1,6.0,0.08,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,6,0.38,1,0,6,0,Implemented AWS solution for recommendation system
+31,5,5.4,1,5.0,0.0645,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,6,0.12,0,0,5,1,Helped with React related tasks
+63,8,7.0,1,8.0,0.0317,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,10,0.12,0,0,8,0,Architected caching strategy for payment processing using Redis
+49,7,6.14,1,7.0,0.3265,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,1,0,0,1,2,8,0.38,1,0,7,0,Implemented REST API using FastAPI and PostgreSQL
+49,6,7.33,1,6.0,0.0408,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,0,0,1,1,2,6,0.38,1,0,6,1,Implemented Kubernetes solution for data pipeline
+65,9,6.33,1,9.0,0.0154,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized order management queries improving response time by 23%
+34,4,7.75,2,2.0,0.0588,1,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.05,0,0,4,1,Involved in Node.js implementation
+66,9,6.44,1,9.0,0.0758,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,1,1,0,1,0,0,0,0,3,0,0,0,1,1,2,11,0.12,0,0,9,1,Worked on scalable microservices architecture using AWS and Docker
+49,5,9.0,1,5.0,0.0204,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Participated in authentication service activities
+71,9,7.0,1,9.0,0.0141,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized authentication service queries improving response time by 27%
+36,5,6.4,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,5,1,helped with kubernetes related tasks
+40,5,7.2,1,5.0,0.125,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,5,1,Developed order management using FastAPI
+61,7,7.86,1,7.0,0.0164,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Designed normalized database schema for recommendation system
+36,5,6.4,1,5.0,0.0278,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,6,0.12,0,0,5,1,Tasked with data pipeline operations
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Containerized application with Docker
+70,10,6.1,1,10.0,0.0286,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,0,0,0,1,0,1,14,0.62,0,1,10,0,"Migrated search engine to Docker, reducing infrastructure costs by 33%"
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with search engine work
+36,4,8.25,1,4.0,0.0278,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Handled recommendation system duties
+67,9,6.56,1,9.0,0.0149,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized inventory tracking queries improving response time by 64%
+73,11,5.73,1,11.0,0.0822,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,11,0.12,0,0,11,0,Set up automated CI pipeline with GitHub Actions for notification service
+57,7,7.29,1,7.0,0.0175,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Created reusable component library for frontend dashboard
+47,7,5.86,1,7.0,0.0851,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,7,0,Updated notification service backend to use AWS
+45,6,6.67,1,6.0,0.0889,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Built authentication service using JWT tokens
+42,6,6.17,2,3.0,0.0,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,0,created dashboard using react and chart.js
+41,5,7.4,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to payment processing efforts
+44,6,6.5,1,6.0,0.0909,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built authentication service with JWT tokens
+53,6,8.0,1,6.0,0.0377,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.38,1,0,6,0,Implemented Redis solution for authentication service
+99,15,4.73,1,15.0,0.0,0,1,0,0,2,1,0,0,1,1,0,0.1333,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,32,1.0,1,1,15,0,led  a  team  of  8  engineers  to  redesign  the  notification  service  reducing  errors  by  48%
+44,5,8.0,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,tasked with recommendation system operations
+48,5,8.0,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,tasked  with  recommendation  system  operations
+84,15,4.67,1,15.0,0.0119,1,0,0,0,2,1,0,0,0,0,0,0.1333,0,1,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,21,0.75,0,1,15,0,"Oversaw a team of 10 engineers to redesign the search engine, reducing errors by 20%"
+34,4,7.75,1,4.0,0.1471,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,6,0.05,0,0,4,1,Involved in FastAPI implementation
+53,6,8.0,1,6.0,0.0566,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,6,0,Built real-time notification service using WebSockets
+57,7,7.29,1,7.0,0.0175,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Created reusable component library for frontend dashboard
+66,8,7.38,1,8.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,1,0,0,0,0,1,9,0.12,0,0,8,1,Utilized cutting edge technologies including Python and TypeScript
+41,6,6.0,2,3.0,0.0732,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,0,Created dashboard with React and Chart.js
+69,8,7.75,1,8.0,0.0145,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,10,0.12,0,0,8,1,Leveraged agile methodologies to deliver payment processing solutions
+44,6,6.5,1,6.0,0.0909,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built authentication service with JWT tokens
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Set up logging and monitoring for services
+43,6,6.33,1,6.0,0.093,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Created alerting for API gateway automation
+63,10,5.4,1,10.0,0.0476,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,0,1,1,11,0.38,1,0,10,1,Developed AI powered system using machine learning and big data
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Designed database schema for inventory system
+63,8,7.0,1,8.0,0.0317,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,8,0.38,1,0,8,0,Designed caching strategy for recommendation system using Redis
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,0,Set up logging and monitoring for services
+43,5,7.8,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,6,0.12,0,0,5,0,integrated react with recommendation system
+51,7,6.43,1,7.0,0.0784,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Designed normalized database schema for API gateway
+60,8,6.62,1,8.0,0.05,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,1,0,0,0,1,9,0.12,0,0,8,1,Utilized cutting edge technologies including Flask and React
+52,8,5.62,1,8.0,0.0962,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,3,0,1,1,0,1,3,8,0.38,1,0,8,0,Created data pipeline module using MongoDB and React
+54,6,8.17,1,6.0,0.0185,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,7,0.12,0,0,6,0,Introduced structured logging across all microservices
+45,6,6.67,1,6.0,0.0889,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built authentication service using JWT tokens
+55,7,7.0,1,7.0,0.0909,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,0,Updated recommendation system backend to use PostgreSQL
+63,5,11.0,1,5.0,0.0159,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.12,0,0,5,0,Refactored  authentication  service  improving  maintainability
+71,8,8.0,1,8.0,0.0141,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,10,0.12,0,0,8,1,Leveraged agile methodologies to deliver notification service solutions
+55,8,6.0,1,8.0,0.0364,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,8,0.38,1,0,8,0,Implemented caching layer using Redis for search engine
+40,5,7.2,1,5.0,0.05,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,6,0.38,1,0,5,0,Developed payment processing with Django
+68,9,6.67,1,9.0,0.0,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,11,0.88,1,1,9,0,optimized analytics dashboard queries improving response time by 20%
+45,6,6.67,1,6.0,0.0889,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built authentication service using JWT tokens
+41,5,7.4,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Responsible for search engine maintenance
+52,7,6.57,2,3.5,0.0385,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,7,0,Added Node.js support to existing payment processing
+49,5,9.0,1,5.0,0.0204,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Responsible for recommendation system maintenance
+45,6,6.67,1,6.0,0.0,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,6,1,worked on various payment processing projects
+45,4,10.5,1,4.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Managed notification service responsibilities
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Integrated Stripe payment gateway
+72,10,5.4,1,10.0,0.0417,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,20,0.38,1,0,10,1,Developed  AI  powered  system  using  machine  learning  and  big  data
+59,5,11.0,1,5.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,5,0,Refactored authentication service improving maintainability
+65,9,6.33,1,9.0,0.0154,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized order management queries improving response time by 78%
+48,5,8.8,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,participated in recommendation system activities
+65,8,7.25,1,8.0,0.0462,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,8,1,Developed highly scalable platform leveraging modern DevOps tools
+43,5,7.8,1,5.0,0.0233,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Tasked with notification service operations
+42,6,6.17,1,6.0,0.0238,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built caching for search engine automation
+31,5,5.4,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,6,0.12,0,0,5,1,helped with flask related tasks
+74,8,7.5,1,8.0,0.0135,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,16,0.12,0,0,8,1,Employed  industry  standard  frameworks  for  data  pipeline  development
+43,6,6.33,1,6.0,0.0233,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various order management projects
+79,12,5.67,1,12.0,0.0,0,1,0,0,2,0,0,0,1,1,0,0.1667,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,14,0.88,1,1,12,0,implemented python integration reducing deployment time from 13 days to 4 hours
+70,10,6.1,1,10.0,0.0286,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,0,1,0,0,0,1,0,0,0,1,0,1,14,0.62,0,1,10,0,"Migrated search engine to Docker, reducing infrastructure costs by 37%"
+53,6,8.0,1,6.0,0.0566,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,6,0,Built real-time notification service using WebSockets
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+58,7,7.43,1,7.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,designed normalized database schema for payment processing
+67,9,6.56,1,9.0,0.0,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,1,1,0,0,0,0,1,0,0,0,0,1,1,13,0.88,1,1,9,0,reduced data pipeline downtime by 54% through postgresql monitoring
+45,5,8.2,1,5.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Participated in inventory tracking activities
+42,6,6.17,2,3.0,0.0714,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,1,Created dashboard using React and Chart.js
+78,12,5.58,1,12.0,0.0256,0,1,0,0,2,0,0,0,1,1,0,0.1667,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0,0,1,14,0.88,1,1,12,0,Implemented Python integration reducing deployment time from 4 days to 2 hours
+64,8,7.12,1,8.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,8,0,implemented event-driven architecture with kafka for api gateway
+47,5,7.8,1,5.0,0.0213,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,Tasked  with  notification  service  operations
+66,9,6.44,2,4.5,0.0303,1,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,13,0.62,0,1,9,0,Achieved 36% test coverage for recommendation system using Node.js
+61,7,7.86,1,7.0,0.0164,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,Implemented role-based access control for analytics dashboard
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+53,5,9.0,1,5.0,0.0189,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,11,0.12,0,0,5,1,Participated  in  authentication  service  activities
+57,7,7.29,1,7.0,0.0175,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Created reusable component library for frontend dashboard
+36,5,6.4,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,6,0.12,0,0,5,1,contributed to data pipeline efforts
+47,6,7.0,1,6.0,0.0213,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,8,0.38,1,0,6,0,Developed alerting for data pipeline automation
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,0,Integrated Stripe payment gateway
+59,7,7.57,1,7.0,0.0847,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,0,Added PostgreSQL support to existing authentication service
+67,9,6.56,1,9.0,0.0448,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,1,1,0,0,0,0,1,0,1,0,0,0,1,12,0.88,1,1,9,0,Reduced search engine downtime by 63% through TensorFlow monitoring
+59,8,6.5,1,8.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,8,0.38,1,0,8,0,implemented caching layer with redis for payment processing
+57,9,5.44,1,9.0,0.0351,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,12,0.62,0,1,9,0,Achieved 19% test coverage for search engine using Django
+76,11,6.0,1,11.0,0.0,0,1,0,0,1,0,0,0,1,1,0,0.0909,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0,0,1,13,0.88,1,1,11,0,built a recommendation system processing 15+ requests per second with python
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,0,Integrated Stripe payment gateway
+40,5,7.2,1,5.0,0.075,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,1,0,0,0,1,2,5,0.12,0,0,5,0,Integrated TypeScript with data pipeline
+70,7,8.29,1,7.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,14,0.38,1,0,7,0,implemented  role-based  access  control  for  authentication  service
+28,5,4.8,1,5.0,0.1071,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,0,Wrote unit tests with PyTest
+75,11,5.91,1,11.0,0.04,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,13,0.62,0,1,11,0,Scaled notification service from 18 to 200 concurrent users with TensorFlow
+32,5,5.6,1,5.0,0.0625,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,6,0.12,0,0,5,1,Helped with Docker related tasks
+70,11,5.45,2,5.5,0.0,1,1,0,0,1,0,0,0,1,1,0,0.0909,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,14,0.88,1,1,11,0,built a search engine processing 17+ requests per second using node.js
+58,8,6.38,2,4.0,0.0517,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,1,0,0,1,9,0.38,1,0,8,0,Created analytics dashboard module using Redis and Node.js
+36,5,6.4,1,5.0,0.0278,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,6,0.12,0,0,5,1,Tasked with data pipeline operations
+36,4,7.5,1,4.0,0.0556,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,8,0.05,0,0,4,1,Involved  in  Docker  implementation
+73,10,6.4,1,10.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,10,0,implemented retry logic and circuit breaker pattern in inventory tracking
+45,4,10.5,1,4.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Managed notification service responsibilities
+74,8,7.5,1,8.0,0.0135,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,16,0.12,0,0,8,1,Employed  industry  standard  frameworks  for  data  pipeline  development
+33,5,5.0,1,5.0,0.0909,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,11,0.12,0,0,5,0,Wrote  unit  tests  using  PyTest
+29,5,5.0,1,5.0,0.1034,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Wrote unit tests using PyTest
+79,10,7.0,1,10.0,0.0506,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,0,0,1,0,0,1,14,0.62,0,1,10,0,"Migrated recommendation system to MongoDB, reducing infrastructure costs by 28%"
+50,7,6.29,1,7.0,0.04,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,7,1,Updated order management backend to use Kubernetes
+63,7,8.14,1,7.0,0.0159,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,Implemented role-based access control for recommendation system
+55,8,6.0,1,8.0,0.0364,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,0,1,0,1,2,8,0.38,1,0,8,0,Designed caching strategy for data pipeline using Redis
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Involved in Kubernetes implementation
+46,7,5.71,1,7.0,0.1304,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,1,0,0,0,1,9,0.12,0,0,7,0,Migrated backend service from Flask to FastAPI
+53,8,5.75,1,8.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,9,0.38,1,0,8,0,designed caching strategy for api gateway using redis
+46,8,4.0,1,8.0,0.087,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,15,0.12,0,0,8,1,Part  of  the  team  working  on  API  gateway
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+74,10,6.5,1,10.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,10,0,implemented retry logic and circuit breaker pattern in analytics dashboard
+69,9,6.78,1,9.0,0.0145,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized notification service queries improving response time by 74%
+57,7,7.29,1,7.0,0.0526,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0,0,1,7,0.12,0,0,7,0,Added TypeScript support to existing notification service
+43,6,6.33,1,6.0,0.0233,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various order management projects
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,0,Containerized application with Docker
+72,11,5.64,1,11.0,0.0417,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,13,0.62,0,1,11,0,Scaled order management from 10 to 200 concurrent users using TypeScript
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,1,Added Redis caching layer to API
+50,5,8.4,1,5.0,0.02,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,Assisted  in  authentication  service  development
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Integrated Stripe payment gateway
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,Added Redis caching layer to API
+50,8,5.38,1,8.0,0.02,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on authentication service
+39,8,4.0,1,8.0,0.1026,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on API gateway
+73,8,8.25,1,8.0,0.0137,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,8,1,Employed industry standard frameworks for analytics dashboard development
+67,9,6.56,1,9.0,0.0149,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized inventory tracking queries improving response time by 68%
+41,5,6.6,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,Assisted  in  search  engine  development
+39,4,8.25,1,4.0,0.1026,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.05,0,0,4,1,Managed  API  gateway  responsibilities
+64,8,7.12,2,4.0,0.0938,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,11,0.12,0,0,8,1,Utilized cutting edge technologies including Node.js and FastAPI
+71,10,6.2,1,10.0,0.0282,0,0,0,0,1,1,0,0,0,0,0,0.1,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,13,0.62,0,1,10,0,Automated notification service using Flask cutting manual effort by 29%
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed database schema for inventory system
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,Added Redis caching layer to API
+43,7,5.29,1,7.0,0.093,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,2,0,0,0,1,1,2,7,0.12,0,0,7,1,Added AWS support to existing data pipeline
+43,5,7.8,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,contributed to notification service efforts
+40,5,7.2,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,participated in search engine activities
+65,8,7.25,1,8.0,0.0462,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,8,1,Developed highly scalable platform leveraging modern DevOps tools
+67,10,5.8,1,10.0,0.0299,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,0,0,1,0,0,1,14,0.62,0,1,10,0,"Automated order management with Redis, cutting manual effort by 46%"
+48,8,5.12,1,8.0,0.0208,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on notification service
+67,9,6.56,1,9.0,0.0149,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized inventory tracking queries improving response time by 49%
+61,6,9.33,1,6.0,0.0164,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,Spearheaded transformational initiatives across search engine
+61,8,6.75,1,8.0,0.082,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,0,1,1,0,2,8,0.38,1,0,8,1,Created inventory tracking module with MongoDB and Kubernetes
+67,9,6.56,1,9.0,0.0,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,11,0.88,1,1,9,0,optimized payment processing queries improving response time by 30%
+47,8,5.0,1,8.0,0.0213,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on analytics dashboard
+29,5,5.0,1,5.0,0.1034,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Wrote unit tests using PyTest
+53,7,6.71,1,7.0,0.0755,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,Implemented role-based access control for API gateway
+28,4,6.25,1,4.0,0.0357,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,4,0.05,0,0,4,1,Handled data pipeline duties
+95,16,5.0,1,16.0,0.0105,1,1,0,0,2,1,0,0,1,1,0,0.125,0,1,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,20,1.0,1,1,16,0,"Led a team of 3 engineers to redesign the notification service, reducing processing time by 29%"
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,0,Integrated Stripe payment gateway
+41,5,7.4,1,5.0,0.0976,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,6,0.38,1,0,5,1,Developed recommendation system using AWS
+77,9,7.67,1,9.0,0.026,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.38,1,0,9,1,Implemented distributed system using cloud native technologies and Kubernetes
+46,7,5.71,1,7.0,0.087,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,7,0,Added AWS support to existing order management
+85,16,4.38,1,16.0,0.0,0,1,0,0,2,1,0,0,1,1,0,0.125,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,19,1.0,1,1,16,0,led a team of 3 engineers to redesign the data pipeline reducing response time by 48%
+67,8,7.5,1,8.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,8,0.12,0,0,8,1,employed industry standard frameworks for data pipeline development
+45,6,6.67,1,6.0,0.0222,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various inventory tracking projects
+53,6,8.0,1,6.0,0.0566,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,6,0,Built real-time notification service using WebSockets
+77,9,7.67,1,9.0,0.026,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.38,1,0,9,1,Implemented distributed system using cloud native technologies and Kubernetes
+66,7,7.71,2,3.5,0.0303,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,16,0.12,0,0,7,1,Applied  best-in-class  Node.js  solutions  for  order  management
+47,6,7.0,1,6.0,0.1064,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,6,0.38,1,0,6,0,Implemented Kubernetes solution for API gateway
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,0,Set up logging and monitoring for services
+40,5,6.4,1,5.0,0.05,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,5,1,Integrated  Docker  with  search  engine
+47,6,7.0,1,6.0,0.0851,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,0,Planned API gateway architecture for deployment
+53,6,8.0,1,6.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,6,0,built real-time notification service using websockets
+70,9,6.89,1,9.0,0.0429,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,1,0,0,0,0,1,9,0.38,1,0,9,1,Designed enterprise level solution using best practices and TypeScript
+41,5,7.4,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Tasked with inventory tracking operations
+59,5,11.0,1,5.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,5,0,Refactored authentication service improving maintainability
+45,6,6.67,1,6.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,designed database schema for inventory system
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+82,10,6.4,1,10.0,0.0122,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,19,0.38,1,0,10,0,Implemented  retry  logic  and  circuit  breaker  pattern  in  payment  processing
+78,10,6.9,1,10.0,0.0385,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,1,0,0,0,0,1,14,0.62,0,1,10,0,"Automated recommendation system using TypeScript, cutting manual effort by 18%"
+80,11,6.36,1,11.0,0.025,0,1,0,0,1,0,0,0,1,1,0,0.0909,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,14,0.88,1,1,11,0,Developed a notification service processing 16+ requests per second using Python
+32,5,5.6,1,5.0,0.0625,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,6,0.12,0,0,5,1,Helped with Django related tasks
+56,9,5.33,1,9.0,0.0357,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,2,1,0,0,0,1,2,12,0.62,0,1,9,0,Achieved 73% test coverage for data pipeline with Python
+63,8,7.0,1,8.0,0.0317,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,8,0.38,1,0,8,0,Implemented caching layer using Redis for recommendation system
+71,10,6.2,2,5.0,0.0282,2,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,0,0,0,0,1,1,15,0.62,0,1,10,0,"Migrated data pipeline to Node.js, reducing infrastructure costs by 31%"
+59,8,6.5,1,8.0,0.0508,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,1,0,0,0,1,8,0.38,1,0,8,0,Created authentication service module using Flask and React
+48,7,6.0,1,7.0,0.3333,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,1,0,0,1,2,8,0.38,1,0,7,0,Implemented REST API with FastAPI and PostgreSQL
+55,8,6.0,1,8.0,0.0909,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,2,0,0,1,1,0,2,8,0.38,1,0,8,0,Created notification service module using AWS and Redis
+29,5,5.0,1,5.0,0.1034,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,0,Wrote unit tests using PyTest
+55,6,8.33,1,6.0,0.0182,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Designed payment processing architecture for deployment
+67,6,10.33,1,6.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,spearheaded transformational initiatives across analytics dashboard
+70,9,6.0,1,9.0,0.1286,1,1,0,0,2,0,0,0,1,1,0,0.2222,0,1,0,0,2,0,1,0,0,0,0,1,0,0,0,1,0,1,21,0.88,1,1,9,0,"Developed  REST  APIs  serving  9,000  daily  users  using  Kubernetes"
+44,5,8.0,1,5.0,0.0227,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Tasked with recommendation system operations
+28,5,4.8,1,5.0,0.1071,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Wrote unit tests with PyTest
+46,5,8.4,1,5.0,0.0652,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,5,0.12,0,0,5,0,Integrated TensorFlow with analytics dashboard
+42,5,7.6,1,5.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Tasked with analytics dashboard operations
+68,9,6.67,1,9.0,0.0147,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized analytics dashboard queries improving response time by 79%
+53,7,6.71,1,7.0,0.0755,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,7,0,Wrote comprehensive integration tests for API gateway
+56,9,5.33,1,9.0,0.0357,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,12,0.62,0,1,9,0,Achieved 15% test coverage for search engine using React
+77,9,7.67,1,9.0,0.039,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,9,0.38,1,0,9,1,Implemented distributed system using cloud native technologies and TensorFlow
+65,8,7.25,1,8.0,0.0308,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,9,0.12,0,0,8,0,Engineered caching strategy for recommendation system using Redis
+67,9,6.56,1,9.0,0.0299,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,11,0.62,0,1,9,0,Cut recommendation system downtime by 76% through Docker monitoring
+63,7,7.29,2,3.5,0.0317,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,16,0.12,0,0,7,1,Applied  best-in-class  Node.js  solutions  for  search  engine
+57,7,7.29,1,7.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,created reusable component library for frontend dashboard
+45,5,8.2,1,5.0,0.0444,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,5,0.12,0,0,5,0,Integrated Django with authentication service
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,Added Redis caching layer to API
+50,6,7.5,1,6.0,0.02,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Built deployment for payment processing automation
+32,4,7.25,1,4.0,0.0625,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,5,0.05,0,0,4,1,Involved in React implementation
+90,16,4.69,1,16.0,0.0,1,1,0,0,2,1,0,0,1,1,0,0.125,0,1,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,20,1.0,1,1,16,0,"led a team of 15 engineers to redesign the order management, reducing response time by 42%"
+78,11,5.27,1,11.0,0.0256,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,23,0.62,0,1,11,0,Scaled  inventory  tracking  from  9  to  200  concurrent  users  using  Flask
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,7,0.12,0,0,7,1,Added TypeScript support to existing authentication service
+80,11,6.36,1,11.0,0.025,0,1,0,0,1,0,0,0,1,1,0,0.0909,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,13,0.88,1,1,11,0,Implemented a inventory tracking processing 18+ requests per second using Python
+57,8,6.25,1,8.0,0.0526,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,1,1,0,0,0,2,8,0.38,1,0,8,0,Created notification service module with Python and Flask
+59,6,9.0,1,6.0,0.0508,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,6,0,Implemented real-time notification service using WebSockets
+33,5,5.8,2,2.5,0.0606,1,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Helped with Node.js related tasks
+54,6,8.17,1,6.0,0.0185,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed testing for recommendation system automation
+57,7,7.29,1,7.0,0.0175,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Created reusable component library for frontend dashboard
+36,4,7.5,1,4.0,0.0556,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.05,0,0,4,0,Integrated  Stripe  payment  gateway
+46,5,7.6,1,5.0,0.0217,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,Contributed  to  analytics  dashboard  efforts
+68,9,6.67,1,9.0,0.0,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,1,1,0,1,0,0,0,0,3,0,1,0,1,1,3,10,0.12,0,0,9,1,worked on scalable microservices architecture using flask and docker
+66,8,7.38,1,8.0,0.0455,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,1,0,1,0,2,9,0.12,0,0,8,1,Utilized cutting edge technologies including Kubernetes and Django
+66,9,6.44,1,9.0,0.0303,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.38,1,0,9,1,Designed enterprise level solution using best practices and Docker
+40,6,5.83,1,6.0,0.025,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various search engine projects
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,Added Redis caching layer to API
+49,6,7.33,1,6.0,0.0204,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,7,0.12,0,0,6,0,Engineered data pipeline architecture for caching
+37,4,7.75,1,4.0,0.027,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.05,0,0,4,1,Handled  analytics  dashboard  duties
+66,11,5.09,1,11.0,0.0909,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,2,0,0,0,1,1,2,11,0.12,0,0,11,0,Set up automated CI pipeline with GitHub Actions for data pipeline
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+74,10,6.5,1,10.0,0.027,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,1,0,1,0,0,0,1,14,0.62,0,1,10,0,"Migrated inventory tracking to React, reducing infrastructure costs by 48%"
+46,7,5.71,1,7.0,0.1304,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,1,0,0,0,1,9,0.12,0,0,7,0,Migrated backend service from Flask to FastAPI
+76,8,8.62,1,8.0,0.0263,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,8,0,Implemented event-driven architecture using Kafka for authentication service
+85,15,4.73,1,15.0,0.0118,1,1,0,0,2,1,0,0,1,1,0,0.1333,0,1,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0,19,1.0,1,1,15,0,"Led a team of 19 engineers to redesign the order management, reducing failures by 69%"
+84,10,6.6,1,10.0,0.0119,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,19,0.38,1,0,10,0,Implemented  retry  logic  and  circuit  breaker  pattern  in  notification  service
+49,5,9.0,1,5.0,0.0408,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,6,0.38,1,0,5,1,Developed authentication service using Kubernetes
+42,6,6.17,2,3.0,0.0714,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,0,Created dashboard using React and Chart.js
+49,7,6.14,1,7.0,0.0408,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0,0,1,7,0.12,0,0,7,0,Updated analytics dashboard backend to use Python
+74,11,4.91,1,11.0,0.027,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,23,0.62,0,1,11,0,Scaled  search  engine  from  13  to  400  concurrent  users  using  Flask
+29,5,5.0,1,5.0,0.1034,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,0,Wrote unit tests using PyTest
+49,8,5.25,1,8.0,0.0204,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on recommendation system
+70,10,6.1,1,10.0,0.0286,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,0,1,0,0,0,1,0,1,0,0,0,1,14,0.62,0,1,10,0,"Automated inventory tracking using React, cutting manual effort by 60%"
+53,7,6.71,1,7.0,0.0377,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.12,0,0,7,0,Added Django support to existing notification service
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,1,Developed backend endpoints for order management
+32,5,5.6,1,5.0,0.0625,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,6,0.12,0,0,5,1,Helped with Docker related tasks
+74,8,7.5,1,8.0,0.0135,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,16,0.12,0,0,8,1,Employed  industry  standard  frameworks  for  search  engine  development
+45,6,6.67,1,6.0,0.1111,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,0,0,0,1,1,8,0.38,1,0,6,1,Designed data pipeline architecture for CI/CD
+61,8,6.75,1,8.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,8,1,built highly scalable platform leveraging modern devops tools
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,0,Containerized application with Docker
+43,5,7.8,1,5.0,0.0465,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,5,0.12,0,0,5,1,Integrated Flask with recommendation system
+66,9,6.44,1,9.0,0.0303,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,1,0,1,9,0.38,1,0,9,1,Designed enterprise level solution using best practices and Docker
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Built deployment for search engine automation
+65,8,7.25,1,8.0,0.0462,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,0,1,1,0,2,9,0.12,0,0,8,1,Utilized cutting edge technologies including Kubernetes and Redis
+59,5,11.0,1,5.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,5,0,Refactored authentication service improving maintainability
+51,6,7.67,1,6.0,0.0392,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,6,0.38,1,0,6,1,Implemented Docker solution for analytics dashboard
+54,6,8.17,1,6.0,0.0185,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,7,0.12,0,0,6,0,Introduced structured logging across all microservices
+59,5,11.0,1,5.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,5,0,Refactored authentication service improving maintainability
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,Added Redis caching layer to API
+57,6,8.67,1,6.0,0.0877,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Implemented PostgreSQL solution for recommendation system
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Involved in Kubernetes implementation
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+49,6,7.33,1,6.0,0.0204,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed order management architecture for backup
+67,8,7.5,2,4.0,0.0448,1,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,1,0,1,10,0.12,0,0,8,1,Utilized cutting edge technologies including Kubernetes and Node.js
+75,10,6.6,1,10.0,0.0667,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,14,0.62,0,1,10,0,"Automated payment processing using PostgreSQL, cutting manual effort by 34%"
+46,5,8.4,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,participated in analytics dashboard activities
+70,6,10.83,1,6.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,spearheaded transformational initiatives across authentication service
+92,16,4.81,1,16.0,0.0109,1,1,0,0,2,1,0,0,1,1,0,0.125,0,1,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,20,1.0,1,1,16,0,"Led a team of 15 engineers to redesign the payment processing, reducing response time by 44%"
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,1,Added Redis caching layer to API
+70,9,6.89,1,9.0,0.0286,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.38,1,0,9,1,Designed enterprise level solution using best practices and Kubernetes
+62,8,6.88,1,8.0,0.0323,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,9,0.12,0,0,8,0,Planned caching strategy for recommendation system using Redis
+42,5,7.6,1,5.0,0.0476,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,6,0.38,1,0,5,0,Developed analytics dashboard using Django
+65,9,5.44,1,9.0,0.1385,0,1,0,0,1,0,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,20,0.88,1,1,9,0,Developed  REST  APIs  serving  12000  daily  users  using  Redis
+71,10,6.2,1,10.0,0.0141,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,10,0,Implemented retry logic and circuit breaker pattern in order management
+42,6,6.17,2,3.0,0.0714,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,0,Created dashboard using React and Chart.js
+40,5,7.2,1,5.0,0.025,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Assisted in order management development
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Containerized application with Docker
+65,9,6.33,1,9.0,0.0,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,1,1,0,0,0,0,1,0,1,0,0,0,1,12,0.88,1,1,9,0,reduced api gateway downtime by 44% through tensorflow monitoring
+37,5,6.6,1,5.0,0.027,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,6,0.12,0,0,5,1,Assisted in data pipeline development
+63,10,5.4,1,10.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,0,0,1,1,11,0.38,1,0,10,1,developed ai powered system using machine learning and big data
+47,6,7.0,1,6.0,0.0213,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed search engine architecture for caching
+91,15,5.13,1,15.0,0.011,1,1,0,0,2,1,0,0,1,1,0,0.1333,0,1,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0,19,1.0,1,1,15,0,"Led a team of 17 engineers to redesign the authentication service, reducing failures by 73%"
+79,12,5.67,1,12.0,0.0253,0,1,0,0,2,0,0,0,1,1,0,0.1667,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,14,0.88,1,1,12,0,Implemented Django integration reducing deployment time from 16 days to 4 hours
+66,8,7.38,1,8.0,0.0909,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,9,0.12,0,0,8,1,Utilized cutting edge technologies including Django and PostgreSQL
+74,11,5.82,1,11.0,0.0,0,1,0,0,1,0,0,0,1,1,0,0.0909,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,13,0.88,1,1,11,0,built a inventory tracking processing 19+ requests per second using docker
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Containerized application with Docker
+47,5,7.8,1,5.0,0.0213,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,Assisted  in  analytics  dashboard  development
+47,6,7.0,1,6.0,0.1064,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,8,0.38,1,0,6,1,Built CI/CD for notification service automation
+32,4,7.25,1,4.0,0.0625,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,5,0.05,0,0,4,1,Involved in Redis implementation
+49,5,9.0,1,5.0,0.0204,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Participated in authentication service activities
+49,5,8.2,1,5.0,0.0816,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,10,0.38,1,0,5,0,Developed  authentication  service  with  MongoDB
+75,11,5.91,1,11.0,0.08,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,11,0.12,0,0,11,0,Set up automated CI pipeline with GitHub Actions for authentication service
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,0,Integrated Stripe payment gateway
+59,7,7.57,1,7.0,0.0508,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.12,0,0,7,0,Containerized entire application stack using Docker Compose
+63,11,4.82,1,11.0,0.127,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,14,0.62,0,1,11,0,Scaled API gateway from 6 to 100 concurrent users using FastAPI
+52,7,6.57,1,7.0,0.0577,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.12,0,0,7,0,Updated inventory tracking backend to use TensorFlow
+62,7,8.0,1,7.0,0.0323,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,9,0.12,0,0,7,1,Applied best-in-class React solutions for notification service
+37,4,8.5,1,4.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,0,containerized application with docker
+29,5,5.0,1,5.0,0.1379,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,6,0.12,0,0,5,1,Helped with AWS related tasks
+53,6,7.17,1,6.0,0.0189,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,12,0.38,1,0,6,0,Developed  backend  endpoints  for  order  management
+40,5,7.2,1,5.0,0.025,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Assisted in order management development
+44,5,8.0,1,5.0,0.0227,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Responsible for order management maintenance
+45,6,6.67,1,6.0,0.0889,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,1,Built authentication service using JWT tokens
+45,5,7.4,1,5.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.12,0,0,5,1,Responsible  for  search  engine  maintenance
+46,6,6.83,2,3.0,0.0435,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,7,0.38,1,0,6,0,Implemented Node.js solution for data pipeline
+65,8,6.38,1,8.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,1,0,0,1,2,19,0.12,0,0,8,0,architected  data  pipeline  for  etl  processing  using  fastapi
+63,7,8.14,1,7.0,0.0159,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,Implemented role-based access control for recommendation system
+63,5,11.0,1,5.0,0.0159,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.12,0,0,5,0,Refactored  authentication  service  improving  maintainability
+53,6,8.0,1,6.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,6,0,built real-time notification service using websockets
+78,12,5.58,1,12.0,0.0,0,1,0,0,2,0,0,0,1,1,0,0.1667,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,14,0.88,1,1,12,0,implemented react integration reducing deployment time from 11 days to 1 hours
+73,8,7.38,1,8.0,0.0822,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,1,0,0,0,0,1,16,0.12,0,0,8,1,Utilized  cutting  edge  technologies  including  Python  and  PostgreSQL
+43,5,7.8,1,5.0,0.0233,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Assisted in analytics dashboard development
+49,6,7.33,1,6.0,0.0204,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various authentication service projects
+37,4,8.5,1,4.0,0.0541,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,5,0.05,0,0,4,1,Containerized application with Docker
+43,7,5.29,1,7.0,0.0465,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,1,0,0,0,1,2,7,0.12,0,0,7,1,Updated data pipeline backend to use Python
+60,9,5.78,1,9.0,0.2,1,1,0,0,2,0,0,0,1,1,0,0.2222,0,1,0,0,2,0,0,1,0,0,0,2,0,1,0,0,1,2,14,0.88,1,1,9,0,"Developed REST APIs serving 14,000 daily users using FastAPI"
+47,6,6.17,2,3.0,0.0638,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,12,0.38,1,0,6,1,Created  dashboard  using  React  and  Chart.js
+48,7,6.0,1,7.0,0.0417,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,7,0,Updated inventory tracking backend to use Docker
+53,6,8.0,1,6.0,0.0566,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,6,0,Built real-time notification service using WebSockets
+75,8,8.5,1,8.0,0.0133,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,8,1,Employed industry standard frameworks for recommendation system development
+70,6,10.83,1,6.0,0.0143,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,Spearheaded transformational initiatives across authentication service
+56,7,7.14,1,7.0,0.0893,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,8,0.12,0,0,7,0,Added FastAPI support to existing authentication service
+51,7,6.43,1,7.0,0.0196,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with authentication service work
+44,5,8.0,1,5.0,0.0227,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Tasked with recommendation system operations
+67,8,7.5,1,8.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,8,0.12,0,0,8,1,employed industry standard frameworks for data pipeline development
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,0,Integrated Stripe payment gateway
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed database schema for inventory system
+45,6,6.67,1,6.0,0.0222,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,6,1,Worked on various payment processing projects
+41,5,7.4,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to inventory tracking efforts
+49,8,5.25,1,8.0,0.0204,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on recommendation system
+34,5,6.0,1,5.0,0.1176,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to API gateway efforts
+62,10,5.3,1,10.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,0,1,1,11,0.38,1,0,10,1,developed ai powered system with machine learning and big data
+64,9,6.22,1,9.0,0.0312,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,9,0.38,1,0,9,1,Designed enterprise level solution with best practices and React
+56,7,7.14,1,7.0,0.0179,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Designed normalized database schema for order management
+55,7,7.0,1,7.0,0.0364,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,7,0,Added Docker support to existing authentication service
+67,9,6.56,1,9.0,0.0597,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,1,1,0,0,0,0,1,0,0,0,1,0,1,12,0.88,1,1,9,0,Reduced notification service downtime by 78% through AWS monitoring
+41,5,7.4,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0,0,1,6,0.12,0,0,5,1,integrated python with inventory tracking
+61,6,9.33,1,6.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,6,1,spearheaded transformational initiatives across search engine
+29,5,5.0,1,5.0,0.1034,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,0,Wrote unit tests using PyTest
+69,8,7.75,1,8.0,0.0145,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,10,0.12,0,0,8,1,Leveraged agile methodologies to deliver inventory tracking solutions
+61,8,6.75,1,8.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,8,1,built highly scalable platform leveraging modern devops tools
+44,6,6.5,1,6.0,0.0909,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built authentication service with JWT tokens
+41,5,7.4,1,5.0,0.0488,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,6,0.38,1,0,5,0,Developed payment processing using Docker
+70,11,5.45,1,11.0,0.0571,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,13,0.62,0,1,11,0,Scaled authentication service from 5 to 300 concurrent users using AWS
+64,9,6.22,1,9.0,0.0312,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,12,0.62,0,1,9,0,Achieved 51% test coverage for recommendation system using Redis
+57,7,6.43,1,7.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,14,0.38,1,0,7,0,designed  normalized  database  schema  for  api  gateway
+45,6,6.67,1,6.0,0.1111,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,2,0,0,0,0,1,1,8,0.38,1,0,6,0,Designed data pipeline architecture for CI/CD
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,Added Redis caching layer to API
+55,7,7.0,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,8,0.12,0,0,7,0,wrote comprehensive integration tests for data pipeline
+40,6,5.83,1,6.0,0.1,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built testing for API gateway automation
+74,9,7.33,1,9.0,0.0676,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,10,0.38,1,0,9,1,Implemented distributed system using cloud native technologies and FastAPI
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,0,Set up logging and monitoring for services
+72,9,7.11,2,4.5,0.0278,1,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,13,0.88,1,1,9,0,Reduced recommendation system downtime by 69% through Node.js monitoring
+52,7,6.57,1,7.0,0.0385,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,7,0.12,0,0,7,0,Updated inventory tracking backend to use Kubernetes
+72,9,6.22,1,9.0,0.0278,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,20,0.62,0,1,9,0,Achieved  75%  test  coverage  for  recommendation  system  using  React
+71,10,6.2,2,5.0,0.0,2,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,0,1,0,0,0,1,0,0,0,0,1,1,15,0.62,0,1,10,0,"migrated data pipeline to node.js, reducing infrastructure costs by 21%"
+41,5,7.4,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,6,0.12,0,0,5,1,responsible for data pipeline maintenance
+66,9,6.44,1,9.0,0.0303,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,1,0,1,9,0.38,1,0,9,1,Designed enterprise level solution using best practices and Docker
+72,9,7.11,1,9.0,0.0278,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,1,12,0.62,0,1,9,0,Decreased notification service downtime by 39% through Docker monitoring
+70,9,6.89,1,9.0,0.0286,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,1,1,0,0,0,0,1,0,1,0,0,0,1,12,0.88,1,1,9,0,Reduced recommendation system downtime by 55% through React monitoring
+45,6,6.67,1,6.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,designed database schema for inventory system
+60,7,7.71,1,7.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.38,1,0,7,0,designed normalized database schema for notification service
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,0,Added Redis caching layer to API
+70,8,7.88,1,8.0,0.0714,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,1,0,0,0,0,1,9,0.12,0,0,8,1,Utilized cutting edge technologies including TypeScript and TypeScript
+43,5,7.8,1,5.0,0.0233,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Tasked with notification service operations
+60,7,7.71,1,7.0,0.05,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,9,0.12,0,0,7,1,Applied best-in-class TypeScript solutions for search engine
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Set up logging and monitoring for services
+55,7,7.0,1,7.0,0.0182,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,7,0,Wrote comprehensive integration tests for search engine
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with search engine work
+65,9,5.44,1,9.0,0.1385,1,1,0,0,2,0,0,0,1,1,0,0.2222,0,1,0,0,2,0,0,1,0,0,0,1,0,1,0,0,0,1,21,0.88,1,1,9,0,"Developed  REST  APIs  serving  14,000  daily  users  with  Flask"
+73,9,7.22,1,9.0,0.0822,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,1,1,0,1,0,0,0,0,2,0,0,0,1,1,2,11,0.12,0,0,9,1,Worked on scalable microservices architecture using PostgreSQL and Docker
+48,8,5.12,1,8.0,0.0208,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on notification service
+57,8,6.25,1,8.0,0.0351,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,8,0.38,1,0,8,0,Implemented caching layer with Redis for order management
+48,8,5.12,1,8.0,0.0208,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on notification service
+67,9,6.56,1,9.0,0.0746,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,10,0.38,1,0,9,1,Designed enterprise level solution using best practices and FastAPI
+49,5,9.0,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,responsible for recommendation system maintenance
+45,5,8.2,1,5.0,0.0889,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,5,0.12,0,0,5,0,Integrated MongoDB with recommendation system
+46,7,5.71,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0,0,1,7,0.12,0,0,7,0,added python support to existing search engine
+32,6,4.5,1,6.0,0.1562,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,6,0.12,0,0,6,1,Added Redis caching layer to API
+63,7,7.29,1,7.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,13,0.38,1,0,7,0,created  reusable  component  library  for  frontend  dashboard
+29,5,5.0,1,5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,0,wrote unit tests using pytest
+53,6,8.0,1,6.0,0.0566,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,6,0,Built real-time notification service using WebSockets
+47,7,5.86,1,7.0,0.0426,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,7,0.12,0,0,7,0,Updated inventory tracking backend to use React
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,0,Set up logging and monitoring for services
+45,6,6.67,1,6.0,0.0889,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Built authentication service using JWT tokens
+71,10,6.2,1,10.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,10,0,implemented retry logic and circuit breaker pattern in order management
+47,7,5.86,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,1,0,0,0,1,2,8,0.12,0,0,7,1,updated data pipeline backend to use typescript
+44,5,8.0,1,5.0,0.0227,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to recommendation system efforts
+57,7,7.29,1,7.0,0.0175,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,7,0,Created reusable component library for frontend dashboard
+42,6,6.17,2,3.0,0.0714,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,7,0.38,1,0,6,1,Created dashboard using React and Chart.js
+42,7,5.14,1,7.0,0.0238,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,7,1,Supported the team with search engine work
+76,8,8.62,1,8.0,0.0132,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,8,1,Employed industry standard frameworks for authentication service development
+72,9,7.11,1,9.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,1,0,1,0,0,0,1,9,0.38,1,0,9,1,implemented distributed system using cloud native technologies and react
+28,4,6.25,1,4.0,0.0357,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,4,0.05,0,0,4,1,Handled data pipeline duties
+43,5,7.8,1,5.0,0.0233,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to notification service efforts
+73,11,5.73,1,11.0,0.0274,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,13,0.62,0,1,11,0,Scaled authentication service from 18 to 400 concurrent users using Redis
+48,8,5.12,1,8.0,0.0208,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,8,1,Part of the team working on notification service
+65,9,6.33,1,9.0,0.0308,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,12,0.62,0,1,9,0,Achieved 65% test coverage for authentication service using React
+72,8,8.12,1,8.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,8,0,implemented event-driven architecture using kafka for payment processing
+37,4,8.5,1,4.0,0.0811,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,5,0.05,0,0,4,1,Involved in TensorFlow implementation
+42,5,7.6,1,5.0,0.0238,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Assisted in payment processing development
+73,10,6.4,1,10.0,0.0137,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,10,0,Implemented retry logic and circuit breaker pattern in inventory tracking
+66,11,5.09,1,11.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,2,0,0,0,1,1,2,11,0.12,0,0,11,0,set up automated ci pipeline with github actions for data pipeline
+66,9,6.44,1,9.0,0.0758,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,12,0.62,0,1,9,0,Achieved 32% test coverage for inventory tracking using PostgreSQL
+37,4,7.75,1,4.0,0.1081,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,8,0.05,0,0,4,1,Involved  in  MongoDB  implementation
+79,10,7.0,1,10.0,0.0,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,0,1,0,0,0,1,0,1,0,0,0,1,15,0.62,0,1,10,0,"migrated recommendation system to fastapi, reducing infrastructure costs by 52%"
+71,9,7.0,1,9.0,0.0282,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,1,9,0.38,1,0,9,1,Implemented distributed system with cloud native technologies and Flask
+72,9,7.11,1,9.0,0.0278,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,1,1,0,0,0,0,1,0,0,0,1,0,1,12,0.88,1,1,9,0,Reduced payment processing downtime by 37% through Kubernetes monitoring
+69,9,6.78,1,9.0,0.029,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,12,0.62,0,1,9,0,Lowered analytics dashboard downtime by 72% through Docker monitoring
+67,9,6.56,1,9.0,0.0149,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized inventory tracking queries improving response time by 39%
+45,5,8.2,1,5.0,0.0222,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to authentication service efforts
+77,10,6.8,1,10.0,0.0,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,10,0.38,1,0,10,0,implemented retry logic and circuit breaker pattern in authentication service
+68,8,6.75,1,8.0,0.0441,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,16,0.38,1,0,8,1,Built  highly  scalable  platform  leveraging  modern  DevOps  tools
+61,8,6.75,1,8.0,0.0984,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,3,1,0,0,0,1,2,11,0.12,0,0,8,0,Architected data pipeline for ETL processing using TypeScript
+67,8,7.5,1,8.0,0.0149,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,9,0.12,0,0,8,1,Employed industry standard frameworks for search engine development
+59,7,7.57,1,7.0,0.0169,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,7,0,Planned normalized database schema for notification service
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Developed backend endpoints for order management
+72,11,5.64,1,11.0,0.0,0,0,0,0,2,0,0,0,0,0,0,0.1818,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,14,0.62,0,1,11,0,scaled order management from 20 to 300 concurrent users using postgresql
+62,9,6.0,1,9.0,0.0161,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized search engine queries improving response time by 39%
+40,5,7.2,1,5.0,0.025,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.12,0,0,5,1,Participated in search engine activities
+53,6,8.0,1,6.0,0.0566,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,6,0,Built real-time notification service using WebSockets
+41,5,7.4,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,6,0.12,0,0,5,1,Responsible for data pipeline maintenance
+81,10,7.2,1,10.0,0.037,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,0,1,0,0,0,1,1,0,0,0,0,1,14,0.62,0,1,10,0,"Migrated notification service to TypeScript, reducing infrastructure costs by 31%"
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,1,Integrated Stripe payment gateway
+43,5,7.8,1,5.0,0.0233,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Assisted in analytics dashboard development
+48,6,7.17,1,6.0,0.0208,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,1,Developed backend endpoints for order management
+55,7,7.0,1,7.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,7,0,updated recommendation system backend to use postgresql
+40,5,7.2,1,5.0,0.025,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,7,0.12,0,0,5,1,Participated in data pipeline activities
+52,6,7.83,2,3.0,0.0385,1,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,7,0.38,1,0,6,0,Implemented Node.js solution for analytics dashboard
+44,5,8.0,1,5.0,0.0227,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to recommendation system efforts
+76,11,6.0,1,11.0,0.0526,0,1,0,0,1,0,0,0,1,1,0,0.0909,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,14,0.88,1,1,11,0,Developed a notification service processing 4+ requests per second using AWS
+72,10,6.3,1,10.0,0.0556,1,0,0,0,1,1,0,0,0,0,0,0.1,0,1,0,0,2,0,0,1,0,0,0,1,0,0,1,0,0,1,14,0.62,0,1,10,0,"Automated payment processing using MongoDB, cutting manual effort by 19%"
+61,9,5.89,1,9.0,0.0,0,0,0,0,1,1,0,0,0,0,0,0.1111,0,0,0,0,1,0,0,1,0,0,0,2,0,1,0,0,1,2,12,0.62,0,1,9,0,achieved 80% test coverage for data pipeline using tensorflow
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed database schema for inventory system
+93,15,5.27,1,15.0,0.0108,1,0,0,0,2,1,0,0,0,0,0,0.1333,0,1,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0,19,0.75,0,1,15,0,"Directed a team of 20 engineers to redesign the notification service, reducing latency by 35%"
+41,5,7.4,1,5.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0.12,0,0,5,1,Contributed to inventory tracking efforts
+77,9,7.67,1,9.0,0.0649,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,9,0.38,1,0,9,1,Implemented distributed system using cloud native technologies and PostgreSQL
+41,8,4.25,1,8.0,0.0244,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,8,0.12,0,0,8,1,Part of the team working on data pipeline
+33,4,7.5,1,4.0,0.0606,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,4,0.05,0,0,4,0,Integrated Stripe payment gateway
+45,6,6.67,1,6.0,0.0222,0,1,0,0,0,0,0,0,1,1,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,6,0.38,1,0,6,0,Designed database schema for inventory system
+68,9,6.67,1,9.0,0.0441,0,0,0,0,0,0,0,0,0,0,1,0.0,0,0,0,1,1,0,1,0,0,0,0,3,0,1,0,1,1,3,11,0.12,0,0,9,1,Worked on scalable microservices architecture using Flask and Docker
+53,7,6.71,1,7.0,0.0755,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,8,0.12,0,0,7,0,Wrote comprehensive integration tests for API gateway
+67,9,6.56,1,9.0,0.0149,0,1,0,0,1,1,0,0,1,1,0,0.1111,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,12,0.88,1,1,9,0,Optimized inventory tracking queries improving response time by 54%
+71,11,5.55,1,11.0,0.0845,0,0,0,0,0,0,0,0,0,0,0,0.0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,11,0.12,0,0,11,0,Set up automated CI pipeline with GitHub Actions for inventory tracking

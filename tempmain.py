@@ -164,3 +164,77 @@ logger = get_logger(__name__)
 
 # Claim: Trained machine learning models using scikit-learn        
 # Gaps: {'evaluation metrics', 'supervised learning', 'overfitting'}
+
+# from parsers.resume_parser import extract_text, parse_resume_sections, extract_claims_from_sections
+# from ml.feature_builder import build_feature_vector
+
+# # ---- Load a resume ----
+# resume_path = "sample_resume.txt"  # put any resume pdf here
+
+# print("\n=== STEP 1: Extract text ===")
+# text = extract_text(resume_path)
+# print(f"Characters extracted: {len(text)}")
+
+# print("\n=== STEP 2: Parse sections ===")
+# sections = parse_resume_sections(text)
+# print("Sections detected:", list(sections.keys()))
+
+# print("\n=== STEP 3: Extract claims ===")
+# claims = extract_claims_from_sections(sections)
+# print(f"Total claims: {len(claims)}")
+
+# # show first 3 claims
+# for i, c in enumerate(claims[:3], 1):
+#     print(f"\nClaim {i}:")
+#     print(c["text"])
+
+# print("\n=== STEP 4: Feature Extraction ===")
+
+# example_claim = claims[0]
+# features = build_feature_vector(example_claim)
+
+# print("\nFeature Vector:")
+# for k, v in features.items():
+#     print(f"{k:25} : {v}")
+
+
+# Step 1: Generate training data (run once)
+from ml.synthetic_data import generate_synthetic_dataset
+df = generate_synthetic_dataset(200)
+df.to_csv("synthetic_resume_training.csv", index=False)
+print(f"Generated {len(df)} training samples")
+
+# Step 2: Train the classifier
+from ml.risk_classifier import RiskClassifier
+clf = RiskClassifier()
+metrics = clf.train("synthetic_resume_training.csv")
+print("\n=== MODEL METRICS ===")
+for k, v in metrics.items():
+    print(f"  {k}: {v}")
+
+# Step 3: Show feature importance (explainability)
+print("\n=== TOP RISK SIGNALS ===")
+for name, weight in clf.get_feature_importance(10):
+    direction = "→ HIGH risk" if weight > 0 else "→ LOW risk"
+    print(f"  {name:30} : {weight:+.4f}  {direction}")
+
+# Step 4: Predict on real claims
+from ml.feature_builder import build_feature_vector
+
+test_claims = [
+    {"text": "Led a team of 8 engineers to redesign payment system, reducing failures by 40%", "section": "experience"},
+    {"text": "Responsible for backend maintenance", "section": "experience"},
+    {"text": "Built CI/CD pipeline with Docker and Jenkins cutting release time by 3x", "section": "projects"},
+    {"text": "Helped with various projects", "section": "experience"},
+]
+
+print("\n=== PREDICTIONS ===")
+for claim in test_claims:
+    features = build_feature_vector(claim)
+    result = clf.predict(features)
+    print(f"\n  \"{claim['text'][:60]}...\"")
+    print(
+        f"Risk: {result['risk_label'].upper()} "
+        f"(confidence: {result['risk_score']:.1f}%, "
+        f"prob: {result['risk_probability']:.4f})"
+    )

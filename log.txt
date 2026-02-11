@@ -102,4 +102,17 @@
 2026-02-11 19:51:15 | INFO     | __main__ | {'frameworks': ['scikit-learn'], 'concepts': ['machine learning']}
 2026-02-11 19:51:15 | INFO     | __main__ | ['fastapi', 'machine learning', 'rest api', 'scikit-learn']
 2026-02-11 19:51:15 | INFO     | __main__ | ['api', 'authentication', 'backend', 'caching', 'database design', 'evaluation metrics', 'fastapi', 'http', 'http methods', 'idempotency', 'machine learning', 'overfitting', 'python', 'rest', 'rest api', 'scikit-learn', 'status codes', 'supervised learning']
-2026-02-11 19:51:15 | INFO     | __main__ | ['api', 'authentication', 'backend', 'caching', 'database design', 'evaluation metrics', 'http', 'http methods', 'idempotency', 'overfitting', 'python', 'rest', 'status codes', 'supervised learning']
+2026-02-11 19:51:15 | INFO     | __main__ | ['api', 'authentication', 'backend', 'caching', 'database design', 'evaluation metrics', 'http', 'http methods', 'idempotency', 'overfitting', 'python', 'rest', 'status codes', 'supervised learning']2026-02-11 20:40:13 | ERROR    | parsers.resume_parser | Failed to extract text from PDF: [Errno 2] No such file or directory: 'sample_resume.pdf'
+2026-02-11 20:40:49 | ERROR    | parsers.resume_parser | Failed to extract text from PDF: [Errno 2] No such file or directory: 'sample_resume.pdf'
+2026-02-11 20:40:58 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 20:40:58 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 20:41:18 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 20:41:18 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 20:55:21 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 20:55:21 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 20:59:32 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 20:59:32 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 21:00:02 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 21:00:02 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 21:18:05 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 21:18:05 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
