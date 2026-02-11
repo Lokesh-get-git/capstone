@@ -1,18 +1,17 @@
-fastapi==0.104.1
-uvicorn==0.24.0
-pydantic==2.5.2
-pydantic-settings==2.1.0
-langchain==0.0.348
-langchain-groq:
-  model_name: "llama-3.1-8b-instant"
-  temperature: 0.1
-PyPDF2==3.0.1
-numpy==1.26.2
-scikit-learn==1.3.2
-joblib==1.3.2
-pandas==2.1.3
-python-dotenv==1.0.0
-pyyaml==6.0.1
-requests==2.31.0
-streamlit==1.28.2
-plotly==5.18.0
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+langchain
+langchain-groq
+PyPDF2
+numpy
+scikit-learn
+joblib
+panda
+python-dotenv
+pyyaml
+requests
+streamlit
+plotly
+dotenv
