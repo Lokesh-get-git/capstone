@@ -1,0 +1,16 @@
+app:
+  name: "AgenticResumeTester"
+  version: "0.1.0"
+  debug: true
+
+groq:
+  model_name: "llama-3.1-8b-instant"
+  temperature: 0.1
+
+paths:
+  models: "models/"
+  data: "data/"
+
+processing:
+  min_claim_words: 5
+  max_questions: 15
