@@ -1,0 +1,42 @@
+John Doe
+Email: john.doe@email.com | Phone: (555) 123-4567 | LinkedIn: linkedin.com/in/johndoe
+
+Summary
+Experienced software engineer with 5+ years building scalable web applications. Passionate about clean code and system design.
+
+Experience
+Senior Software Engineer | TechCorp Inc. | 2021 - Present
+- Led a team of 8 engineers to redesign the payment processing system, reducing transaction failures by 40%
+- Architected microservices migration from monolith, improving deployment frequency by 3x
+- Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days
+- Mentored 4 junior developers through code reviews and pair programming sessions
+
+Software Engineer | StartupXYZ | 2019 - 2021
+- Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI
+- Optimized database queries resulting in 60% reduction in API response time
+- Worked on various projects involving machine learning and data analysis
+- Participated in agile ceremonies and helped with sprint planning
+
+Education
+Bachelor of Science in Computer Science | State University | 2019
+- GPA: 3.7/4.0
+- Relevant coursework: Algorithms, Data Structures, Machine Learning, Databases
+
+Skills
+Python, Java, JavaScript, React, Node.js, PostgreSQL, MongoDB, Docker, Kubernetes, AWS, Git, Jenkins, FastAPI, Flask, Redis, Kafka
+
+Projects
+Open Source Contribution - ML Pipeline Framework
+- Built a Python framework for automating ML pipeline workflows with 500+ GitHub stars
+- Implemented feature engineering module supporting 20+ transformation types
+
+Personal Blog
+- Write technical articles about system design and distributed systems
+
+Certifications
+- AWS Certified Solutions Architect - Associate (2022)
+- Google Cloud Professional Data Engineer (2023)
+
+Achievements
+- Won first place in company-wide hackathon (2022)
+- Speaker at PyCon Regional Conference on microservices patterns

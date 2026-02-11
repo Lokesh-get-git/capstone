@@ -1,0 +1,7 @@
+2026-02-11 16:40:54 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications']
+2026-02-11 16:41:58 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications']
+2026-02-11 16:46:42 | INFO     | parsers.resume_parser | Parsed 9 sections: ['john doe', 'experience', 'projects', 'education', '- gpa: 3.7/4.0', 'skills', 'personal blog', 'certifications', 'achievements']
+2026-02-11 16:51:01 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 16:57:16 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 16:57:31 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 16:57:31 | INFO     | parsers.resume_parser | Extracted 18 raw claims from sections

@@ -1,44 +1,327 @@
 import re
 from pathlib import Path
-from typing import BinaryIO, Union
+from typing import BinaryIO, Union, Dict
+
 from PyPDF2 import PdfReader
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-def extract_text_from_pdf(file: Union[BinaryIO, str, Path]) -> str:
-    # Extract raw text from a PDF file
+# =========================================================
+# ---------------- FILE HANDLING ---------------------------
+# =========================================================
+
+def _reset_stream(file):
+    """Reset file pointer (important for FastAPI UploadFile)."""
     try:
+        if hasattr(file, "seek"):
+            file.seek(0)
+    except Exception:
+        pass
+
+
+def extract_text_from_pdf(file: Union[BinaryIO, str, Path]) -> str:
+    """Extract raw text from a PDF file."""
+    try:
+        _reset_stream(file)
         reader = PdfReader(file)
+
         text_parts = []
         for page in reader.pages:
             page_text = page.extract_text()
             if page_text:
                 text_parts.append(page_text)
-        
+
         full_text = "\n".join(text_parts)
+
+        # --- minimal normalization ---
+        full_text = re.sub(r"\n{2,}", "\n", full_text)
+        full_text = re.sub(r"[ \t]+", " ", full_text)
+
         logger.info(f"Extracted {len(full_text)} characters from PDF")
         return full_text
+
     except Exception as e:
         logger.error(f"Failed to extract text from PDF: {e}")
         raise
 
+
 def extract_text_from_txt(file: Union[BinaryIO, str, Path]) -> str:
-    #Read raw text from a .txt file
+    """Read raw text from a TXT file."""
     try:
         if isinstance(file, (str, Path)):
             with open(file, "r", encoding="utf-8") as f:
                 return f.read()
         else:
+            _reset_stream(file)
             content = file.read()
             return content.decode("utf-8") if isinstance(content, bytes) else content
     except Exception as e:
         logger.error(f"Failed to extract text from TXT: {e}")
         raise
 
+
 def extract_text(file: Union[BinaryIO, str, Path], filename: str = "") -> str:
-    #Wrapper to auto-detect file type and extract text
-    if filename.lower().endswith(".pdf") or (isinstance(file, str) and file.lower().endswith(".pdf")):
+    """Auto detect file type."""
+    filename = filename.lower()
+
+    if filename.endswith(".pdf") or (isinstance(file, str) and file.lower().endswith(".pdf")):
         return extract_text_from_pdf(file)
-    else:
-        return extract_text_from_txt(file)
+
+    return extract_text_from_txt(file)
+
+
+# =========================================================
+# ---------------- SECTION DETECTION -----------------------
+# =========================================================
+
+SECTION_PATTERNS = [
+    r"(?i)(summary|profile|objective|about\s*me)",
+    r"(?i)(experience|work\s*experience|professional\s*experience|employment)",
+    r"(?i)(education|academic|qualifications)",
+    r"(?i)(skills|technical\s*skills|core\s*competencies|technologies)",
+    r"(?i)(projects|personal\s*projects|key\s*projects)",
+    r"(?i)(certifications?|licenses?)",
+]
+
+SECTION_NORMALIZATION = {
+    "summary": "summary",
+    "profile": "summary",
+    "objective": "summary",
+    "about me": "summary",
+
+    "experience": "experience",
+    "work experience": "experience",
+    "professional experience": "experience",
+    "employment": "experience",
+
+    "education": "education",
+    "academic": "education",
+    "qualifications": "education",
+
+    "skills": "skills",
+    "technical skills": "skills",
+    "core competencies": "skills",
+    "technologies": "skills",
+
+    "projects": "projects",
+    "personal projects": "projects",
+    "key projects": "projects",
+
+    "certification": "certifications",
+    "certifications": "certifications",
+    "license": "certifications",
+    "licenses": "certifications",
+}
+
+def looks_like_heading(line: str, next_lines: list[str]) -> bool:
+    """
+    Decide if a line is a true section heading using context.
+    """
+
+    clean = line.strip()
+
+    # too long = not a heading
+    if len(clean) > 40:
+        return False
+
+    # must contain letters
+    if not re.search(r"[A-Za-z]", clean):
+        return False
+
+    # reject name lines (2 words, capitalized)
+    if re.match(r"^[A-Z][a-z]+ [A-Z][a-z]+$", clean):
+        return False
+
+    # reject GPA and similar metadata
+    if re.search(r"gpa|cgpa|grade", clean, re.I):
+        return False
+
+    # check if next lines look like bullet content
+    bullet_count = 0
+    for nl in next_lines[:3]:
+        if nl.strip().startswith(("-", "•", "*")):
+            bullet_count += 1
+
+    # a real section usually introduces bullets
+    if bullet_count >= 1:
+        return True
+
+    return False
+
+
+
+# remove contact junk
+CONTACT_PATTERNS = [
+    r"linkedin\.com",
+    r"github\.com",
+    r"@\w+\.",
+    r"\+?\d{8,}",
+]
+
+
+def parse_resume_sections(text: str) -> Dict[str, Dict]:
+    """
+    Split resume into logical sections using contextual heading detection.
+    Returns:
+    {
+        section_name: {
+            "text": "...",
+            "type": "skills" | "paragraph"
+        }
+    }
+    """
+
+    lines = text.split("\n")
+    sections = {}
+    current_section = "header"
+    current_lines = []
+
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+
+        # preserve spacing (important for bullets)
+        if not stripped:
+            current_lines.append("")
+            continue
+
+        # remove contact info
+        if any(re.search(p, stripped, re.I) for p in CONTACT_PATTERNS):
+            continue
+
+        detected_section = None
+
+        # ---------- known headings ----------
+        for pattern in SECTION_PATTERNS:
+            match = re.search(pattern, stripped)
+            if match:
+                raw = match.group(1).lower().strip()
+                detected_section = SECTION_NORMALIZATION.get(raw, raw)
+                break
+
+        # ---------- contextual unknown headings ----------
+        if not detected_section:
+            next_lines = lines[i+1:i+4]
+            if looks_like_heading(stripped, next_lines):
+                detected_section = stripped.lower()
+
+        # ---------- switch section ----------
+        if detected_section:
+            if current_lines:
+                sections[current_section] = {
+                    "text": "\n".join(current_lines).strip(),
+                    "type": "skills" if current_section == "skills" else "paragraph",
+                }
+            current_section = detected_section
+            current_lines = []
+        else:
+            current_lines.append(stripped)
+
+    # save last section
+    if current_lines:
+        sections[current_section] = {
+            "text": "\n".join(current_lines).strip(),
+            "type": "skills" if current_section == "skills" else "paragraph",
+        }
+
+    # fallback if nothing detected
+    if len(sections) <= 1:
+        logger.warning("No clear headings detected — using full_text fallback")
+        return {"full_text": {"text": text.strip(), "type": "paragraph"}}
+
+    logger.info(f"Parsed {len(sections)} sections: {list(sections.keys())}")
+    return sections
+def _split_into_sentences(text: str) -> list[str]:
+    """
+    Split text into resume claims.
+    Bullet points are treated as primary claims.
+    Sentences are fallback when bullets are absent.
+    """
+
+    lines = text.split("\n")
+    claims = []
+    current_bullet = []
+
+    bullet_pattern = re.compile(r'^\s*[•\-\*]\s+')
+
+    # -------- Step 1: Group multi-line bullets --------
+    for line in lines:
+        stripped = line.strip()
+
+        if not stripped:
+            continue
+
+        if bullet_pattern.match(stripped):
+            # save previous bullet
+            if current_bullet:
+                claims.append(" ".join(current_bullet))
+                current_bullet = []
+
+            # remove bullet symbol
+            stripped = bullet_pattern.sub("", stripped)
+            current_bullet.append(stripped)
+
+        else:
+            # continuation of previous bullet
+            if current_bullet:
+                current_bullet.append(stripped)
+            else:
+                # non-bullet text
+                claims.append(stripped)
+
+    if current_bullet:
+        claims.append(" ".join(current_bullet))
+
+    # -------- Step 2: sentence fallback --------
+    final_claims = []
+    for claim in claims:
+        # if claim already long enough, keep it
+        if len(claim.split()) > 6:
+            final_claims.append(claim)
+        else:
+            # split into sentences
+            sentences = re.split(r'(?<=[.!?])\s+', claim)
+            final_claims.extend(sentences)
+
+    # -------- Step 3: cleanup --------
+    cleaned = []
+    for c in final_claims:
+        c = c.strip()
+
+        # filter noise
+        if len(c) < 10:
+            continue
+        if re.match(r'^\d{4}\s*-\s*\d{4}$', c):
+            continue
+
+        cleaned.append(c)
+
+    return cleaned
+def extract_claims_from_sections(sections: dict[str, dict]) -> list[dict]:
+    """
+    Convert parsed sections into a flat list of raw claims.
+    """
+
+    all_claims = []
+
+    SKIP_SECTIONS = {"header", "skills"}
+
+    for section_name, section_data in sections.items():
+
+        if section_name in SKIP_SECTIONS:
+            continue
+
+        text = section_data.get("text", "")
+        if not text:
+            continue
+
+        claims = _split_into_sentences(text)
+
+        for claim in claims:
+            all_claims.append({
+                "text": claim,
+                "section": section_name
+            })
+
+    logger.info(f"Extracted {len(all_claims)} raw claims from sections")
+    return all_claims
