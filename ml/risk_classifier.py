@@ -1,3 +1,4 @@
+import joblib
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -103,3 +104,23 @@ class RiskClassifier:
             key=lambda x: abs(x[1]), reverse=True
         )
         return importance[:top_n]
+
+    def save(self, path: str = "models/risk_model.joblib"):
+        """Save trained model to disk."""
+        import os
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        joblib.dump({"model": self.model, "scaler": self.scaler, 
+                     "features": self.feature_names, "base_model": self.base_model}, path)
+        print(f"Model saved to {path}")
+
+    @classmethod
+    def load(cls, path: str = "models/risk_model.joblib"):
+        """Load trained model from disk."""
+        data = joblib.load(path)
+        instance = cls()
+        instance.model = data["model"]
+        instance.scaler = data["scaler"]
+        instance.feature_names = data["features"]
+        instance.base_model = data["base_model"]
+        instance.is_trained = True
+        return instance

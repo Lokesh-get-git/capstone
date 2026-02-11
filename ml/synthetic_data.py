@@ -22,6 +22,18 @@ STRONG_WITH_METRICS = [
     "Scaled {system} from {n} to {n2}00 concurrent users using {tech}",
     "Reduced {system} downtime by {pct}% through {tech} monitoring",
 ]
+SHORT_STRONG_CLAIMS = [
+    "Reduced latency by 40%",
+    "Automated deployments using Docker",
+    "Optimized SQL queries improving performance",
+    "Built REST API using FastAPI",
+    "Scaled service to 50k users",
+    "Implemented caching with Redis",
+    "Improved response time by 3x",
+    "Deployed application on AWS",
+    "Designed database schema for PostgreSQL",
+    "Wrote unit tests achieving 90% coverage"
+]
 
 # ------- LOW RISK: Strong claims WITHOUT metrics -------
 # (prevents model from learning "has numbers = low risk" shortcut)
@@ -242,6 +254,13 @@ def generate_synthetic_dataset(n_per_class: int = 200) -> pd.DataFrame:
         features = build_feature_vector(claim)
         # medium claims: slight bias toward low risk (they ARE decent)
         features["label"] = 0 if random.random() < 0.6 else 1
+        features["text"] = text
+        rows.append(features)
+        # Short strong claims (VERY IMPORTANT)
+        text = random.choice(SHORT_STRONG_CLAIMS)
+        claim = {"text": text, "section": random.choice(["experience", "projects"])}
+        features = build_feature_vector(claim)
+        features["label"] = 0  # LOW risk
         features["text"] = text
         rows.append(features)
 

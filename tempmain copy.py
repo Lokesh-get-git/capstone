@@ -240,69 +240,41 @@ logger = get_logger(__name__)
 #     )
 
 
-# =========================================================
-# FULL PIPELINE TEST: Both models on real resumes
-# =========================================================
-from parsers.resume_parser import extract_text, parse_resume_sections, extract_claims_from_sections
-from ml.feature_builder import build_feature_vector
-from ml.risk_classifier import RiskClassifier
-from ml.readiness_scorer import ReadinessScorer
+# # ===== READINESS SCORER DEMO =====
+# from ml.readiness_scorer import ReadinessScorer
 
-# Load models
-clf = RiskClassifier.load("models/risk_model.joblib")
-scorer = ReadinessScorer.load("models/readiness_model.joblib")
+# # Train
+# scorer = ReadinessScorer()
+# metrics = scorer.train()
+# print("\n=== READINESS MODEL METRICS ===")
+# for k, v in metrics.items():
+#     print(f"  {k}: {v}")
 
-RESUMES = ["sample_resume.txt", "del_resume.pdf"]
+# # Test with a STRONG resume
+# strong_resume = [
+#     {"text": "Led a team of 8 engineers to redesign payment system, reducing failures by 40%", "section": "experience"},
+#     {"text": "Built CI/CD pipeline with Docker and Jenkins cutting release time by 3x", "section": "experience"},
+#     {"text": "Developed REST APIs serving 50,000 daily users using FastAPI", "section": "experience"},
+#     {"text": "Implemented caching layer using Redis improving response time by 60%", "section": "projects"},
+#     {"text": "Designed database schema for PostgreSQL with proper indexing", "section": "projects"},
+# ]
 
-for resume_path in RESUMES:
-    print("\n" + "=" * 70)
-    print(f"  RESUME: {resume_path}")
-    print("=" * 70)
+# # Test with a WEAK resume
+# weak_resume = [
+#     {"text": "Responsible for backend maintenance", "section": "experience"},
+#     {"text": "Helped with various projects", "section": "experience"},
+#     {"text": "Worked on API development", "section": "experience"},
+#     {"text": "Assisted in testing activities", "section": "experience"},
+#     {"text": "Involved in team meetings", "section": "experience"},
+# ]
 
-    # Step 1: Extract text
-    text = extract_text(resume_path, filename=resume_path)
-    print(f"\nExtracted {len(text)} characters")
+# print("\n=== PREDICTIONS ===")
+# result = scorer.predict(strong_resume)
+# print(f"Strong resume: {result['readiness_score']}/100 ({result['readiness_level']})")
 
-    # Step 2: Parse sections
-    sections = parse_resume_sections(text)
-    print(f"Sections: {list(sections.keys())}")
+# result = scorer.predict(weak_resume)
+# print(f"Weak resume:   {result['readiness_score']}/100 ({result['readiness_level']})")
 
-    # Step 3: Extract claims
-    claims = extract_claims_from_sections(sections)
-    print(f"Claims extracted: {len(claims)}")
-
-    # Step 4: Risk Classifier — per-claim analysis
-    print(f"\n--- RISK ANALYSIS (per claim) ---")
-    for i, claim in enumerate(claims, 1):
-        features = build_feature_vector(claim)
-        risk = clf.predict(features)
-        label = risk["risk_label"].upper()
-        score = risk["risk_score"]
-        print(f"  [{label:10} {score:5.1f}%] {claim['text'][:70]}")
-
-    # Step 5: Readiness Scorer — resume-level score (grounded by risk classifier)
-    readiness = scorer.predict_with_risk(claims, clf)
-    print(f"\n--- READINESS SCORE ---")
-    print(f"  Score: {readiness['readiness_score']}/100")
-    print(f"  Level: {readiness['readiness_level'].upper()}")
-    print(f"  Breakdown:")
-    for k, v in readiness["breakdown"].items():
-        print(f"    {k}: {v}")
-
-    # Step 6: Vulnerability Mapping (Commit 25)
-    from ml.vulnerability_mapper import map_resume_vulnerabilities
-    vuln_report = map_resume_vulnerabilities(claims, clf)
-
-    print(f"\n--- VULNERABILITY MAP ---")
-    print(f"  Strong claims: {vuln_report['summary']['strong_claims']}/{vuln_report['summary']['total_claims']}")
-    print(f"  Strength ratio: {vuln_report['summary']['strength_ratio']}%")
-
-    if vuln_report["top_vulnerabilities"]:
-        print(f"\n  Top Weaknesses:")
-        for v in vuln_report["top_vulnerabilities"]:
-            print(f"    ! {v['label']}: {v['count']} claims ({v['percentage']}%)")
-
-    if vuln_report["interview_focus_areas"]:
-        print(f"\n  Interview Focus Areas:")
-        for area in vuln_report["interview_focus_areas"]:
-            print(f"    > {area['area']}: {area['probe']}")
+# # Save
+# scorer.save()
+# print("\nModel saved!")
