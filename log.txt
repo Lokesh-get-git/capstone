@@ -16,3 +16,50 @@
 2026-02-11 17:11:24 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
 2026-02-11 17:11:24 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
 2026-02-11 17:11:24 | INFO     | __main__ | [{'text': 'Led a team of 8 engineers to redesign the payment processing system, reducing transaction failures by 40%', 'section': 'experience'}, {'text': 'Architected microservices migration from monolith, improving deployment frequency by 3x', 'section': 'experience'}, {'text': 'Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days', 'section': 'experience'}, {'text': 'Mentored 4 junior developers through code reviews and pair programming sessions', 'section': 'experience'}, {'text': 'Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI', 'section': 'experience'}, {'text': 'Optimized database queries resulting in 60% reduction in API response time', 'section': 'experience'}, {'text': 'Built a Python framework for automating ML pipeline workflows with 500+ GitHub stars', 'section': 'projects'}, {'text': 'Implemented feature engineering module supporting 20+ transformation types', 'section': 'projects'}, {'text': 'Write technical articles about system design and distributed systems', 'section': 'projects'}, {'text': 'Won first place in company-wide hackathon (2022)', 'section': 'achievements'}, {'text': 'Speaker at PyCon Regional Conference on microservices patterns', 'section': 'achievements'}]
+2026-02-11 17:19:35 | INFO     | parsers.resume_parser | Extracted 2793 characters from PDF
+2026-02-11 17:19:35 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescale db)', 'skills', 'certifications']
+2026-02-11 17:19:35 | INFO     | parsers.resume_parser | Extracted 13 raw claims from sections
+2026-02-11 17:20:02 | INFO     | parsers.resume_parser | Extracted 2793 characters from PDF
+2026-02-11 17:20:02 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescale db)', 'skills', 'certifications']
+2026-02-11 17:20:02 | INFO     | parsers.resume_parser | Extracted 13 raw claims from sections
+2026-02-11 17:20:12 | INFO     | parsers.resume_parser | Extracted 2793 characters from PDF
+2026-02-11 17:20:12 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescale db)', 'skills', 'certifications']
+2026-02-11 17:20:12 | INFO     | parsers.resume_parser | Extracted 13 raw claims from sections
+2026-02-11 17:22:53 | INFO     | parsers.resume_parser | Extracted 2647 characters from PDF
+2026-02-11 17:22:53 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescale db)', 'skills', 'certifications']
+2026-02-11 17:22:53 | INFO     | parsers.resume_parser | Extracted 18 raw claims from sections
+2026-02-11 17:23:10 | INFO     | parsers.resume_parser | Extracted 2647 characters from PDF
+2026-02-11 17:23:10 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescale db)', 'skills', 'certifications']
+2026-02-11 17:23:10 | INFO     | parsers.resume_parser | Extracted 18 raw claims from sections
+2026-02-11 17:23:55 | INFO     | parsers.resume_parser | Extracted 2658 characters from PDF
+2026-02-11 17:23:55 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescale db)', 'skills', 'certifications']
+2026-02-11 17:23:55 | INFO     | parsers.resume_parser | Extracted 13 raw claims from sections
+2026-02-11 17:24:04 | INFO     | parsers.resume_parser | Extracted 2658 characters from PDF
+2026-02-11 17:24:04 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescale db)', 'skills', 'certifications']
+2026-02-11 17:24:04 | INFO     | parsers.resume_parser | Extracted 13 raw claims from sections
+2026-02-11 17:26:04 | INFO     | parsers.resume_parser | Extracted 2708 characters from PDF
+2026-02-11 17:26:04 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescaledb)', 'skills', 'certifications']
+2026-02-11 17:26:04 | INFO     | parsers.resume_parser | Extracted 15 raw claims from sections
+2026-02-11 17:28:26 | INFO     | parsers.resume_parser | Extracted 2708 characters from PDF
+2026-02-11 17:28:26 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescaledb)', 'skills', 'certifications']
+2026-02-11 17:28:26 | INFO     | parsers.resume_parser | Extracted 12 raw claims from sections
+2026-02-11 17:31:06 | INFO     | parsers.resume_parser | Extracted 2708 characters from PDF
+2026-02-11 17:31:06 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescaledb)', 'skills', 'certifications']
+2026-02-11 17:31:06 | INFO     | parsers.resume_parser | Extracted 12 raw claims from sections
+2026-02-11 17:35:18 | INFO     | parsers.resume_parser | Extracted 2596 characters from PDF
+2026-02-11 17:35:18 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'education', 'experience', 'projects', '(python,fastapi,sqlalchemy,timescaledb)', 'skills', 'certifications']
+2026-02-11 17:35:18 | INFO     | parsers.resume_parser | Extracted 16 raw claims from sections
+2026-02-11 17:36:46 | INFO     | parsers.resume_parser | Extracted 2673 characters from PDF
+2026-02-11 17:36:46 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-11 17:36:46 | INFO     | parsers.resume_parser | Extracted 17 raw claims from sections
+2026-02-11 17:57:16 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 18:01:49 | INFO     | parsers.resume_parser | Extracted 2673 characters from PDF
+2026-02-11 18:01:49 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-11 18:01:49 | INFO     | parsers.resume_parser | Extracted 17 raw claims from sections
+2026-02-11 18:02:08 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 18:02:08 | INFO     | parsers.resume_parser | Extracted 12 raw claims from sections
+2026-02-11 18:09:22 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-11 18:09:22 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-11 18:09:22 | INFO     | parsers.resume_parser | Extracted 9 raw claims from sections
+2026-02-11 18:13:47 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 18:13:47 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections

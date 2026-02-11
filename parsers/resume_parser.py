@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 from typing import BinaryIO, Union, Dict
 
-from PyPDF2 import PdfReader
+import pdfplumber
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -18,33 +18,63 @@ def _reset_stream(file):
             file.seek(0)
     except Exception:
         pass
+def normalize_pdf_text(text: str) -> str:
+    """
+    Safe normalization for PDF resumes.
+    Only fixes extraction artifacts — NEVER rewrites real words.
+    """
 
+    # --- Merge split acronyms: "AP I" -> "API"
+    text = re.sub(r'\b([A-Z])\s+([A-Z])\s+([A-Z])\b', r'\1\2\3', text)
+    text = re.sub(r'\b([A-Z])\s+([A-Z])\b', r'\1\2', text)
+
+    # --- Fix hyphen spacing: "real - time" -> "real-time"
+    text = re.sub(r'\s*-\s*', '-', text)
+
+    # --- Add missing space after commas: "FastAPI,SQLAlchemy"
+    text = re.sub(r',([A-Za-z])', r', \1', text)
+
+    # --- Clean punctuation spacing
+    text = re.sub(r'\s+,', ',', text)
+    text = re.sub(r'\s+\.', '.', text)
+
+    # --- Normalize bullets
+    text = text.replace("●", "-")
+    text = text.replace("•", "-")
+
+    # --- Collapse multiple spaces
+    text = re.sub(r' {2,}', ' ', text)
+
+    return text
 
 def extract_text_from_pdf(file: Union[BinaryIO, str, Path]) -> str:
-    """Extract raw text from a PDF file."""
+    """
+    Extract text using pdfplumber (much better for resumes than PyPDF2)
+    """
     try:
         _reset_stream(file)
-        reader = PdfReader(file)
 
         text_parts = []
-        for page in reader.pages:
-            page_text = page.extract_text()
-            if page_text:
-                text_parts.append(page_text)
+
+        with pdfplumber.open(file) as pdf:
+            for page in pdf.pages:
+                page_text = page.extract_text(x_tolerance=2, y_tolerance=2)
+                if page_text:
+                    text_parts.append(page_text)
 
         full_text = "\n".join(text_parts)
 
-        # --- minimal normalization ---
-        full_text = re.sub(r"\n{2,}", "\n", full_text)
-        full_text = re.sub(r"[ \t]+", " ", full_text)
+        # normalize extracted text
+        full_text = normalize_pdf_text(full_text)
+
 
         logger.info(f"Extracted {len(full_text)} characters from PDF")
         return full_text
 
+
     except Exception as e:
         logger.error(f"Failed to extract text from PDF: {e}")
         raise
-
 
 def extract_text_from_txt(file: Union[BinaryIO, str, Path]) -> str:
     """Read raw text from a TXT file."""
@@ -59,7 +89,6 @@ def extract_text_from_txt(file: Union[BinaryIO, str, Path]) -> str:
     except Exception as e:
         logger.error(f"Failed to extract text from TXT: {e}")
         raise
-
 
 def extract_text(file: Union[BinaryIO, str, Path], filename: str = "") -> str:
     """Auto detect file type."""
@@ -149,8 +178,6 @@ def looks_like_heading(line: str, next_lines: list[str]) -> bool:
 
     return False
 
-
-
 # remove contact junk
 CONTACT_PATTERNS = [
     r"linkedin\.com",
@@ -158,7 +185,6 @@ CONTACT_PATTERNS = [
     r"@\w+\.",
     r"\+?\d{8,}",
 ]
-
 
 def parse_resume_sections(text: str) -> Dict[str, Dict]:
     """
@@ -231,6 +257,11 @@ def parse_resume_sections(text: str) -> Dict[str, Dict]:
 
     logger.info(f"Parsed {len(sections)} sections: {list(sections.keys())}")
     return sections
+
+# =========================================================
+# ---------------- CLAIM EXTRACTION ------------------------
+# =========================================================
+
 DATE_PATTERN = r"(19|20)\d{2}"
 
 JOB_HEADER_PATTERN = re.compile(
@@ -269,8 +300,6 @@ def looks_like_job_header(line: str) -> bool:
         return False
 
     return bool(JOB_HEADER_PATTERN.match(line))
-
-
 
 def _split_into_sentences(text: str) -> list[str]:
     """
@@ -313,8 +342,10 @@ def _split_into_sentences(text: str) -> list[str]:
         if current_bullet:
             current_bullet.append(stripped)
         else:
-            # standalone sentences (rare but exists)
-            claims.append(stripped)
+            # only keep standalone lines that look like real sentences
+            if stripped.endswith('.'):
+                claims.append(stripped)
+
 
 
     if current_bullet:
@@ -345,23 +376,64 @@ def _split_into_sentences(text: str) -> list[str]:
         cleaned.append(c)
 
     return cleaned
-ROLE_HEADER_RE = re.compile(r"\b(19|20)\d{2}\b")
 
 ACTION_VERBS = [
     "built","developed","implemented","designed","led","created","optimized",
     "improved","reduced","increased","deployed","architected","mentored",
     "automated","analyzed","managed","integrated"
 ]
-
 def is_role_header(text: str) -> bool:
-    t = text.lower()
+    """
+    Detect job title lines like:
+    Software Engineer | Google | 2023
+    """
 
-    # contains a year -> probably a job entry
-    if ROLE_HEADER_RE.search(t):
-        if "|" in t or " - " in t:
-            if not any(v in t for v in ACTION_VERBS):
-                return True
+    t = text.strip().lower()
+
+    # Must contain a year
+    if not re.search(r'(19|20)\d{2}', t):
+        return False
+
+    # Typical job header patterns
+    if "|" in t or " - " in t or "@" in t:
+        if not any(v in t for v in ACTION_VERBS):
+            return True
+
     return False
+
+
+def is_noise_claim(text: str) -> bool:
+    """
+    Check if a claim is just noise (headers, dates, meta).
+    """
+    if is_role_header(text):
+        return True
+    
+    # single project titles (no verbs)
+    t = text.strip().lower()
+    if len(t.split()) <= 6 and not any(v in t for v in ACTION_VERBS):
+        if not t.endswith('.'):
+            return True
+            
+    return False
+
+def normalize_section(section_name: str) -> str:
+    """
+    Map parser sections into semantic sections used by the system.
+    """
+
+    s = section_name.lower().strip()
+
+    # tech stack pseudo-sections -> projects
+    if s.startswith("(") and "," in s:
+        return "projects"
+
+    # safety: technology-only section names
+    if any(t in s for t in ["python", "fastapi", "sql", "docker", "ml"]):
+        if len(s.split()) <= 5:
+            return "projects"
+
+    return section_name
 
 def extract_claims_from_sections(sections: dict[str, dict]) -> list[dict]:
     """
@@ -385,12 +457,14 @@ def extract_claims_from_sections(sections: dict[str, dict]) -> list[dict]:
         claims = _split_into_sentences(text)
 
         for claim in claims:
-            if is_role_header(claim):
+            if is_noise_claim(claim):
                 continue
+
+            normalized_section = normalize_section(section_name)
 
             all_claims.append({
                 "text": claim,
-                "section": section_name
+                "section": normalized_section
             })
 
 
