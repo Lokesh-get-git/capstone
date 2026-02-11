@@ -401,21 +401,23 @@ def is_role_header(text: str) -> bool:
 
     return False
 
-
 def is_noise_claim(text: str) -> bool:
-    """
-    Check if a claim is just noise (headers, dates, meta).
-    """
-    if is_role_header(text):
-        return True
-    
-    # single project titles (no verbs)
     t = text.strip().lower()
-    if len(t.split()) <= 6 and not any(v in t for v in ACTION_VERBS):
-        if not t.endswith('.'):
-            return True
-            
+
+    # remove pure date lines
+    if re.match(r'^(19|20)\d{2}\s*-\s*((19|20)\d{2}|present|ongoing)$', t):
+        return True
+
+    # remove separators
+    if t in {"-", "--", "—"}:
+        return True
+
+    # remove empty/very tiny
+    if len(t.split()) <= 2:
+        return True
+
     return False
+
 
 def normalize_section(section_name: str) -> str:
     """

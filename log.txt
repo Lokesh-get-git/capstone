@@ -63,3 +63,43 @@
 2026-02-11 18:09:22 | INFO     | parsers.resume_parser | Extracted 9 raw claims from sections
 2026-02-11 18:13:47 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
 2026-02-11 18:13:47 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 18:35:27 | ERROR    | parsers.resume_parser | Failed to extract text from PDF: [Errno 2] No such file or directory: 'sample_resume.pdf'
+2026-02-11 18:36:12 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 18:36:12 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 18:37:11 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 18:37:11 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 18:37:38 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-11 18:37:38 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 1.0, 'metrics': {'word_count': 17, 'has_action_verb': True, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.62, 'metrics': {'word_count': 10, 'has_action_verb': False, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 1.0, 'metrics': {'word_count': 16, 'has_action_verb': True, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.62, 'metrics': {'word_count': 11, 'has_action_verb': False, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.88, 'metrics': {'word_count': 12, 'has_action_verb': True, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.88, 'metrics': {'word_count': 11, 'has_action_verb': True, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.88, 'metrics': {'word_count': 13, 'has_action_verb': True, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.88, 'metrics': {'word_count': 8, 'has_action_verb': True, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.12, 'metrics': {'word_count': 9, 'has_action_verb': False, 'has_metrics': False}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.62, 'metrics': {'word_count': 7, 'has_action_verb': False, 'has_metrics': True}}
+2026-02-11 18:37:38 | INFO     | __main__ | {'score': 0.12, 'metrics': {'word_count': 8, 'has_action_verb': False, 'has_metrics': False}}
+2026-02-11 18:48:52 | INFO     | __main__ | 0.104  ->  Developed RESTful APIs using FastAPI and PostgreSQL
+2026-02-11 18:48:52 | INFO     | __main__ | 0.028  ->  Built machine learning model using Scikit-learn and Pandas
+2026-02-11 18:48:52 | INFO     | __main__ | 0.093  ->  Created CI/CD pipeline with Docker and GitHub Actions
+2026-02-11 19:36:47 | INFO     | __main__ | {'frameworks': ['fastapi'], 'cloud_devops': ['docker', 'aws'], 'concepts': ['rest api']}
+2026-02-11 19:36:47 | INFO     | __main__ | {'languages': ['python'], 'frameworks': ['pandas', 'scikit-learn'], 'concepts': ['machine learning']}
+2026-02-11 19:36:47 | INFO     | __main__ | {'cloud_devops': ['github actions', 'jenkins'], 'concepts': ['ci/cd']}
+2026-02-11 19:36:47 | INFO     | __main__ | {'languages': ['typescript'], 'frameworks': ['react']}
+2026-02-11 19:36:47 | INFO     | __main__ | {'databases': ['redis']}
+2026-02-11 19:51:15 | INFO     | __main__ | {'python', 'http methods', 'database design', 'caching', 'backend', 'authentication', 'status codes', 'idempotency', 'rest', 'http', 'api'}
+2026-02-11 19:51:15 | INFO     | __main__ | {'python', 'http methods', 'database design', 'caching', 'backend', 'fastapi', 'authentication', 'rest api', 'status codes', 'idempotency', 'rest', 'http', 'api'}
+2026-02-11 19:51:15 | INFO     | __main__ | {'fastapi', 'rest api'}
+2026-02-11 19:51:15 | INFO     | __main__ | {'frameworks': ['fastapi'], 'concepts': ['rest api']}
+2026-02-11 19:51:15 | INFO     | __main__ | ['fastapi', 'machine learning', 'rest api', 'scikit-learn']
+2026-02-11 19:51:15 | INFO     | __main__ | ['api', 'authentication', 'backend', 'caching', 'database design', 'evaluation metrics', 'fastapi', 'http', 'http methods', 'idempotency', 'machine learning', 'overfitting', 'python', 'rest', 'rest api', 'scikit-learn', 'status codes', 'supervised learning']
+2026-02-11 19:51:15 | INFO     | __main__ | ['api', 'authentication', 'backend', 'caching', 'database design', 'evaluation metrics', 'http', 'http methods', 'idempotency', 'overfitting', 'python', 'rest', 'status codes', 'supervised learning']
+2026-02-11 19:51:15 | INFO     | __main__ | {'evaluation metrics', 'supervised learning', 'overfitting'}
+2026-02-11 19:51:15 | INFO     | __main__ | {'scikit-learn', 'machine learning', 'supervised learning', 'evaluation metrics', 'overfitting'}
+2026-02-11 19:51:15 | INFO     | __main__ | {'scikit-learn', 'machine learning'}
+2026-02-11 19:51:15 | INFO     | __main__ | {'frameworks': ['scikit-learn'], 'concepts': ['machine learning']}
+2026-02-11 19:51:15 | INFO     | __main__ | ['fastapi', 'machine learning', 'rest api', 'scikit-learn']
+2026-02-11 19:51:15 | INFO     | __main__ | ['api', 'authentication', 'backend', 'caching', 'database design', 'evaluation metrics', 'fastapi', 'http', 'http methods', 'idempotency', 'machine learning', 'overfitting', 'python', 'rest', 'rest api', 'scikit-learn', 'status codes', 'supervised learning']
+2026-02-11 19:51:15 | INFO     | __main__ | ['api', 'authentication', 'backend', 'caching', 'database design', 'evaluation metrics', 'http', 'http methods', 'idempotency', 'overfitting', 'python', 'rest', 'status codes', 'supervised learning']
