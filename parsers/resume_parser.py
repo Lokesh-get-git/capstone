@@ -231,6 +231,47 @@ def parse_resume_sections(text: str) -> Dict[str, Dict]:
 
     logger.info(f"Parsed {len(sections)} sections: {list(sections.keys())}")
     return sections
+DATE_PATTERN = r"(19|20)\d{2}"
+
+JOB_HEADER_PATTERN = re.compile(
+    rf"""
+    ^(
+        .*?\|\s*.*?\|\s*{DATE_PATTERN}.*$ |  # Title | Company | Year
+        .*?\|\s*{DATE_PATTERN}.*$        |   # Title | Year
+        .+?\s-\s.+$                      |   # Project - Name
+        .+?\s@\s.+$                      |   # Title @ Company
+        ^[A-Z][A-Za-z0-9\s&]{{2,40}}$       # Short title lines (Project names)
+    )
+    """,
+    re.VERBOSE
+)
+
+def looks_like_job_header(line: str) -> bool:
+    line = line.strip()
+
+    if len(line) < 6:
+        return False
+
+    # never treat bullets as headers
+    if re.match(r'^\s*[•\-\*]', line):
+        return False
+
+    # sentences are not headers
+    if line.endswith(('.', ',', ';')):
+        return False
+
+    # very long lines are not headers
+    if len(line.split()) > 8:
+        return False
+
+    # contains verbs → probably a sentence
+    if re.search(r"\b(implemented|developed|built|designed|led|optimized)\b", line, re.I):
+        return False
+
+    return bool(JOB_HEADER_PATTERN.match(line))
+
+
+
 def _split_into_sentences(text: str) -> list[str]:
     """
     Split text into resume claims.
@@ -251,23 +292,30 @@ def _split_into_sentences(text: str) -> list[str]:
         if not stripped:
             continue
 
+        # -------- ENTRY HEADER (hard boundary) --------
+        if looks_like_job_header(stripped):
+            if current_bullet:
+                claims.append(" ".join(current_bullet))
+                current_bullet = []
+            continue
+
+        # -------- BULLET --------
         if bullet_pattern.match(stripped):
-            # save previous bullet
             if current_bullet:
                 claims.append(" ".join(current_bullet))
                 current_bullet = []
 
-            # remove bullet symbol
             stripped = bullet_pattern.sub("", stripped)
             current_bullet.append(stripped)
+            continue
 
+        # -------- CONTINUATION --------
+        if current_bullet:
+            current_bullet.append(stripped)
         else:
-            # continuation of previous bullet
-            if current_bullet:
-                current_bullet.append(stripped)
-            else:
-                # non-bullet text
-                claims.append(stripped)
+            # standalone sentences (rare but exists)
+            claims.append(stripped)
+
 
     if current_bullet:
         claims.append(" ".join(current_bullet))
@@ -297,6 +345,24 @@ def _split_into_sentences(text: str) -> list[str]:
         cleaned.append(c)
 
     return cleaned
+ROLE_HEADER_RE = re.compile(r"\b(19|20)\d{2}\b")
+
+ACTION_VERBS = [
+    "built","developed","implemented","designed","led","created","optimized",
+    "improved","reduced","increased","deployed","architected","mentored",
+    "automated","analyzed","managed","integrated"
+]
+
+def is_role_header(text: str) -> bool:
+    t = text.lower()
+
+    # contains a year -> probably a job entry
+    if ROLE_HEADER_RE.search(t):
+        if "|" in t or " - " in t:
+            if not any(v in t for v in ACTION_VERBS):
+                return True
+    return False
+
 def extract_claims_from_sections(sections: dict[str, dict]) -> list[dict]:
     """
     Convert parsed sections into a flat list of raw claims.
@@ -304,7 +370,8 @@ def extract_claims_from_sections(sections: dict[str, dict]) -> list[dict]:
 
     all_claims = []
 
-    SKIP_SECTIONS = {"header", "skills"}
+    SKIP_SECTIONS = {"header", "skills", "education", "certifications"}
+
 
     for section_name, section_data in sections.items():
 
@@ -318,10 +385,14 @@ def extract_claims_from_sections(sections: dict[str, dict]) -> list[dict]:
         claims = _split_into_sentences(text)
 
         for claim in claims:
+            if is_role_header(claim):
+                continue
+
             all_claims.append({
                 "text": claim,
                 "section": section_name
             })
+
 
     logger.info(f"Extracted {len(all_claims)} raw claims from sections")
     return all_claims
