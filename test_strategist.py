@@ -1,11 +1,12 @@
 import os
 import sys
-from pprint import pprint
 
 # Add project root to path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from agents.question_strategist import question_strategist_node
+from agents.difficulty_planner import difficulty_planner_node
+from agents.question_generator import question_generator_node
 from agents.state import AgentState
 from models.data_models import (
     ResumeClaim, RiskAnalysis, ReadinessAnalysis, 
@@ -13,10 +14,7 @@ from models.data_models import (
 )
 
 def run_test():
-    print("=== Testing Question Strategist Agent ===")
-    
-    # Mock Analysis Data (Output of Analyst)
-    # Scenario: Strong candidate but with "Buzzword Stacking" and missing REST skills
+    print("=== Testing Planner & Generator Pipeline ===")
     
     claims = [
         ResumeClaim(text="Built API using FastAPI", section="Projects", risk_score=0.1, risk_label="low", vulnerabilities=[]),
@@ -26,10 +24,10 @@ def run_test():
     ]
     
     state = AgentState(
-        resume_text="Mock Resume Text",
+        resume_text="Mock Resume",
         job_description="",
         claims=claims,
-        risk_analysis=RiskAnalysis(claim_risks=[], summary="Medium risk profile."),
+        risk_analysis=RiskAnalysis(claim_risks=[], summary="Medium risk."),
         readiness_analysis=ReadinessAnalysis(score=75.0, level="good", breakdown={}),
         vulnerability_map=VulnerabilityMap(
             strong_claims=5, total_claims=10, strength_ratio=50.0,
@@ -44,22 +42,31 @@ def run_test():
         errors=[]
     )
     
-    print("\n[Input State]")
-    print(f"Readiness: {state['readiness_analysis'].score}")
-    print(f"Gaps: {state['skill_gap_analysis'].missing_skills}")
+    # 1. Strategist
+    print("\n[1] Running Strategist Node...")
+    strat_out = question_strategist_node(state)
+    state.update(strat_out)
+    print(f"Strategy: {state['interview_strategy'][:100]}...")
     
-    print("\nRunning Strategist Node (Calls Groq)...")
-    try:
-        result = question_strategist_node(state)
+    # 2. Planner
+    print("\n[2] Running Difficulty Planner Node...")
+    plan_out = difficulty_planner_node(state)
+    state.update(plan_out)
+    print("Question Plan:")
+    for item in state['question_plan']:
+        print(f"  - {item}")
         
-        print("\n=== STRATEGIST OUTPUT ===")
-        print(f"Strategy: {result.get('interview_strategy')}")
-        print("Focus Areas:")
-        for area in result.get('focus_areas', []):
-            print(f"  - {area}")
-            
-    except Exception as e:
-        print(f"Error: {e}")
+    # 3. Generator
+    print("\n[3] Running Question Generator Node...")
+    gen_out = question_generator_node(state)
+    state.update(gen_out)
+    
+    print("\n=== GENERATED QUESTIONS (Unvalidated) ===")
+    for q in state['generated_questions']:
+        print(f"[{q.difficulty}] {q.question}")
+        print(f"   Target: {q.target_claim}")
+        print(f"   Reasoning: {q.reasoning}")
+        print("-" * 50)
 
 if __name__ == "__main__":
     run_test()

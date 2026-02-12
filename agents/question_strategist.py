@@ -22,11 +22,27 @@ INPUT DATA:
 {claim_summaries}
 
 TASK:
-1. Determine the interview tone.
-2. Identify 3-5 specific Focus Areas.
-   - MANDATORY: You must include at least one focus area related to **Projects** (if available) to verify hands-on experience.
-   - MANDATORY: You must include at least one focus area related to **Experience/Work History** to assess depth.
-   - Address any high risks or skill gaps.
+You are NOT designing a general technical interview.
+
+You are designing a CLAIM VERIFICATION interview.
+
+Your objective is to verify whether the candidate actually performed the resume claims.
+
+Rules:
+1. Each focus area must map to a specific resume claim or vulnerability.
+2. High-risk claims MUST be directly challenged.
+3. If a claim has "No Technical Specifics", you must probe implementation details.
+4. If a claim has "No Quantified Impact", you must probe measurement and metrics.
+5. Avoid generic topics like "Explain microservices" or "What is React".
+
+Instead, questions should resemble:
+- "You mentioned X — how exactly did you implement it?"
+- "Walk me through what YOU personally did."
+- "What went wrong during this project?"
+
+Output focus areas as verification goals, not topics.
+
+
 
 OUTPUT FORMAT (JSON):
 {{
