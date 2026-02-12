@@ -379,3 +379,62 @@ Traceback (most recent call last):
     response = chain.invoke({
                ^^^^^
 NameError: name 'chain' is not defined
+2026-02-12 14:36:35 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 14:36:35 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 14:36:35 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 14:36:35 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 14:36:39 | INFO     | agents.question_strategist | Strategy formulated: Verify technical claims, probe system design and architectural decisions, and address self-declared weaknesses and resume vulnerabilities.
+2026-02-12 14:36:39 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 14:36:43 | INFO     | agents.difficulty_planner | Plan created with 9 steps.
+2026-02-12 14:36:43 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 14:36:46 | INFO     | agents.question_generator | Generated 9 questions.
+2026-02-12 14:36:46 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 14:36:47 | INFO     | agents.validator | Validator: 9/9 questions passed.
+2026-02-12 14:36:47 | ERROR    | agents.coach | Coach failed: name 'role_context' is not defined
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\coach.py", line 91, in coach_node
+    "target_role": role_context,
+                   ^^^^^^^^^^^^
+NameError: name 'role_context' is not defined
+2026-02-12 14:45:48 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 14:45:48 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 14:45:48 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 14:45:48 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 14:45:51 | INFO     | agents.question_strategist | Strategy formulated: Verify the candidate's senior-level system design and architectural decisions, while addressing self-declared weaknesses and resume vulnerabilities, focusing on high-risk claims and probing implementation details and quantified impact.
+2026-02-12 14:45:51 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 14:45:53 | INFO     | agents.difficulty_planner | Plan created with 12 steps.
+2026-02-12 14:45:53 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 14:45:56 | INFO     | agents.question_generator | Generated 12 questions.
+2026-02-12 14:45:56 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 14:45:58 | INFO     | agents.validator | Validator: 12/12 questions passed.
+2026-02-12 14:46:00 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 14:46:11 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 14:59:34 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 14:59:34 | INFO     | parsers.resume_parser | Extracted 9 raw claims from sections
+2026-02-12 14:59:34 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 14:59:34 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 14:59:37 | INFO     | agents.question_strategist | Strategy formulated: Conduct a claim verification interview focusing on system design, architectural decisions, and addressing self-declared weaknesses and resume vulnerabilities. Challenge high-risk claims, probe implementation details for claims with 'No Technical Specifics', and measurement and metrics for claims with 'No Quantified Impact'.
+2026-02-12 14:59:37 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 14:59:39 | INFO     | agents.difficulty_planner | Plan created with 15 steps.
+2026-02-12 14:59:39 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 14:59:43 | INFO     | agents.question_generator | Generated 15 questions.
+2026-02-12 14:59:43 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 14:59:45 | INFO     | agents.validator | Validator: 15/15 questions passed.
+2026-02-12 14:59:46 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 14:59:58 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 15:03:27 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 15:03:27 | INFO     | parsers.resume_parser | Extracted 8 raw claims from sections
+2026-02-12 15:03:27 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 15:03:29 | INFO     | agents.question_strategist | Strategy formulated: Claim Verification interview focusing on system design, architectural decisions, and self-declared weaknesses, while addressing resume vulnerabilities and high-risk claims.
+2026-02-12 15:03:29 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 15:03:32 | INFO     | agents.difficulty_planner | Plan created with 15 steps.
+2026-02-12 15:03:32 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 15:03:36 | INFO     | agents.question_generator | Generated 15 questions.
+2026-02-12 15:03:36 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 15:03:38 | INFO     | agents.validator | Validator: 15/15 questions passed.
+2026-02-12 15:03:40 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 15:03:49 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 15:07:53 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 15:07:53 | INFO     | parsers.resume_parser | Extracted 8 raw claims from sections
+2026-02-12 15:08:26 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 15:08:26 | INFO     | parsers.resume_parser | Extracted 8 raw claims from sections

@@ -81,6 +81,16 @@ def coach_node(state: AgentState) -> dict:
     skill_gaps = state.get("skill_gap_analysis")
     missing = skill_gaps.missing_skills if skill_gaps else []
     
+    # Profile Logic
+    profile = state.get("candidate_profile")
+    if profile:
+        target_role = profile.target_role
+        years = profile.experience_years
+        role_context = f"{target_role} ({years} years exp)"
+        declared_weaknesses = ", ".join(profile.self_declared_weaknesses)
+    else:
+        role_context = "Software Engineer"
+        declared_weaknesses = "None"
     # Define Chain
     prompt = ChatPromptTemplate.from_template(COACH_PROMPT)
     llm = get_llm(temperature=0.5) 

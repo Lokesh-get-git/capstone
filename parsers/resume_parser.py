@@ -233,6 +233,7 @@ def parse_resume_sections(text: str) -> Dict[str, Dict]:
 
         # ---------- switch section ----------
         if detected_section:
+            print(f"DEBUG: Switching from {current_section} to {detected_section}")
             if current_lines:
                 sections[current_section] = {
                     "text": "\n".join(current_lines).strip(),

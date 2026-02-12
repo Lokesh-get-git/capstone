@@ -130,5 +130,6 @@ def run_interview_pipeline(
         "strategy": final_state["interview_strategy"],
         "question_plan": final_state["question_plan"],
         "questions": [q.model_dump() for q in final_state["generated_questions"]],
-        "coaching_insights": [c.model_dump() for c in final_state["coaching_insights"]]
+        "coaching_insights": [c.model_dump() for c in final_state["coaching_insights"]],
+        "claims": [c.model_dump() for c in final_state["claims"]] # Added for UI
     }
