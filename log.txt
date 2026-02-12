@@ -326,3 +326,56 @@ KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n    "rationale
 2026-02-12 13:18:06 | INFO     | agents.coach | Coach Agent: generating insights...
 2026-02-12 13:18:07 | INFO     | agents.coach | TavilySearchResults tool initialized.
 2026-02-12 13:18:18 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 14:16:07 | INFO     | api.main | Health check endpoint called
+2026-02-12 14:16:55 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 14:23:59 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 14:23:59 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 14:23:59 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 14:23:59 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 14:24:04 | INFO     | agents.question_strategist | Strategy formulated: Verify the candidate's technical expertise and claims, focusing on high-risk areas, self-declared weaknesses, and resume vulnerabilities. Challenge the candidate to provide implementation details, quantify impact, and walk through their personal contributions.
+2026-02-12 14:24:04 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 14:24:06 | INFO     | agents.difficulty_planner | Plan created with 15 steps.
+2026-02-12 14:24:06 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 14:24:12 | INFO     | agents.question_generator | Generated 15 questions.
+2026-02-12 14:24:12 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 14:24:14 | INFO     | agents.validator | Validator: 15/15 questions passed.
+2026-02-12 14:24:14 | INFO     | agents.coach | Coach Agent: generating insights...
+2026-02-12 14:24:14 | ERROR    | agents.coach | Coach failed: 'Input to ChatPromptTemplate is missing variables {\'claim_context\', \'\\n    "insights"\'}.  Expected: [\'\\n    "insights"\', \'claim_context\', \'declared_weaknesses\', \'missing_skills\', \'risk_summary\', \'target_role\', \'vulnerabilities\'] Received: [\'target_role\', \'declared_weaknesses\', \'missing_skills\', \'risk_summary\', \'vulnerabilities\']\nNote: if you intended {claim_context} to be part of the string and not a variable, please escape it with double curly braces like: \'{{claim_context}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\coach.py", line 105, in coach_node
+    response = chain.invoke({
+               ^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3155, in invoke
+    input_ = context.run(step.invoke, input_, config, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 223, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 196, in _format_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 190, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'claim_context\', \'\\n    "insights"\'}.  Expected: [\'\\n    "insights"\', \'claim_context\', \'declared_weaknesses\', \'missing_skills\', \'risk_summary\', \'target_role\', \'vulnerabilities\'] Received: [\'target_role\', \'declared_weaknesses\', \'missing_skills\', \'risk_summary\', \'vulnerabilities\']\nNote: if you intended {claim_context} to be part of the string and not a variable, please escape it with double curly braces like: \'{{claim_context}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+2026-02-12 14:31:41 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 14:31:41 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 14:31:41 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 14:31:41 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 14:31:46 | INFO     | agents.question_strategist | Strategy formulated: Verify mid-level software engineer's resume claims, focusing on high-risk claims, self-declared weaknesses, and resume vulnerabilities, while assessing technical specifics, quantified impact, and implementation details.
+2026-02-12 14:31:46 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 14:31:48 | INFO     | agents.difficulty_planner | Plan created with 9 steps.
+2026-02-12 14:31:48 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 14:31:52 | INFO     | agents.question_generator | Generated 9 questions.
+2026-02-12 14:31:52 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 14:31:54 | INFO     | agents.validator | Validator: 9/9 questions passed.
+2026-02-12 14:31:54 | ERROR    | agents.coach | Coach failed: name 'chain' is not defined
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\coach.py", line 91, in coach_node
+    response = chain.invoke({
+               ^^^^^
+NameError: name 'chain' is not defined

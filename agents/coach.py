@@ -49,62 +49,51 @@ For each preparation insight provide:
 4. A helpful resource search query
 
 OUTPUT FORMAT (JSON):
-{
+{{
     "insights": [
-        {
+        {{
             "topic": "What interviewer will focus on",
             "advice": "How candidate should prepare and what they must be ready to explain",
             "resource_query": "Specific preparation search query"
-        }
+        }}
     ]
-}
+}}
 """
 
 
 def coach_node(state: AgentState) -> dict:
-    """
-    Coach Agent:
-    Analyzes gaps and risks to provide actionable feedback and resource recommendations.
-    Uses LLM to generate advice and search queries.
-    (Future: Connect 'resource_query' to a real Search MCP)
-    """
-    logger.info("Coach Agent: generating insights...")
+    # ... (code up to line 97) ...
+    # ... (code up to line 102) ...
     
-    skill_gaps = state.get("skill_gap_analysis")
-    missing = skill_gaps.missing_skills if skill_gaps else []
-    
+    # Re-fetch variables to be sure
     risk = state.get("risk_analysis")
     risk_summary = risk.summary if risk else "No risk analysis"
     
     vuln = state.get("vulnerability_map")
     vuln_list = vuln.top_weaknesses if vuln else []
+    
     claims = state.get("claims", [])
     risky_claims = sorted(claims, key=lambda c: c.risk_score, reverse=True)[:3]
     claim_context = "\n".join([f"- {c.text[:120]}" for c in risky_claims])
-    
-    profile = state.get("candidate_profile")
-    if profile:
-        target_role = profile.target_role
-        declared_weaknesses = ", ".join(profile.self_declared_weaknesses)
-    else:
-        target_role = "Software Engineer"
-        declared_weaknesses = "None"
+    if not claim_context:
+        claim_context = "No high-risk claims found."
 
-    # If no weaknesses, return general advice
-    if not missing and not vuln_list and not profile.self_declared_weaknesses:
-        missing = ["Advanced System Design", "Performance Optimization"]
-        
+    skill_gaps = state.get("skill_gap_analysis")
+    missing = skill_gaps.missing_skills if skill_gaps else []
+    
+    # Define Chain
     prompt = ChatPromptTemplate.from_template(COACH_PROMPT)
     llm = get_llm(temperature=0.5) 
     chain = prompt | llm | JsonOutputParser()
     
     try:
         response = chain.invoke({
-            "target_role": target_role,
+            "target_role": role_context,
             "declared_weaknesses": declared_weaknesses,
             "missing_skills": ", ".join(missing),
             "risk_summary": risk_summary,
-            "vulnerabilities": ", ".join(vuln_list)
+            "vulnerabilities": ", ".join(vuln_list),
+            "claim_context": claim_context
         })
         
         raw_insights = response.get("insights", [])

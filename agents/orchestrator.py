@@ -85,6 +85,11 @@ def run_interview_pipeline(
 ) -> dict:
     """
     Executes the LangGraph workflow.
+
+    Args:
+        resume_text (str): The raw text of the resume.
+        candidate_profile (CandidateProfile): User's role, years of exp, and declared weaknesses.
+        job_description (str, optional): Job description text. Defaults to "".
     """
     logger.info(f"Starting LangGraph Pipeline for Role: {candidate_profile.target_role}")
     

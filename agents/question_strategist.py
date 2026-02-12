@@ -120,11 +120,19 @@ def question_strategist_node(state: AgentState) -> dict:
     profile = state.get("candidate_profile")
     if profile:
         target_role = profile.target_role
-        experience_level = profile.experience_level
+        years = profile.experience_years
+        # Infer level for proper context
+        if years < 3:
+            experience_level = f"Junior ({years} years)"
+        elif years < 7:
+            experience_level = f"Mid-Level ({years} years)"
+        else:
+            experience_level = f"Senior ({years} years)"
+            
         weaknesses = ", ".join(profile.self_declared_weaknesses)
     else:
         target_role = "Software Engineer"
-        experience_level = "Mid-Level"
+        experience_level = "Mid-Level (3 years)"
         weaknesses = "None declared"
 
     prompt = ChatPromptTemplate.from_template(STRATEGIST_PROMPT)

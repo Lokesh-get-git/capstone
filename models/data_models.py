@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 class CandidateProfile(BaseModel):
     target_role: str = "Software Engineer"
-    experience_level: str = "Mid-Level" # Junior/Mid/Senior
+    experience_years: int = 3 # Years of experience
     tech_stack: List[str] = []
     self_declared_weaknesses: List[str] = []
 
