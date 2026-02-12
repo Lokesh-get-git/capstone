@@ -173,3 +173,77 @@
 2026-02-11 23:54:38 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
 2026-02-11 23:54:38 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
 2026-02-11 23:54:38 | INFO     | parsers.resume_parser | Extracted 4 raw claims from sections
+2026-02-12 09:36:42 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 09:36:42 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 09:38:39 | ERROR    | parsers.resume_parser | Failed to extract text from PDF: [Errno 2] No such file or directory: 'sample_resume.pdf'
+2026-02-12 09:38:51 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 09:38:51 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 10:42:36 | ERROR    | __main__ | Demo failed: name 'parse_resume_sections' is not defined
+Traceback (most recent call last):
+  File "d:\work\training\capstone\tempmain.py", line 368, in run_demo
+    result = resume_analyst_node(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\work\training\capstone\agents\resume_analyst.py", line 26, in resume_analyst_node
+    sections = parse_resume_sections(text)
+               ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'parse_resume_sections' is not defined
+2026-02-12 10:43:18 | ERROR    | __main__ | Demo failed: name 'parse_resume_sections' is not defined
+Traceback (most recent call last):
+  File "d:\work\training\capstone\tempmain.py", line 368, in run_demo
+    result = resume_analyst_node(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\work\training\capstone\agents\resume_analyst.py", line 26, in resume_analyst_node
+    sections = parse_resume_sections(text)
+               ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'parse_resume_sections' is not defined
+2026-02-12 10:43:35 | ERROR    | __main__ | Demo failed: name 'parse_resume_sections' is not defined
+Traceback (most recent call last):
+  File "D:\work\training\capstone\tempmain.py", line 368, in run_demo
+    result = resume_analyst_node(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\agents\resume_analyst.py", line 26, in resume_analyst_node
+    sections = parse_resume_sections(text)
+               ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'parse_resume_sections' is not defined
+2026-02-12 10:59:02 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 10:59:02 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 10:59:02 | ERROR    | __main__ | Demo failed: name 'get_risk_model' is not defined
+Traceback (most recent call last):
+  File "d:\work\training\capstone\tempmain.py", line 368, in run_demo
+    result = resume_analyst_node(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\work\training\capstone\agents\resume_analyst.py", line 36, in resume_analyst_node
+    clf = get_risk_model()
+          ^^^^^^^^^^^^^^
+NameError: name 'get_risk_model' is not defined
+2026-02-12 10:59:10 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 10:59:10 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 10:59:10 | ERROR    | __main__ | Demo failed: name 'get_risk_model' is not defined
+Traceback (most recent call last):
+  File "d:\work\training\capstone\tempmain.py", line 368, in run_demo
+    result = resume_analyst_node(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\work\training\capstone\agents\resume_analyst.py", line 36, in resume_analyst_node
+    clf = get_risk_model()
+          ^^^^^^^^^^^^^^
+NameError: name 'get_risk_model' is not defined
+2026-02-12 11:01:16 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:01:16 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:01:30 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:01:30 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:03:02 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:03:02 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:08:51 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:08:51 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:09:22 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:09:22 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:09:57 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:09:57 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:13:29 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:13:29 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:19:10 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:19:10 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:22:37 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:22:37 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:40:04 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 11:40:04 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections

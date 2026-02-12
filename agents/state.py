@@ -1,13 +1,37 @@
 from typing import TypedDict, List, Dict, Any, Annotated
+import operator
 from langgraph.graph import add_messages
 from langchain_core.messages import BaseMessage
-from models.data_models import ResumeClaim, InterviewQuestion
-import operator
+from models.data_models import (
+    ResumeClaim, RiskAnalysis, ReadinessAnalysis, 
+    VulnerabilityMap, GeneratedQuestion, CoachingInsight, SkillGapAnalysis
+)
 
 class AgentState(TypedDict):
-    raw_text: str
-    sections: Dict[str, dict]
-    claims: Annotated[List[ResumeClaim], operator.add]
-    questions: Annotated[List[InterviewQuestion], operator.add]
+    # --- Input ---
+    resume_text: str
+    job_description: str  # optional
+
+    # --- Analysis Layer (Analyst Agent) ---
+    claims: List[ResumeClaim]
+    risk_analysis: RiskAnalysis
+    readiness_analysis: ReadinessAnalysis
+    vulnerability_map: VulnerabilityMap
+    skill_gap_analysis: SkillGapAnalysis
+
+    # --- Strategy Layer (Strategist Agent) ---
+    interview_strategy: str
+    focus_areas: List[str]
+
+    # --- Planning Layer (Planner Agent) ---
+    question_plan: List[str]  # sequential topics
+
+    # --- execution Layer (Validator Agent) ---
+    generated_questions: List[GeneratedQuestion]
+    
+    # --- Coaching Layer (Coach Agent) ---
+    coaching_insights: List[CoachingInsight]
+
+    # --- Meta ---
     messages: Annotated[List[BaseMessage], add_messages]
-    metadata: Dict[str, Any]
+    errors: List[str]

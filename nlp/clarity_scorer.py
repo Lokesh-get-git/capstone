@@ -3,7 +3,10 @@ from nlp.tokenizer import count_tokens
 
 ACTION_VERBS = {
     "led", "built", "created", "designed", "developed", 
-    "implemented", "optimized", "reduced", "increased"
+    "implemented", "optimized", "reduced", "increased",
+    "improved", "deployed", "architected", "mentored",
+    "automated", "analyzed", "managed", "integrated",
+    "spearheaded", "orchestrated", "engineered"
 }
 
 def score_clarity(text: str) -> dict:
@@ -30,8 +33,10 @@ def score_clarity(text: str) -> dict:
 
     quant_score = 1.0 if has_numbers else 0.0
     
-    # Weighted Average
-    final_score = (length_score * 0.25) + (verb_score * 0.25) + (quant_score * 0.5)
+    # Weighted Average (Revised)
+    # Old: L:0.25, V:0.25, Q:0.50 (Too harsh on non-quant claims)
+    # New: L:0.30, V:0.40, Q:0.30 (Action verb is king)
+    final_score = (length_score * 0.30) + (verb_score * 0.40) + (quant_score * 0.30)
 
     
     return {

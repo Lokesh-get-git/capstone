@@ -243,66 +243,168 @@ logger = get_logger(__name__)
 # =========================================================
 # FULL PIPELINE TEST: Both models on real resumes
 # =========================================================
-from parsers.resume_parser import extract_text, parse_resume_sections, extract_claims_from_sections
-from ml.feature_builder import build_feature_vector
-from ml.risk_classifier import RiskClassifier
-from ml.readiness_scorer import ReadinessScorer
+# from parsers.resume_parser import extract_text, parse_resume_sections, extract_claims_from_sections
+# from ml.feature_builder import build_feature_vector
+# from ml.risk_classifier import RiskClassifier
+# from ml.readiness_scorer import ReadinessScorer
 
-# Load models
-clf = RiskClassifier.load("models/risk_model.joblib")
-scorer = ReadinessScorer.load("models/readiness_model.joblib")
+# # Load models
+# clf = RiskClassifier.load("models/risk_model.joblib")
+# scorer = ReadinessScorer.load("models/readiness_model.joblib")
 
-RESUMES = ["sample_resume.txt", "del_resume.pdf"]
+# RESUMES = ["sample_resume.txt", "del_resume.pdf"]
 
-for resume_path in RESUMES:
-    print("\n" + "=" * 70)
-    print(f"  RESUME: {resume_path}")
-    print("=" * 70)
+# for resume_path in RESUMES:
+#     print("\n" + "=" * 70)
+#     print(f"  RESUME: {resume_path}")
+#     print("=" * 70)
 
-    # Step 1: Extract text
-    text = extract_text(resume_path, filename=resume_path)
-    print(f"\nExtracted {len(text)} characters")
+#     # Step 1: Extract text
+#     text = extract_text(resume_path, filename=resume_path)
+#     print(f"\nExtracted {len(text)} characters")
 
-    # Step 2: Parse sections
-    sections = parse_resume_sections(text)
-    print(f"Sections: {list(sections.keys())}")
+#     # Step 2: Parse sections
+#     sections = parse_resume_sections(text)
+#     print(f"Sections: {list(sections.keys())}")
 
-    # Step 3: Extract claims
-    claims = extract_claims_from_sections(sections)
-    print(f"Claims extracted: {len(claims)}")
+#     # Step 3: Extract claims
+#     claims = extract_claims_from_sections(sections)
+#     print(f"Claims extracted: {len(claims)}")
 
-    # Step 4: Risk Classifier — per-claim analysis
-    print(f"\n--- RISK ANALYSIS (per claim) ---")
-    for i, claim in enumerate(claims, 1):
-        features = build_feature_vector(claim)
-        risk = clf.predict(features)
-        label = risk["risk_label"].upper()
-        score = risk["risk_score"]
-        print(f"  [{label:10} {score:5.1f}%] {claim['text'][:70]}")
+#     # Step 4: Risk Classifier — per-claim analysis
+#     print(f"\n--- RISK ANALYSIS (per claim) ---")
+#     for i, claim in enumerate(claims, 1):
+#         features = build_feature_vector(claim)
+#         risk = clf.predict(features)
+#         label = risk["risk_label"].upper()
+#         score = risk["risk_score"]
+#         print(f"  [{label:10} {score:5.1f}%] {claim['text'][:70]}")
 
-    # Step 5: Readiness Scorer — resume-level score (grounded by risk classifier)
-    readiness = scorer.predict_with_risk(claims, clf)
-    print(f"\n--- READINESS SCORE ---")
-    print(f"  Score: {readiness['readiness_score']}/100")
-    print(f"  Level: {readiness['readiness_level'].upper()}")
-    print(f"  Breakdown:")
-    for k, v in readiness["breakdown"].items():
-        print(f"    {k}: {v}")
+#     # Step 5: Readiness Scorer — resume-level score (grounded by risk classifier)
+#     readiness = scorer.predict_with_risk(claims, clf)
+#     print(f"\n--- READINESS SCORE ---")
+#     print(f"  Score: {readiness['readiness_score']}/100")
+#     print(f"  Level: {readiness['readiness_level'].upper()}")
+#     print(f"  Breakdown:")
+#     for k, v in readiness["breakdown"].items():
+#         print(f"    {k}: {v}")
 
-    # Step 6: Vulnerability Mapping (Commit 25)
-    from ml.vulnerability_mapper import map_resume_vulnerabilities
-    vuln_report = map_resume_vulnerabilities(claims, clf)
+#     # Step 6: Vulnerability Mapping (Commit 25)
+#     from ml.vulnerability_mapper import map_resume_vulnerabilities
+#     vuln_report = map_resume_vulnerabilities(claims, clf)
 
-    print(f"\n--- VULNERABILITY MAP ---")
-    print(f"  Strong claims: {vuln_report['summary']['strong_claims']}/{vuln_report['summary']['total_claims']}")
-    print(f"  Strength ratio: {vuln_report['summary']['strength_ratio']}%")
+#     print(f"\n--- VULNERABILITY MAP ---")
+#     print(f"  Strong claims: {vuln_report['summary']['strong_claims']}/{vuln_report['summary']['total_claims']}")
+#     print(f"  Strength ratio: {vuln_report['summary']['strength_ratio']}%")
 
-    if vuln_report["top_vulnerabilities"]:
-        print(f"\n  Top Weaknesses:")
-        for v in vuln_report["top_vulnerabilities"]:
-            print(f"    ! {v['label']}: {v['count']} claims ({v['percentage']}%)")
+#     if vuln_report["top_vulnerabilities"]:
+#         print(f"\n  Top Weaknesses:")
+#         for v in vuln_report["top_vulnerabilities"]:
+#             print(f"    ⚠ {v['label']}: {v['count']} claims ({v['percentage']}%)")
 
-    if vuln_report["interview_focus_areas"]:
-        print(f"\n  Interview Focus Areas:")
-        for area in vuln_report["interview_focus_areas"]:
-            print(f"    > {area['area']}: {area['probe']}")
+#     if vuln_report["interview_focus_areas"]:
+#         print(f"\n  Interview Focus Areas:")
+#         for area in vuln_report["interview_focus_areas"]:
+#             print(f"    → {area['area']}: {area['probe']}")
+
+import os
+import sys
+from pprint import pprint
+
+# Add project root to path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from utils.logger import get_logger
+from parsers.resume_parser import extract_text
+from agents.resume_analyst import resume_analyst_node
+from agents.state import AgentState
+
+logger = get_logger(__name__)
+
+def run_demo():
+    print("=== Resume Analyst Demo ===")
+    
+    # 1. Load Resume Text
+    resume_path = "sample_resume.txt"
+    if not os.path.exists(resume_path):
+        # Fallback if file missing
+        print(f"Warning: {resume_path} not found. Using sample text.")
+        resume_text = """
+        John Doe
+        Software Engineer
+        
+        Summary
+        Experienced developer with 5 years in Python and backend systems.
+        
+        Experience
+        Software Engineer | Tech Corp | 2020 - Present
+        - Built a scalable API using FastAPI and deployed on Kubernetes.
+        - Optimized database queries reducing latency by 50%.
+        - Led a team of 3 juniors.
+        
+        Skills
+        Python, Django, SQL, Docker, AWS
+        """
+    else:
+        print(f"Loading {resume_path}...")
+        resume_text = extract_text(resume_path)
+
+    # 2. Initialize State
+    state = AgentState(
+        resume_text=resume_text,
+        job_description="", 
+        claims=[],
+        risk_analysis={},
+        readiness_analysis={},
+        vulnerability_map={},
+        skill_gap_analysis={},
+        messages=[],
+        errors=[]
+    )
+    
+    # 3. Run Analyst Node
+    print("\nRunning Resume Analyst Node...")
+    try:
+        result = resume_analyst_node(state)
+        
+        # 4. Display Results
+        print("\n=== ANALYSIS RESULTS ===")
+        
+        print(f"\n[Readiness Score]: {result['readiness_analysis'].score:.1f}/100 ({result['readiness_analysis'].level})")
+        
+        print("\n[Risk Analysis Summary]")
+        print(result['risk_analysis'].summary)
+        
+        print("\n[Skill Gap Analysis]")
+        gaps = result.get('skill_gap_analysis')
+        if gaps:
+            print(f"Explicit Skills: {', '.join(gaps.explicit_skills)}")
+            print(f"Implied Skills:  {', '.join(gaps.implied_skills)}")
+            print(f"MISSING GAPS:    {', '.join(gaps.missing_skills)}")
+        else:
+            print("No gap analysis returned.")
+
+        print("\n[Vulnerability Map]")
+        vm = result['vulnerability_map']
+        print(f"Strength Ratio: {vm.strength_ratio:.1f}%")
+        print("Top Weaknesses:")
+        for w in vm.top_weaknesses:
+            print(f"  - {w}")
+            
+        print("\n[Interview Focus Areas]")
+        for f in vm.interview_focus:
+            print(f"  - {f}")
+            
+        print("\n[Analyzed Claims (Sample)]")
+        # Print first few claims to verify risk scoring
+        for i, c in enumerate(result['claims'][:3]):
+            print(f"{i+1}. {c.text[:60]}... (Risk: {c.risk_score:.2f}, Label: {c.risk_label})")
+            if c.vulnerabilities:
+                print(f"   Vulnerabilities: {', '.join(c.vulnerabilities)}")
+
+    except Exception as e:
+        logger.error(f"Demo failed: {e}", exc_info=True)
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    run_demo()

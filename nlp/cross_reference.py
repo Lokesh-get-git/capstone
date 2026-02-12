@@ -36,7 +36,7 @@ def cross_reference_claims(claims: List[dict]) -> Dict:
 
     return {
         "explicit_skills": sorted(all_keywords),
-        "implied_skills": sorted(implied),
+        "implied_skills": sorted(set(implied)),
         "potential_gaps": sorted(gaps),
         "per_claim": claim_keywords
     }
