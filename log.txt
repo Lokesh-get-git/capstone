@@ -438,3 +438,200 @@ NameError: name 'role_context' is not defined
 2026-02-12 15:07:53 | INFO     | parsers.resume_parser | Extracted 8 raw claims from sections
 2026-02-12 15:08:26 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
 2026-02-12 15:08:26 | INFO     | parsers.resume_parser | Extracted 8 raw claims from sections
+2026-02-12 15:18:19 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 15:18:19 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 15:18:41 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 15:18:41 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 15:19:20 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 15:19:20 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 15:20:14 | INFO     | parsers.resume_parser | Parsed 5 sections: ['header', 'summary', 'experience', 'projects', 'education']
+2026-02-12 15:20:14 | INFO     | parsers.resume_parser | Extracted 0 raw claims from sections
+2026-02-12 15:36:06 | INFO     | debug_parser_file | Extracted 577 chars from text file
+2026-02-12 15:36:06 | INFO     | debug_parser_file | Parsed 5 sections: ['header', 'summary', 'experience', 'projects', 'education']
+2026-02-12 15:36:06 | INFO     | debug_parser_file | Extracted 6 claims from 5 sections
+2026-02-12 15:36:06 | INFO     | debug_parser_file | Resume parsed: 577 chars, 5 sections, 6 claims
+2026-02-12 16:46:26 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 16:47:08 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 16:48:46 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 16:48:47 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 16:48:47 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 16:48:52 | INFO     | agents.question_strategist | Strategy formulated: Claim verification focusing on system design, architectural decisions, and self-declared weaknesses, with emphasis on high-risk claims and resume vulnerabilities.
+2026-02-12 16:48:52 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 16:48:55 | INFO     | agents.difficulty_planner | Plan created with 18 steps.
+2026-02-12 16:48:55 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:48:58 | INFO     | agents.question_generator | Generated 18 questions.
+2026-02-12 16:48:58 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:49:01 | INFO     | agents.validator | Validator: 12/18 questions passed.
+2026-02-12 16:49:01 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:49:01 | INFO     | agents.question_generator | Refining 6 failed questions...
+2026-02-12 16:49:03 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:49:07 | INFO     | agents.validator | Validator: 11/18 questions passed.
+2026-02-12 16:49:07 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:49:07 | INFO     | agents.question_generator | Refining 7 failed questions...
+2026-02-12 16:49:09 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:49:11 | INFO     | agents.validator | Validator: 13/18 questions passed.
+2026-02-12 16:49:11 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:49:11 | INFO     | agents.question_generator | Refining 5 failed questions...
+2026-02-12 16:49:13 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:49:15 | INFO     | agents.validator | Validator: 15/18 questions passed.
+2026-02-12 16:49:15 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:49:15 | INFO     | agents.question_generator | Refining 3 failed questions...
+2026-02-12 16:49:16 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:49:18 | INFO     | agents.validator | Validator: 15/18 questions passed.
+2026-02-12 16:49:18 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:49:18 | INFO     | agents.question_generator | Refining 3 failed questions...
+2026-02-12 16:49:22 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:49:30 | INFO     | agents.validator | Validator: 18/18 questions passed.
+2026-02-12 16:49:35 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 16:49:47 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 16:50:28 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 16:50:28 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 16:50:28 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 16:50:33 | INFO     | agents.question_strategist | Strategy formulated: Conduct a claim verification interview focusing on system design, architectural decisions, and addressing the candidate's self-declared weaknesses and resume vulnerabilities. Challenge high-risk claims, probe implementation details, and quantify impact where necessary.
+2026-02-12 16:50:33 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 16:50:37 | INFO     | agents.difficulty_planner | Plan created with 15 steps.
+2026-02-12 16:50:37 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:50:40 | INFO     | agents.question_generator | Generated 15 questions.
+2026-02-12 16:50:40 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:50:42 | INFO     | agents.validator | Validator: 5/15 questions passed.
+2026-02-12 16:50:42 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:50:42 | INFO     | agents.question_generator | Refining 10 failed questions...
+2026-02-12 16:50:45 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:50:52 | INFO     | agents.validator | Validator: 10/15 questions passed.
+2026-02-12 16:50:52 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 16:50:52 | INFO     | agents.question_generator | Refining 5 failed questions...
+2026-02-12 16:50:54 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 16:50:56 | INFO     | agents.validator | Validator: 15/15 questions passed.
+2026-02-12 16:50:58 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 16:51:16 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 16:59:43 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 16:59:45 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-12 16:59:45 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 16:59:45 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 17:01:04 | ERROR    | agents.question_strategist | Strategist failed: Request timed out.
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 980, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\work\training\capstone\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_strategist.py", line 158, in question_strategist_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 998, in request
+    raise APITimeoutError(request=request) from err
+groq.APITimeoutError: Request timed out.
+2026-02-12 17:01:04 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 17:04:43 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 17:04:45 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-12 17:04:45 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 17:04:45 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 17:04:48 | INFO     | agents.question_strategist | Strategy formulated: The interview will focus on verifying the candidate's claims in their resume, particularly in areas with high risk scores. Since the candidate is a junior ML engineer, the interview will focus on fundamentals and coding, while also addressing their self-declared weaknesses and resume vulnerabilities.
+2026-02-12 17:04:48 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 17:04:50 | INFO     | agents.difficulty_planner | Plan created with 9 steps.
+2026-02-12 17:04:50 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:04:52 | INFO     | agents.question_generator | Generated 9 questions.
+2026-02-12 17:04:52 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:04:53 | INFO     | agents.validator | Validator: 4/9 questions passed.
+2026-02-12 17:04:53 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:04:53 | INFO     | agents.question_generator | Refining 5 failed questions...
+2026-02-12 17:04:55 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:04:58 | INFO     | agents.validator | Validator: 5/9 questions passed.
+2026-02-12 17:04:58 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:04:58 | INFO     | agents.question_generator | Refining 4 failed questions...
+2026-02-12 17:04:59 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:05:01 | INFO     | agents.validator | Validator: 6/9 questions passed.
+2026-02-12 17:05:01 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:05:01 | INFO     | agents.question_generator | Refining 3 failed questions...
+2026-02-12 17:05:02 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:05:03 | INFO     | agents.validator | Validator: 8/9 questions passed.
+2026-02-12 17:05:03 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:05:03 | INFO     | agents.question_generator | Refining 1 failed questions...
+2026-02-12 17:05:04 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:05:05 | INFO     | agents.validator | Validator: 7/9 questions passed.
+2026-02-12 17:05:05 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:05:05 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-12 17:05:06 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:05:07 | INFO     | agents.validator | Validator: 7/9 questions passed.
+2026-02-12 17:05:07 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:05:07 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-12 17:05:08 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:05:09 | INFO     | agents.validator | Validator: 8/9 questions passed.
+2026-02-12 17:05:09 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:05:09 | INFO     | agents.question_generator | Refining 1 failed questions...
+2026-02-12 17:05:10 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:05:11 | INFO     | agents.validator | Validator: 9/9 questions passed.
+2026-02-12 17:05:18 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 17:05:35 | INFO     | agents.coach | Generated 3 coaching insights.

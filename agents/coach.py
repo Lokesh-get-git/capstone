@@ -96,15 +96,27 @@ def coach_node(state: AgentState) -> dict:
     llm = get_llm(temperature=0.5) 
     chain = prompt | llm | JsonOutputParser()
     
-    try:
-        response = chain.invoke({
+    inputs = {
             "target_role": role_context,
             "declared_weaknesses": declared_weaknesses,
             "missing_skills": ", ".join(missing),
             "risk_summary": risk_summary,
             "vulnerabilities": ", ".join(vuln_list),
             "claim_context": claim_context
-        })
+    }
+    
+    try:
+        response = chain.invoke(inputs)
+        
+        # COST TRACKING
+        cost = 0.0
+        try:
+            from services.cost_tracker import CostTracker
+            input_len = len(prompt.format(**inputs))
+            output_len = len(str(response))
+            cost = CostTracker.track_cost("Coach", input_len//4, output_len//4)
+        except:
+            pass
         
         raw_insights = response.get("insights", [])
         coaching_insights = []
@@ -155,7 +167,8 @@ def coach_node(state: AgentState) -> dict:
         
         return {
             "coaching_insights": coaching_insights,
-            "messages": [SystemMessage(content=f"Coach: {len(coaching_insights)} insights generated")]
+            "messages": [SystemMessage(content=f"Coach: {len(coaching_insights)} insights generated")],
+            "total_cost": cost
         }
         
     except Exception as e:

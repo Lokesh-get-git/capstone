@@ -111,7 +111,8 @@ def run_interview_pipeline(
         validation_results=[],
         retry_count=0,
         messages=[],
-        errors=[]
+        errors=[],
+        total_cost=0.0
     )
     
     app = build_interview_graph()
@@ -131,5 +132,6 @@ def run_interview_pipeline(
         "question_plan": final_state["question_plan"],
         "questions": [q.model_dump() for q in final_state["generated_questions"]],
         "coaching_insights": [c.model_dump() for c in final_state["coaching_insights"]],
-        "claims": [c.model_dump() for c in final_state["claims"]] # Added for UI
+        "claims": [c.model_dump() for c in final_state["claims"]],
+        "total_cost": final_state.get("total_cost", 0.0)
     }

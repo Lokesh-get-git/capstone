@@ -19,6 +19,13 @@ Question Plan:
 TASK:
 For EACH item in the plan, generate a concrete, actionable interview question.
 Ensure the question aligns with the difficulty level implied by the plan (Warmup vs Core vs Challenge).
+Rules:
+- Each question must be ONE clear thought.
+- Do not combine multiple questions.
+- Prefer short conversational wording.
+- Ask follow-up style questions like a real interviewer.
+- Avoid long descriptive sentences.
+- Maximum 20 words per question.
 
 OUTPUT FORMAT (JSON):
 {{
@@ -46,7 +53,13 @@ Failed Questions & Feedback:
 TASK:
 Rewrite ONLY the failed questions. Keep the original difficulty and target.
 Apply the feedback strictly (e.g., make it more specific, probe ownership).
-
+Rules:
+- Each question must be ONE clear thought.
+- Do not combine multiple questions.
+- Prefer short conversational wording.
+- Ask follow-up style questions like a real interviewer.
+- Avoid long descriptive sentences.
+- Maximum 20 words per question.
 OUTPUT FORMAT (JSON):
 {{
     "refined_questions": [
@@ -55,8 +68,9 @@ OUTPUT FORMAT (JSON):
             "question": "The REWRITTEN question...",
             "difficulty": "Original difficulty",
             "target_claim": "Original target",
-            "reasoning": "How this fixes the issue...",
+            "reasoning": "Why this question matters...",
             "expected_answer_points": ["Point 1", "Point 2"]
+
         }},
         ...
     ]
@@ -95,7 +109,18 @@ def question_generator_node(state: AgentState) -> dict:
         chain = prompt | llm | JsonOutputParser()
         
         try:
-            response = chain.invoke({"feedback_context": feedback_context})
+            inputs = {"feedback_context": feedback_context}
+            response = chain.invoke(inputs)
+
+            # COST TRACKING (Refinement)
+            cost = 0.0
+            try:
+                from services.cost_tracker import CostTracker
+                input_len = len(prompt.format(**inputs))
+                output_len = len(str(response))
+                cost = CostTracker.track_cost("Generator (Refine)", input_len//4, output_len//4)
+            except:
+                pass
             refined_list = response.get("refined_questions", [])
             
             # Update the original list
@@ -111,9 +136,14 @@ def question_generator_node(state: AgentState) -> dict:
                         expected_answer_points=r.get("expected_answer_points", [])
                     )
             
+            # Increment retry count
+            current_retries = state.get("retry_count", 0)
+            
             return {
                 "generated_questions": new_questions,
-                "messages": [SystemMessage(content=f"Refined {len(refined_list)} questions")]
+                "retry_count": current_retries + 1,
+                "messages": [SystemMessage(content=f"Refined {len(refined_list)} questions")],
+                "total_cost": cost
             }
             
         except Exception as e:
@@ -133,9 +163,18 @@ def question_generator_node(state: AgentState) -> dict:
     chain = prompt | llm | JsonOutputParser()
     
     try:
-        response = chain.invoke({
-            "plan": plan_str
-        })
+        inputs = {"plan": plan_str}
+        response = chain.invoke(inputs)
+
+        # COST TRACKING (Standard)
+        cost = 0.0
+        try:
+            from services.cost_tracker import CostTracker
+            input_len = len(prompt.format(**inputs))
+            output_len = len(str(response))
+            cost = CostTracker.track_cost("Generator", input_len//4, output_len//4)
+        except:
+            pass
         
         raw_questions = response.get("questions", [])
         generated_questions = []
@@ -153,7 +192,8 @@ def question_generator_node(state: AgentState) -> dict:
         
         return {
             "generated_questions": generated_questions,
-            "messages": [SystemMessage(content=f"Generated {len(generated_questions)} questions")]
+            "messages": [SystemMessage(content=f"Generated {len(generated_questions)} questions")],
+            "total_cost": cost
         }
         
     except Exception as e:

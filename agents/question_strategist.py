@@ -140,7 +140,7 @@ def question_strategist_node(state: AgentState) -> dict:
     chain = prompt | llm | JsonOutputParser()
     
     try:
-        response = chain.invoke({
+        inputs = {
             "target_role": target_role,
             "experience_level": experience_level,
             "weaknesses": weaknesses,
@@ -153,7 +153,19 @@ def question_strategist_node(state: AgentState) -> dict:
             "missing_skills": missing_skills_str,
             "section_summaries": "\n".join(section_summaries),
             "claim_summaries": "\n".join(claim_summaries)
-        })
+        }
+        
+        response = chain.invoke(inputs)
+        
+        # COST TRACKING
+        cost = 0.0
+        try:
+            from services.cost_tracker import CostTracker
+            input_len = len(prompt.format(**inputs))
+            output_len = len(str(response))
+            cost = CostTracker.track_cost("Strategist", input_len//4, output_len//4)
+        except:
+            pass
         
         strategy_text = response.get("interview_strategy", "Standard Interview")
         focus_areas_list = [
@@ -166,7 +178,8 @@ def question_strategist_node(state: AgentState) -> dict:
         return {
             "interview_strategy": strategy_text,
             "focus_areas": focus_areas_list,
-            "messages": [SystemMessage(content=f"Strategy Set: {strategy_text}")]
+            "messages": [SystemMessage(content=f"Strategy Set: {strategy_text}")],
+            "total_cost": cost
         }
         
     except Exception as e:

@@ -96,14 +96,26 @@ def difficulty_planner_node(state: AgentState) -> dict:
     llm = get_llm(temperature=0.4) # Slightly higher temp for creative flow
     chain = prompt | llm | JsonOutputParser()
     
-    try:
-        response = chain.invoke({
+    inputs = {
             "strategy": strategy,
             "focus_areas": focus_str,
             "readiness_level": readiness.level,
             "readiness_score": readiness.score,
             "claim_context": claim_context
-        })
+    }
+    
+    try:
+        response = chain.invoke(inputs)
+        
+        # COST TRACKING
+        cost = 0.0
+        try:
+            from services.cost_tracker import CostTracker
+            input_len = len(prompt.format(**inputs))
+            output_len = len(str(response))
+            cost = CostTracker.track_cost("Planner", input_len//4, output_len//4)
+        except:
+             pass
 
         
         plan = response.get("plan", [])
@@ -111,7 +123,8 @@ def difficulty_planner_node(state: AgentState) -> dict:
         
         return {
             "question_plan": plan,
-            "messages": [SystemMessage(content=f"Plan Created: {len(plan)} items")]
+            "messages": [SystemMessage(content=f"Plan Created: {len(plan)} items")],
+            "total_cost": cost
         }
         
     except Exception as e:

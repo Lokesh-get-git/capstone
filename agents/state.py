@@ -39,3 +39,4 @@ class AgentState(TypedDict):
     retry_count: int # For generator loop
     messages: Annotated[List[BaseMessage], add_messages]
     errors: List[str]
+    total_cost: Annotated[float, operator.add]

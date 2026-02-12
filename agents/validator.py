@@ -67,10 +67,20 @@ def validator_node(state: AgentState) -> dict:
     llm = get_llm(temperature=0.1) # Strict validation
     chain = prompt | llm | JsonOutputParser()
     
+    inputs = {"questions": q_str}
+    
     try:
-        response = chain.invoke({
-            "questions": q_str
-        })
+        response = chain.invoke(inputs)
+        
+        # COST TRACKING
+        cost = 0.0
+        try:
+            from services.cost_tracker import CostTracker
+            input_len = len(prompt.format(**inputs))
+            output_len = len(str(response))
+            cost = CostTracker.track_cost("Validator", input_len//4, output_len//4)
+        except:
+            pass
         
         validation_results = response.get("validation_results", [])
         
@@ -82,7 +92,8 @@ def validator_node(state: AgentState) -> dict:
         # We can store them in state or just return them for the test script
         return {
             "validation_results": validation_results, 
-            "messages": [SystemMessage(content=f"Validation: {pass_count}/{len(questions)} passed")]
+            "messages": [SystemMessage(content=f"Validation: {pass_count}/{len(questions)} passed")],
+            "total_cost": cost
         }
         
     except Exception as e:

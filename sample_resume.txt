@@ -12,10 +12,10 @@ Senior Software Engineer | TechCorp Inc. | 2021 - Present
 - Mentored 4 junior developers through code reviews and pair programming sessions
 
 Software Engineer | StartupXYZ | 2019 - 2021
-- Managed significant projects for the company and handled various important tasks to ensure success.
-- Utilized AI and Blockchain technology to revolutionize data processing and synergy.
+- Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI
+- Optimized database queries resulting in 60% reduction in API response time
 - Worked on various projects involving machine learning and data analysis
-- Responsible for handling the database migration and ensuring uptime.
+- Participated in agile ceremonies and helped with sprint planning
 
 Education
 Bachelor of Science in Computer Science | State University | 2019
@@ -29,12 +29,6 @@ Projects
 Open Source Contribution - ML Pipeline Framework
 - Built a Python framework for automating ML pipeline workflows with 500+ GitHub stars
 - Implemented feature engineering module supporting 20+ transformation types
-
-Industrial level project
-- Managed significant projects for the company and handled various important tasks to ensure success.
-- Utilized AI and Blockchain technology to revolutionize data processing and synergy.
-- Worked on various projects involving machine learning and data analysis
-- Responsible for handling the database migration and ensuring uptime.
 
 Personal Blog
 - Write technical articles about system design and distributed systems

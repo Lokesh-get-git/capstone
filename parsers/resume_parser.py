@@ -46,6 +46,42 @@ def normalize_pdf_text(text: str) -> str:
     text = re.sub(r' {2,}', ' ', text)
 
     return text
+def extract_sentence_claims(section_text: str, section: str):
+    """
+    Fallback extractor when bullet points are missing.
+    Finds achievement-style sentences.
+    """
+
+    claims = []
+
+    # Split into sentences
+    sentences = re.split(r'(?<=[.!?])\s+', section_text)
+
+    action_verbs = (
+        "built|developed|implemented|designed|created|led|architected|"
+        "optimized|improved|reduced|increased|deployed|automated|"
+        "migrated|integrated|scaled|debugged|refactored|analyzed|"
+        "trained|evaluated|launched|delivered|mentored"
+    )
+
+    achievement_pattern = re.compile(
+        rf"\b({action_verbs})\b.*",
+        re.IGNORECASE
+    )
+
+    for sentence in sentences:
+        s = sentence.strip()
+
+        if len(s) < 40:
+            continue
+
+        if achievement_pattern.search(s):
+            claims.append({
+                "section": section,
+                "text": s
+            })
+
+    return claims
 
 def extract_text_from_pdf(file: Union[BinaryIO, str, Path]) -> str:
     """
@@ -437,39 +473,61 @@ def normalize_section(section_name: str) -> str:
             return "projects"
 
     return section_name
+    return section_name
 
-def extract_claims_from_sections(sections: dict[str, dict]) -> list[dict]:
-    """
-    Convert parsed sections into a flat list of raw claims.
-    """
+def is_meaningful_claim(text: str) -> bool:
+    """Check if text looks like a valid professional claim."""
+    if len(text) < 15: return False
+    # Must have some verb or noun structure
+    return True
 
-    all_claims = []
+def extract_sentence_claims(text: str, section: str) -> list[dict]:
+    """Fallback extractor for paragraph text."""
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    claims = []
+    for s in sentences:
+        s = s.strip()
+        if len(s) > 20 and is_meaningful_claim(s):
+            claims.append({"section": section, "text": s})
+    return claims
 
-    SKIP_SECTIONS = {"header", "skills", "education", "certifications"}
+def extract_claims_from_sections(sections):
+    claims = []
 
+    target_sections = ["experience", "projects", "achievements"]
 
-    for section_name, section_data in sections.items():
+    bullet_pattern = r"(?:^|\n)[•\-–]\s*(.+)"
 
-        if section_name in SKIP_SECTIONS:
-            continue
+    for section in target_sections:
+        sec_data = sections.get(section, {})
+        if isinstance(sec_data, dict):
+             content = sec_data.get("text", "")
+        else:
+             content = str(sec_data)
 
-        text = section_data.get("text", "")
-        if not text:
-            continue
+        # --- 1. Try bullet extraction ---
+        bullets = re.findall(bullet_pattern, content)
 
-        claims = _split_into_sentences(text)
+        for b in bullets:
+            clean = b.strip()
+            if len(clean) >= 25 and is_meaningful_claim(clean):
+                claims.append({
+                    "section": section,
+                    "text": clean
+                })
 
-        for claim in claims:
-            if is_noise_claim(claim):
-                continue
+        # --- 2. Fallback sentence extraction ---
+        if len(bullets) < 3:  # heuristic: probably broken formatting
+            sentence_claims = extract_sentence_claims(content, section)
+            claims.extend(sentence_claims)
 
-            normalized_section = normalize_section(section_name)
+    # Remove duplicates
+    unique = []
+    seen = set()
+    for c in claims:
+        key = c["text"].lower()
+        if key not in seen:
+            unique.append(c)
+            seen.add(key)
 
-            all_claims.append({
-                "text": claim,
-                "section": normalized_section
-            })
-
-
-    logger.info(f"Extracted {len(all_claims)} raw claims from sections")
-    return all_claims
+    return unique
