@@ -123,6 +123,21 @@ def run_interview_pipeline(
     
     logger.info("LangGraph Pipeline Complete.")
     
+    
+    final_cost = final_state.get("total_cost", 0.0) 
+
+    
+    try:
+        from services.cost_tracker import CostTracker, LOG_FILE
+        from datetime import datetime
+
+        
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+             f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] [PIPELINE_COMPLETE] TOTAL SESSION COST: ${final_cost:.5f}\n")
+             f.write("-" * 50 + "\n")
+    except Exception as e:
+        logger.error(f"Failed to log final cost: {e}")
+
     return {
         "readiness_analysis": final_state["readiness_analysis"].model_dump(),
         "risk_analysis": final_state["risk_analysis"].model_dump(),
@@ -133,5 +148,5 @@ def run_interview_pipeline(
         "questions": [q.model_dump() for q in final_state["generated_questions"]],
         "coaching_insights": [c.model_dump() for c in final_state["coaching_insights"]],
         "claims": [c.model_dump() for c in final_state["claims"]],
-        "total_cost": final_state.get("total_cost", 0.0)
+        "total_cost": final_cost
     }
