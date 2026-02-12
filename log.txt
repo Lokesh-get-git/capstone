@@ -247,3 +247,15 @@ NameError: name 'get_risk_model' is not defined
 2026-02-12 11:22:37 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
 2026-02-12 11:40:04 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
 2026-02-12 11:40:04 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 11:52:37 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 11:52:37 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 11:52:40 | INFO     | agents.question_strategist | Strategy formulated: The interview should focus on verifying the candidate's technical claims, probing deeply into their understanding of system design and architecture, while also assessing their grasp of fundamental concepts such as REST and database design. The tone should be challenging, particularly in areas where buzzword stacking is suspected, to ensure the candidate's experience and skills align with their resume claims.
+2026-02-12 11:56:25 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 11:56:25 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 11:56:28 | INFO     | agents.question_strategist | Strategy formulated: The interview should focus on probing the candidate's understanding of fundamental concepts and verifying their claims, with a moderate tone that balances between basics and system design. The goal is to assess the candidate's ability to think critically and design systems, while also evaluating their honesty and self-awareness about their skills and experiences.
+2026-02-12 11:58:45 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 11:58:45 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 11:58:48 | INFO     | agents.question_strategist | Strategy formulated: The interview should strike a balance between probing the candidate's understanding of fundamental concepts and challenging their system design skills, with a focus on verifying the claims made on their resume. The tone should be inquisitive, aiming to clarify the candidate's experience and knowledge gaps, particularly in areas like REST and database design.
+2026-02-12 12:02:18 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 12:02:18 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 12:02:20 | INFO     | agents.question_strategist | Strategy formulated: Balanced assessment with a focus on hands-on experience, depth of knowledge, and risk mitigation. The tone will be inquisitive, aiming to verify the candidate's claims and understand their thought process.
