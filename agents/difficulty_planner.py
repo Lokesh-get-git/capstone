@@ -29,7 +29,9 @@ IMPORTANT DEFINITIONS:
 A "claim" is a statement about something the candidate says they personally accomplished.
 
 TASK:
-Create a sequential investigation plan to verify the listed resume claims.
+The interview should feel like a natural conversation, not a scripted questionnaire.
+Questions should evolve based on curiosity and suspicion, not categories.
+
 
 Each plan item MUST:
 • reference a specific claim

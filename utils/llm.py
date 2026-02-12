@@ -9,7 +9,7 @@ logger = get_logger(__name__)
 
 _LLM_INSTANCE = None
 
-def get_llm(model_name: str = "llama-3.3-70b-versatile", temperature: float = 0.1):
+def get_llm(model_name: str = "meta-llama/llama-guard-4-12b", temperature: float = 0.1):
     """
     Returns a configured ChatGroq instance.
     Uses singleton pattern for efficiency (though langchain clients are lightweight).

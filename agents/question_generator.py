@@ -11,6 +11,7 @@ logger = get_logger(__name__)
 GENERATOR_PROMPT = """
 You are an expert Technical Interview Question Generator.
 Your goal is to generate specific, high-quality interview questions based on the provided Plan.
+Make sure you are not overdoing. Questions should feel like real interview questions curiosity and ownership oriented probing
 
 INPUT:
 Question Plan:
@@ -46,13 +47,14 @@ REFINE_PROMPT = """
 You are an expert Technical Interview Question Generator.
 Some of your previous questions failed validation. You must REWRITE them based on the feedback.
 
+
 INPUT:
 Failed Questions & Feedback:
 {feedback_context}
 
 TASK:
 Rewrite ONLY the failed questions. Keep the original difficulty and target.
-Apply the feedback strictly (e.g., make it more specific, probe ownership).
+
 Rules:
 - Each question must be ONE clear thought.
 - Do not combine multiple questions.

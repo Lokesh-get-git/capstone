@@ -635,3 +635,118 @@ groq.APITimeoutError: Request timed out.
 2026-02-12 17:05:11 | INFO     | agents.validator | Validator: 9/9 questions passed.
 2026-02-12 17:05:18 | INFO     | agents.coach | TavilySearchResults tool initialized.
 2026-02-12 17:05:35 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 17:56:01 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 17:56:03 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-12 17:56:03 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 17:56:03 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 17:56:06 | INFO     | agents.question_strategist | Strategy formulated: The interview strategy will focus on verifying the candidate's claims and addressing their self-declared weaknesses and resume vulnerabilities. As a Junior ML Engineer Intern, the focus will be on fundamentals and coding. The high-risk claims will be directly challenged, and the candidate will be asked to provide implementation details and quantify the impact of their work.
+2026-02-12 17:56:06 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 17:56:08 | INFO     | agents.difficulty_planner | Plan created with 8 steps.
+2026-02-12 17:56:08 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:56:09 | INFO     | agents.question_generator | Generated 8 questions.
+2026-02-12 17:56:09 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:56:11 | INFO     | agents.validator | Validator: 1/8 questions passed.
+2026-02-12 17:56:11 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:56:11 | INFO     | agents.question_generator | Refining 7 failed questions...
+2026-02-12 17:56:12 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:56:13 | INFO     | agents.validator | Validator: 2/8 questions passed.
+2026-02-12 17:56:13 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:56:13 | INFO     | agents.question_generator | Refining 6 failed questions...
+2026-02-12 17:56:15 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:57:16 | INFO     | agents.validator | Validator: 0/8 questions passed.
+2026-02-12 17:57:16 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 17:57:16 | INFO     | agents.question_generator | Refining 8 failed questions...
+2026-02-12 17:57:16 | ERROR    | agents.question_generator | Refinement failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100000, Requested 897. Please try again in 12m55.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 129, in question_generator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100000, Requested 897. Please try again in 12m55.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-12 17:57:16 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 17:57:16 | ERROR    | agents.validator | Validator failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100000, Requested 475. Please try again in 6m50.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\validator.py", line 73, in validator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100000, Requested 475. Please try again in 6m50.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-12 17:57:16 | ERROR    | agents.coach | Coach failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100000, Requested 490. Please try again in 7m3.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\coach.py", line 109, in coach_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100000, Requested 490. Please try again in 7m3.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-12 18:04:57 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 18:04:58 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:04:58 | INFO     | utils.llm | Initializing Groq LLM: meta-llama/llama-guard-4-12b

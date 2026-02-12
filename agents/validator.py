@@ -10,7 +10,7 @@ logger = get_logger(__name__)
 
 VALIDATOR_PROMPT = """
 You are an expert Technical Interview Validator (Quality Control).
-Your goal is to ensure every interview question is a rigorous verification of a resume claim.
+Your goal is to ensure every interview question is a  verification of a resume claim or curious probing.
 
 INPUT:
 Questions to Validate:
