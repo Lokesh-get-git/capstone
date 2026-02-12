@@ -3,9 +3,14 @@ from pydantic import BaseModel, Field
 
 # --- Core Data Models ---
 
-class ResumeSection(BaseModel):
-    text: str
-    type: str  # "paragraph", "skills", "list"
+class CandidateProfile(BaseModel):
+    target_role: str = "Software Engineer"
+    experience_level: str = "Mid-Level" # Junior/Mid/Senior
+    tech_stack: List[str] = []
+    self_declared_weaknesses: List[str] = []
+
+class Section(BaseModel):
+    name: str  # Experience, Education, Skills, etc.
 
 class ResumeClaim(BaseModel):
     text: str

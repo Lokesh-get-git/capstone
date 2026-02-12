@@ -95,5 +95,18 @@ def run_test():
              print(f"   Feedback: {fb}")
         print("-" * 50)
 
+    # 5. Coach
+    print("\n[5] Running Coach Agent...")
+    from agents.coach import coach_node
+    coach_out = coach_node(state)
+    state.update(coach_out)
+    
+    print("\n=== COACHING INSIGHTS ===")
+    for insight in state['coaching_insights']:
+        print(f"Topic: {insight.topic}")
+        print(f"Advice: {insight.advice}")
+        print(f"Resources: {insight.resources}")
+        print("-" * 30)
+
 if __name__ == "__main__":
     run_test()

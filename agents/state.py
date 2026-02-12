@@ -4,13 +4,15 @@ from langgraph.graph import add_messages
 from langchain_core.messages import BaseMessage
 from models.data_models import (
     ResumeClaim, RiskAnalysis, ReadinessAnalysis, 
-    VulnerabilityMap, GeneratedQuestion, CoachingInsight, SkillGapAnalysis
+    VulnerabilityMap, GeneratedQuestion, CoachingInsight, SkillGapAnalysis, CandidateProfile
 )
 
 class AgentState(TypedDict):
     # --- Input ---
     resume_text: str
-    job_description: str  # optional
+    job_description: str
+    candidate_profile: CandidateProfile # Added
+  # optional
 
     # --- Analysis Layer (Analyst Agent) ---
     claims: List[ResumeClaim]
@@ -33,5 +35,7 @@ class AgentState(TypedDict):
     coaching_insights: List[CoachingInsight]
 
     # --- Meta ---
+    validation_results: List[Dict[str, Any]] # Added for validator feedback
+    retry_count: int # For generator loop
     messages: Annotated[List[BaseMessage], add_messages]
     errors: List[str]

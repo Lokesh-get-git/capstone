@@ -273,3 +273,56 @@ NameError: name 'get_risk_model' is not defined
 2026-02-12 12:28:48 | INFO     | agents.difficulty_planner | Plan created with 7 steps.
 2026-02-12 12:28:48 | INFO     | agents.question_generator | Generator Agent: creating questions from plan...
 2026-02-12 12:28:51 | INFO     | agents.question_generator | Generated 7 questions.
+2026-02-12 13:14:17 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 13:14:17 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 13:14:17 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 13:14:17 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 13:14:20 | INFO     | agents.question_strategist | Strategy formulated: Verify high-risk claims and probe for technical specifics, quantified impact, and implementation details to assess the candidate's hands-on experience and achievements.
+2026-02-12 13:14:20 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 13:14:20 | ERROR    | agents.difficulty_planner | Planner failed: 'Input to ChatPromptTemplate is missing variables {\'\\n    "rationale"\'}.  Expected: [\'\\n    "rationale"\', \'claim_context\', \'focus_areas\', \'readiness_level\', \'readiness_score\', \'strategy\'] Received: [\'strategy\', \'focus_areas\', \'readiness_level\', \'readiness_score\', \'claim_context\']\nNote: if you intended {\n    "rationale"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n    "rationale"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+Traceback (most recent call last):
+  File "d:\work\training\capstone\agents\difficulty_planner.py", line 99, in difficulty_planner_node
+    response = chain.invoke({
+               ^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3155, in invoke
+    input_ = context.run(step.invoke, input_, config, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 223, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 196, in _format_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 190, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n    "rationale"\'}.  Expected: [\'\\n    "rationale"\', \'claim_context\', \'focus_areas\', \'readiness_level\', \'readiness_score\', \'strategy\'] Received: [\'strategy\', \'focus_areas\', \'readiness_level\', \'readiness_score\', \'claim_context\']\nNote: if you intended {\n    "rationale"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n    "rationale"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+2026-02-12 13:14:20 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 13:14:21 | INFO     | agents.question_generator | Generated 2 questions.
+2026-02-12 13:14:21 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 13:14:23 | INFO     | agents.validator | Validator: 0/2 questions passed.
+2026-02-12 13:14:23 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 13:14:23 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-12 13:14:24 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 13:14:26 | INFO     | agents.validator | Validator: 2/2 questions passed.
+2026-02-12 13:14:26 | INFO     | agents.coach | Coach Agent: generating insights...
+2026-02-12 13:14:27 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 13:14:40 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 13:17:54 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 13:17:54 | INFO     | parsers.resume_parser | Extracted 11 raw claims from sections
+2026-02-12 13:17:55 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 13:17:55 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 13:17:58 | INFO     | agents.question_strategist | Strategy formulated: Conduct a claim verification interview to assess the candidate's experience and skills by directly challenging high-risk claims, probing implementation details, and measuring quantified impact.
+2026-02-12 13:17:58 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 13:18:00 | INFO     | agents.difficulty_planner | Plan created with 15 steps.
+2026-02-12 13:18:00 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 13:18:04 | INFO     | agents.question_generator | Generated 15 questions.
+2026-02-12 13:18:04 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 13:18:06 | INFO     | agents.validator | Validator: 15/15 questions passed.
+2026-02-12 13:18:06 | INFO     | agents.coach | Coach Agent: generating insights...
+2026-02-12 13:18:07 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 13:18:18 | INFO     | agents.coach | Generated 3 coaching insights.

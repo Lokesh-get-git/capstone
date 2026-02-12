@@ -17,3 +17,4 @@ plotly
 dotenv
 pdfplumber
 tiktoken
+langchain-community

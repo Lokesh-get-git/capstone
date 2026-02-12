@@ -57,16 +57,14 @@ Deep Dive:
 
 
 OUTPUT FORMAT (JSON):
-{
+{{
     "rationale": "Brief explanation of the investigation flow...",
     "plan": [
         "Warmup: ...",
         "Core: ...",
-        "Core: ...",
-        "Deep Dive: ...",
         "Deep Dive: ..."
     ]
-}
+}}
 """
 
 
@@ -81,7 +79,10 @@ def difficulty_planner_node(state: AgentState) -> dict:
     focus_areas = state.get("focus_areas", [])
     readiness = state["readiness_analysis"]
     claims = state.get("claims", [])
-    top_claims = sorted(claims, key=lambda c: c.risk_score, reverse=True)[:5]
+    top_claims = [c for c in claims if c.risk_score >= 25]
+
+    if len(top_claims) < 3:
+        top_claims = sorted(claims, key=lambda c: c.risk_score, reverse=True)[:3]
 
     claim_context = "\n".join(
         [f"- {c.text[:140]}... (risk={c.risk_score:.1f}, issues={', '.join(c.vulnerabilities)})"

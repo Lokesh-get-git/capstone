@@ -12,17 +12,28 @@ You are an expert Technical Interview Strategist.
 Your goal is to analyze a candidate's resume analysis report and formulate a high-level interview strategy.
 
 INPUT DATA:
-1. Readiness Score: {readiness_score}/100 ({readiness_level})
-2. Risk Analysis: {risk_summary}
-3. Top Vulnerabilities: {top_vulnerabilities}
-4. Skill Gaps (Implied but missing): {missing_skills}
-5. Key Sections Overview:
+1. Candidate Profile:
+   Role: {target_role} ({experience_level})
+   Self-Declared Weaknesses: {weaknesses}
+2. Resume Risk Analysis:
+   {risk_summary}
+3. Vulnerability Map:
+   Top Weaknesses: {top_weaknesses}
+   Interview Focus: {interview_focus}
+4. Job Description (Optional):
+   {job_description}
+5. Readiness Score: {readiness_score}/100 ({readiness_level})
+6. Skill Gaps (Implied but missing): {missing_skills}
+7. Key Sections Overview:
 {section_summaries}
-6. Top Risky Claims:
+8. Top Risky Claims:
 {claim_summaries}
 
 TASK:
-You are NOT designing a general technical interview.
+Formulate a high-level interview strategy.
+- If the candidate is Senior, focus on system design and architectural decisions.
+- If Junior, focus on fundamentals and coding.
+- Address their self-declared weaknesses + the resume vulnerabilities.
 
 You are designing a CLAIM VERIFICATION interview.
 
@@ -102,16 +113,35 @@ def question_strategist_node(state: AgentState) -> dict:
     for c in sorted_claims[:3]: 
         claim_summaries.append(f"- '{c.text[:50]}...' (Risk: {c.risk_score:.2f}, Issues: {', '.join(c.vulnerabilities)})")
     
+    vuln = state.get("vulnerability_map", None)
+    top_weaknesses = vuln.top_weaknesses if vuln else []
+    interview_focus = vuln.interview_focus if vuln else []
+    
+    profile = state.get("candidate_profile")
+    if profile:
+        target_role = profile.target_role
+        experience_level = profile.experience_level
+        weaknesses = ", ".join(profile.self_declared_weaknesses)
+    else:
+        target_role = "Software Engineer"
+        experience_level = "Mid-Level"
+        weaknesses = "None declared"
+
     prompt = ChatPromptTemplate.from_template(STRATEGIST_PROMPT)
-    llm = get_llm(temperature=0.2)
+    llm = get_llm(temperature=0.7)
     chain = prompt | llm | JsonOutputParser()
     
     try:
         response = chain.invoke({
+            "target_role": target_role,
+            "experience_level": experience_level,
+            "weaknesses": weaknesses,
+            "risk_summary": risks.summary,
+            "top_weaknesses": ", ".join(top_weaknesses),
+            "interview_focus": ", ".join(interview_focus),
+            "job_description": state.get("job_description", "Generic Software Role"),
             "readiness_score": readiness.score,
             "readiness_level": readiness.level,
-            "risk_summary": risks.summary,
-            "top_vulnerabilities": top_vulns_str,
             "missing_skills": missing_skills_str,
             "section_summaries": "\n".join(section_summaries),
             "claim_summaries": "\n".join(claim_summaries)
