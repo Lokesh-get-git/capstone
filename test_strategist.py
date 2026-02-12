@@ -7,6 +7,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from agents.question_strategist import question_strategist_node
 from agents.difficulty_planner import difficulty_planner_node
 from agents.question_generator import question_generator_node
+from agents.validator import validator_node
 from agents.state import AgentState
 from models.data_models import (
     ResumeClaim, RiskAnalysis, ReadinessAnalysis, 
@@ -57,15 +58,41 @@ def run_test():
         print(f"  - {item}")
         
     # 3. Generator
-    print("\n[3] Running Question Generator Node...")
-    gen_out = question_generator_node(state)
-    state.update(gen_out)
-    
-    print("\n=== GENERATED QUESTIONS (Unvalidated) ===")
-    for q in state['generated_questions']:
+    # 3. Generator & 4. Validator Loop
+    MAX_RETRIES = 2
+    for attempt in range(MAX_RETRIES + 1):
+        print(f"\n[3] Running Question Generator Node (Attempt {attempt+1})...")
+        gen_out = question_generator_node(state)
+        state.update(gen_out)
+        
+        print("\n[4] Running Validator Node...")
+        val_out = validator_node(state)
+        state.update(val_out)
+        
+        # Check validation status
+        results = state.get("validation_results", [])
+        failed_count = sum(1 for v in results if v.get("status") == "FAIL")
+        
+        if failed_count == 0:
+            print("\n>>> All questions PASSED validation!")
+            break
+        else:
+            print(f"\n>>> {failed_count} questions FAILED validation. Retrying...")
+            if attempt == MAX_RETRIES:
+                print(">>> Max retries reached. Proceeding with best effort.")
+
+    print("\n=== FINAL GENERATED QUESTIONS ===")
+    for i, q in enumerate(state['generated_questions']):
+        status = "UNKNOWN"
+        if i < len(state.get("validation_results", [])):
+             status = state["validation_results"][i].get("status", "UNKNOWN")
+        
         print(f"[{q.difficulty}] {q.question}")
         print(f"   Target: {q.target_claim}")
-        print(f"   Reasoning: {q.reasoning}")
+        print(f"   Validation: {status}")
+        if status == "FAIL":
+             fb = state["validation_results"][i].get("feedback", "")
+             print(f"   Feedback: {fb}")
         print("-" * 50)
 
 if __name__ == "__main__":
