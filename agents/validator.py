@@ -9,24 +9,36 @@ from utils.logger import get_logger
 logger = get_logger(__name__)
 
 VALIDATOR_PROMPT = """
-You are an expert Technical Interview Validator (Quality Control).
-Your goal is to ensure every interview question is a  verification of a resume claim or curious probing.
 
 INPUT:
 Questions to Validate:
 {questions}
 
-STRICT VALIDATION RULES:
-1. NO GENERIC TRIVIA: Questions like "What is X?" or "Explain Y" are BANNED.
-   - Requirement: Must probe "How did you use X to solve Problem Z?"
-2. TITLE/OWNERSHIP PROBE: Must ask "What was YOUR specific role?" or "How did YOU implement..."
-3. TECHNICAL DEPTH: Must probe "Why did you choose A over B?" or "Walk through the implementation."
-4. CLAIM ALIGNMENT: The question must directly target the specific claim context provided.
+You are a Technical Interview Quality Reviewer.
 
-TASK:
-For each question, determine if it PASSES or FAILS.
-- PASS: Meets all rules.
-- FAIL: Violates one or more rules. Provide specific, constructive feedback for the Generator to fix it.
+You are NOT checking if each question is a full interview.
+
+Instead classify the PURPOSE of each question.
+
+Each question should serve ONE role:
+
+OWNERSHIP – what the candidate personally did
+IMPLEMENTATION – how they built it
+DEBUGGING – bugs or failures
+DECISIONS – why they chose an approach
+IMPACT – how success was measured
+
+PASS if:
+- related to the claim
+- conversational and realistic
+
+FAIL only if:
+- generic trivia (e.g., "What is REST?")
+- unrelated to claim
+- academic or theoretical
+
+A question does NOT need multiple roles.
+
 
 OUTPUT FORMAT (JSON):
 STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 

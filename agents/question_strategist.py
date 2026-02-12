@@ -35,16 +35,19 @@ Formulate a high-level interview strategy.
 - If Junior, focus on fundamentals and coding.
 - Address their self-declared weaknesses + the resume vulnerabilities.
 
-You are designing a CLAIM VERIFICATION interview.
+You are selecting conversation topics for a realistic technical interview.
 
-Your objective is to verify whether the candidate actually performed the resume claims.
+You are NOT interrogating the candidate.
 
-Rules:
-1. Each focus area must map to a specific resume claim or vulnerability.
-2. High-risk claims MUST be directly challenged.
-3. If a claim has "No Technical Specifics", you must probe implementation details.
-4. If a claim has "No Quantified Impact", you must probe measurement and metrics.
-5. Avoid generic topics like "Explain microservices" or "What is React".
+You are identifying which projects or experiences an interviewer would naturally ask about after skimming a resume for 2 minutes.
+
+Focus areas should feel like:
+"the parts of the resume that spark curiosity or skepticism"
+
+Do NOT design questions.
+Do NOT design an investigation.
+Only select interesting areas to discuss.
+Avoid generic topics like "Explain microservices" or "What is React".
 
 Instead, questions should resemble:
 - "You mentioned X — how exactly did you implement it?"

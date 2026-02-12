@@ -40,26 +40,28 @@ Each plan item MUST:
 • avoid generic theory questions
 
 Do NOT introduce unrelated technologies, frameworks, or hypothetical projects.
+TASK:
+You are creating a conversation flow, not a questionnaire.
 
-STRUCTURE THE INTERVIEW LIKE AN INVESTIGATION:
+Create EXACTLY 6 conversation beats.
 
-Warmup:
-- Let the candidate restate the claim in their own words
-- Clarify their role and ownership
+Each beat is a single moment in a natural technical interview conversation.
 
-Core:
-- Probe implementation details
-- Ask about architecture, tools, and technical decisions
-- Ask what problems occurred and how they solved them
+The flow should:
+1. Start casual
+2. Clarify what the project was
+3. Ask how they implemented it
+4. Ask about a problem they faced
+5. Challenge a decision they made
+6. Ask how they knew it worked
 
-Deep Dive:
-- Challenge tradeoffs and edge cases
-- Ask about failures and debugging
-- Ask how they measured impact or performance improvements
+Rules:
+- One short sentence per beat (max 12 words)
+- Do NOT create sections (no warmup/core/deep dive)
+- Do NOT create multiple questions inside a beat
+- Do NOT write interview questions
+- Do NOT use academic wording
 
-CRITICAL RULE:
-You must produce EXACTLY 6-10 plan steps.
-no more no less
 
 OUTPUT FORMAT (JSON):
 STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 

@@ -10,12 +10,27 @@ logger = get_logger(__name__)
 
 GENERATOR_PROMPT = """
 You are an expert Technical Interview Question Generator.
-Your goal is to generate specific, high-quality interview questions based on the provided Plan.
-Make sure you are not overdoing. Questions should feel like real interview questions curiosity and ownership oriented probing
+The interviewer is a busy software engineer speaking casually.
+
+Avoid phrases:
+"can you elaborate"
+"walk me through in detail"
+"describe comprehensively"
+
+Prefer:
+"What did you actually build?"
+"What broke first?"
+"How did you debug it?"
+
 
 INPUT:
 Question Plan:
 {plan}
+Resume Claims:
+{claim_context}
+Every question must be grounded in the provided claims.
+Do NOT invent companies, conferences, hackathons, or metrics not mentioned in the claims.
+
 
 TASK:
 For EACH item in the plan, generate a concrete, actionable interview question.
@@ -57,15 +72,11 @@ Failed Questions & Feedback:
 {feedback_context}
 
 TASK:
-Rewrite ONLY the failed questions. Keep the original difficulty and target.
+Rewrite ONLY the failed questions.
+- You MUST use the same 'index', 'difficulty', and 'target_claim' as the failed question.
+- Do NOT generate questions for indices that are not in the input.
+- Follow the original rules: ONE clear thought, conversational, max 20 words.
 
-Rules:
-- Each question must be ONE clear thought.
-- Do not combine multiple questions.
-- Prefer short conversational wording.
-- Ask follow-up style questions like a real interviewer.
-- Avoid long descriptive sentences.
-- Maximum 20 words per question.
 OUTPUT FORMAT (JSON):
 STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
 DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
@@ -140,7 +151,8 @@ def question_generator_node(state: AgentState) -> dict:
             new_questions = list(current_questions) # copy
             for r in refined_list:
                 idx = r.get("index")
-                if idx is not None and 0 <= idx < len(new_questions):
+                # Only replace if the index was actually marked as failed
+                if idx is not None and idx in failed_indices and 0 <= idx < len(new_questions):
                      new_questions[idx] = GeneratedQuestion(
                         question=r.get("question", "Unknown"),
                         difficulty=r.get("difficulty", "Medium"),
@@ -175,8 +187,13 @@ def question_generator_node(state: AgentState) -> dict:
     llm = get_llm(temperature=0.6)
     chain = prompt | llm | JsonOutputParser()
     
+    claims = state.get("claims", [])
+    claim_context = "\n".join([f"- {c.text}" for c in claims])
+    if not claim_context:
+        claim_context = "No claims detected."
+
     try:
-        inputs = {"plan": plan_str}
+        inputs = {"plan": plan_str, "claim_context": claim_context}
         response = chain.invoke(inputs)
 
         # COST TRACKING (Standard)

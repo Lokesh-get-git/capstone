@@ -1536,3 +1536,59 @@ For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/erro
 2026-02-12 18:50:15 | INFO     | agents.validator | Validator: 6/33 questions passed.
 2026-02-12 18:50:23 | INFO     | agents.coach | TavilySearchResults tool initialized.
 2026-02-12 18:50:34 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 19:05:10 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 19:05:10 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 19:05:10 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant
+2026-02-12 19:05:12 | INFO     | agents.question_strategist | Strategy formulated: Verify technical specifics, quantified impact, and candidate's self-declared weaknesses through CLAIM VERIFICATION
+2026-02-12 19:05:12 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 19:05:14 | INFO     | agents.difficulty_planner | Plan created with 10 steps.
+2026-02-12 19:05:14 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 19:05:15 | INFO     | agents.question_generator | Generated 10 questions.
+2026-02-12 19:05:15 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 19:05:16 | INFO     | agents.validator | Validator: 1/10 questions passed.
+2026-02-12 19:05:16 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 19:05:16 | INFO     | agents.question_generator | Refining 9 failed questions...
+2026-02-12 19:05:17 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 19:05:25 | INFO     | agents.validator | Validator: 3/10 questions passed.
+2026-02-12 19:05:25 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 19:05:25 | INFO     | agents.question_generator | Refining 7 failed questions...
+2026-02-12 19:05:33 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 19:05:42 | INFO     | agents.validator | Validator: 1/10 questions passed.
+2026-02-12 19:05:42 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 19:05:42 | INFO     | agents.question_generator | Refining 9 failed questions...
+2026-02-12 19:05:53 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 19:06:02 | INFO     | agents.validator | Validator: 2/10 questions passed.
+2026-02-12 19:06:09 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 19:06:27 | INFO     | agents.coach | Generated 13 coaching insights.
+2026-02-12 19:40:19 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 19:40:19 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 19:40:19 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant
+2026-02-12 19:40:21 | INFO     | agents.question_strategist | Strategy formulated: Focus on system design, public speaking, and addressing weaknesses in technical specifics, action verbs, and quantified impact, while exploring project and experience claims with high risk scores and self-declared weaknesses.
+2026-02-12 19:40:21 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 19:40:22 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-02-12 19:40:22 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 19:40:22 | ERROR    | agents.question_generator | Generator failed: "Input to ChatPromptTemplate is missing variables {'claim_context'}.  Expected: ['claim_context', 'plan'] Received: ['plan']\nNote: if you intended {claim_context} to be part of the string and not a variable, please escape it with double curly braces like: '{{claim_context}}'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT "
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 192, in question_generator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3155, in invoke
+    input_ = context.run(step.invoke, input_, config, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 223, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 196, in _format_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\prompts\base.py", line 190, in _validate_input
+    raise KeyError(
+KeyError: "Input to ChatPromptTemplate is missing variables {'claim_context'}.  Expected: ['claim_context', 'plan'] Received: ['plan']\nNote: if you intended {claim_context} to be part of the string and not a variable, please escape it with double curly braces like: '{{claim_context}}'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT "
+2026-02-12 19:40:22 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 19:40:23 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 19:40:29 | INFO     | agents.coach | Generated 12 coaching insights.
