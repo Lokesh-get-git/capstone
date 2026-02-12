@@ -7,8 +7,8 @@ import json
 API_URL = "http://localhost:8000/api"
 
 st.set_page_config(
-    page_title="AntiGravity | AI Interview Coach",
-    page_icon="🚀",
+    page_title="Ai interview capstone | AI Interview Coach",
+    page_icon="🐛",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -43,7 +43,7 @@ st.markdown("""
 
 # --- Sidebar ---
 with st.sidebar:
-    st.title("🚀 AntiGravity")
+    st.title("🐛 Ai interview capstone")
     st.markdown("### Candidate Profile")
     target_role = st.text_input("Target Role", "Senior Backend Engineer")
     experience_years = st.number_input("Years of Experience", 0, 50, 5)
