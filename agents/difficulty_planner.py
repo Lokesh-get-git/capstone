@@ -57,8 +57,15 @@ Deep Dive:
 - Ask about failures and debugging
 - Ask how they measured impact or performance improvements
 
+CRITICAL RULE:
+You must produce EXACTLY 6-10 plan steps.
+no more no less
 
 OUTPUT FORMAT (JSON):
+STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
+DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
+DO NOT WRAP IN MARKDOWN CODE BLOCKS.
+
 {{
     "rationale": "Brief explanation of the investigation flow...",
     "plan": [
@@ -109,6 +116,9 @@ def difficulty_planner_node(state: AgentState) -> dict:
     try:
         response = chain.invoke(inputs)
         
+        if not response:
+            raise ValueError("LLM returned empty response")
+            
         # COST TRACKING
         cost = 0.0
         try:

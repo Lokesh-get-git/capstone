@@ -29,6 +29,10 @@ Rules:
 - Maximum 20 words per question.
 
 OUTPUT FORMAT (JSON):
+STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
+DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
+DO NOT WRAP IN MARKDOWN CODE BLOCKS.
+
 {{
     "questions": [
         {{
@@ -63,6 +67,10 @@ Rules:
 - Avoid long descriptive sentences.
 - Maximum 20 words per question.
 OUTPUT FORMAT (JSON):
+STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
+DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
+DO NOT WRAP IN MARKDOWN CODE BLOCKS.
+
 {{
     "refined_questions": [
         {{
@@ -123,6 +131,9 @@ def question_generator_node(state: AgentState) -> dict:
                 cost = CostTracker.track_cost("Generator (Refine)", input_len//4, output_len//4)
             except:
                 pass
+            if not response:
+                 raise ValueError("LLM returned empty response during refinement")
+            
             refined_list = response.get("refined_questions", [])
             
             # Update the original list
@@ -178,6 +189,9 @@ def question_generator_node(state: AgentState) -> dict:
         except:
             pass
         
+        if not response:
+            raise ValueError("LLM returned empty response")
+
         raw_questions = response.get("questions", [])
         generated_questions = []
         

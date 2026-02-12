@@ -27,34 +27,31 @@ INPUT:
 {claim_context}
 
 TASK:
-Identify the top 3 most critical areas for improvement.
+Identify specific preparation insights for the candidate.
+Categorize them as:
+1. Strength: What they should highlight.
+2. Weakness: What they must defend or explain better.
+3. Practice Tip: Actionable logic/behavioral interviewing tips.
+4. Study Area: Specific topics to research.
+
 Ensure advice differs based on role (e.g., Senior needs architecture advice, Junior needs syntax/concepts).
 
 GOAL:
-Predict what an interviewer will ask follow-up questions about and help the candidate prepare explanations.
-
-IMPORTANT:
-Do NOT recommend generic studying (e.g., "learn REST APIs").
-Assume the candidate already has experience.
-
-Instead:
-- identify what parts of their resume look unclear or questionable
-- explain why an interviewer would probe that area
-- tell the candidate what they should be ready to explain
-
-For each preparation insight provide:
-1. Topic the interviewer will likely probe
-2. Why the interviewer will question it
-3. How the candidate should prepare their explanation
-4. A helpful resource search query
+Predict what an interviewer will ask and help the candidate prepare.
 
 OUTPUT FORMAT (JSON):
+STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
+DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
+DO NOT WRAP IN MARKDOWN CODE BLOCKS.
+
 {{
     "insights": [
         {{
-            "topic": "What interviewer will focus on",
-            "advice": "How candidate should prepare and what they must be ready to explain",
-            "resource_query": "Specific preparation search query"
+            "category": "Strength|Weakness|Practice Tip|Study Area",
+            "topic": "Specific context",
+            "advice": "Actionable coaching advice",
+            "priority": "High|Medium|Low",
+            "resource_query": "Specific preparation search query (optional, mostly for Study Areas or Weaknesses)"
         }}
     ]
 }}
@@ -108,6 +105,9 @@ def coach_node(state: AgentState) -> dict:
     try:
         response = chain.invoke(inputs)
         
+        if not response:
+            raise ValueError("LLM returned empty response")
+            
         # COST TRACKING
         cost = 0.0
         try:
@@ -124,7 +124,6 @@ def coach_node(state: AgentState) -> dict:
         # Initialize LangChain Tavily Tool
         try:
             from langchain_community.tools.tavily_search import TavilySearchResults
-            # API Key is picked up from TAVILY_API_KEY env var automatically or we can pass it
             search_tool = TavilySearchResults(max_results=2)
             logger.info("TavilySearchResults tool initialized.")
         except Exception as e:
@@ -132,20 +131,20 @@ def coach_node(state: AgentState) -> dict:
             search_tool = None
 
         for item in raw_insights:
+            category = item.get("category", "Study Area")
             topic = item.get("topic", "General")
             query = item.get("resource_query", "")
+            priority = item.get("priority", "Medium")
             found_resources = []
             
-            if search_tool and query:
+            # Search if query exists and category warrants it
+            if search_tool and query and category in ["Weakness", "Study Area"]:
                 try:
-                    # Invoke the tool
-                    # tool.invoke returns a list of dicts: [{'url': '...', 'content': '...'}]
                     results = search_tool.invoke({"query": query})
                     for res in results:
-                        # Handle potential different return formats (some versions return string)
                         if isinstance(res, dict):
                             url = res.get("url", "")
-                            content = res.get("content", "")[:50] # Snippet
+                            content = res.get("content", "")[:50]
                             if url:
                                 found_resources.append(f"[{content}...]({url})")
                         elif isinstance(res, str):
@@ -153,13 +152,15 @@ def coach_node(state: AgentState) -> dict:
                 except Exception as s_err:
                      logger.warning(f"Search failed for '{query}': {s_err}")
             
-            # Fallback if no results
-            if not found_resources:
+            # Fallback for Study Areas/Weaknesses if no results
+            if not found_resources and category in ["Weakness", "Study Area"] and query:
                  found_resources = [f"[Google Search: {query}](https://www.google.com/search?q={query.replace(' ', '+')})"]
 
             coaching_insights.append(CoachingInsight(
+                category=category,
                 topic=topic,
                 advice=item.get("advice", "Review this topic."),
+                priority=priority,
                 resources=found_resources
             ))
             

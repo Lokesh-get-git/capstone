@@ -750,3 +750,789 @@ groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached
 2026-02-12 18:04:57 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
 2026-02-12 18:04:58 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
 2026-02-12 18:04:58 | INFO     | utils.llm | Initializing Groq LLM: meta-llama/llama-guard-4-12b
+2026-02-12 18:22:43 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 18:22:43 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:22:43 | INFO     | utils.llm | Initializing Groq LLM: meta-llama/llama-guard-4-12b
+2026-02-12 18:22:45 | ERROR    | agents.question_strategist | Strategist failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_strategist.py", line 158, in question_strategist_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:22:45 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 18:22:45 | ERROR    | agents.difficulty_planner | Planner failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\difficulty_planner.py", line 110, in difficulty_planner_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:22:45 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:22:46 | ERROR    | agents.question_generator | Generator failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 169, in question_generator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:22:46 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:22:46 | ERROR    | agents.coach | Coach failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\coach.py", line 109, in coach_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:23:45 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 18:23:45 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:23:45 | INFO     | utils.llm | Initializing Groq LLM: meta-llama/llama-guard-4-12b
+2026-02-12 18:23:46 | ERROR    | agents.question_strategist | Strategist failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_strategist.py", line 158, in question_strategist_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:23:46 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 18:23:47 | ERROR    | agents.difficulty_planner | Planner failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\difficulty_planner.py", line 110, in difficulty_planner_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:23:47 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:23:47 | ERROR    | agents.question_generator | Generator failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 169, in question_generator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:23:47 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:23:48 | ERROR    | agents.coach | Coach failed: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\coach.py", line 109, in coach_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: safe
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:29:20 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-12 18:29:20 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:29:20 | INFO     | utils.llm | Initializing Groq LLM: groq/compound
+2026-02-12 18:29:25 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 18:29:31 | INFO     | agents.difficulty_planner | Plan created with 3 steps.
+2026-02-12 18:29:31 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:29:56 | INFO     | agents.question_generator | Generated 18 questions.
+2026-02-12 18:29:56 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:30:11 | ERROR    | agents.validator | Validator failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 5843, Requested 2866. Please try again in 5.3175s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\validator.py", line 73, in validator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 5843, Requested 2866. Please try again in 5.3175s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}
+2026-02-12 18:30:16 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 18:30:29 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 18:33:40 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 18:33:42 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-12 18:33:42 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:33:42 | INFO     | utils.llm | Initializing Groq LLM: allam-2-7b
+2026-02-12 18:33:44 | ERROR    | agents.question_strategist | Strategist failed: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_strategist.py", line 170, in question_strategist_node
+    strategy_text = response.get("interview_strategy", "Standard Interview")
+                    ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2026-02-12 18:33:44 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 18:33:44 | INFO     | agents.difficulty_planner | Plan created with 3 steps.
+2026-02-12 18:33:44 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:33:46 | ERROR    | agents.question_generator | Generator failed: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 181, in question_generator_node
+    raw_questions = response.get("questions", [])
+                    ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2026-02-12 18:33:46 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:33:46 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 18:33:59 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 18:37:09 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 18:37:11 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-12 18:37:11 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:37:11 | INFO     | utils.llm | Initializing Groq LLM: llama-3.3-70b-versatile
+2026-02-12 18:37:13 | INFO     | agents.question_strategist | Strategy formulated: As a Junior ML Engineer Intern, the focus will be on fundamentals, coding, and claim verification, addressing self-declared weaknesses and resume vulnerabilities.
+2026-02-12 18:37:13 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 18:37:15 | INFO     | agents.difficulty_planner | Plan created with 7 steps.
+2026-02-12 18:37:15 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:37:15 | ERROR    | agents.question_generator | Generator failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99529, Requested 664. Please try again in 2m46.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 172, in question_generator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kghh8v7nf56azfbdp4faj0qr` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99529, Requested 664. Please try again in 2m46.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-12 18:37:15 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:37:33 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 18:37:44 | INFO     | agents.coach | Generated 3 coaching insights.
+2026-02-12 18:43:34 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 18:43:36 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-12 18:43:36 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:43:36 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant
+2026-02-12 18:43:39 | INFO     | agents.question_strategist | Strategy formulated: Verify the candidate's claims through a CLAIM VERIFICATION interview, focusing on fundamentals, coding, and addressing self-declared weaknesses and resume vulnerabilities.
+2026-02-12 18:43:39 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 18:43:40 | ERROR    | agents.difficulty_planner | Planner failed: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\difficulty_planner.py", line 123, in difficulty_planner_node
+    plan = response.get("plan", [])
+           ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2026-02-12 18:43:40 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:43:41 | INFO     | agents.question_generator | Generated 3 questions.
+2026-02-12 18:43:41 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:43:43 | INFO     | agents.validator | Validator: 1/3 questions passed.
+2026-02-12 18:43:43 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:43:43 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-12 18:43:43 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:43:44 | INFO     | agents.validator | Validator: 1/3 questions passed.
+2026-02-12 18:43:44 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:43:44 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-12 18:43:45 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:43:49 | INFO     | agents.validator | Validator: 1/3 questions passed.
+2026-02-12 18:43:49 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:43:49 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-12 18:43:53 | ERROR    | agents.question_generator | Refinement failed: Invalid json output: Here are the rewritten questions based on the provided feedback:
+
+{
+    "refined_questions": [
+        {
+            "index": 0,
+            "question": "In the 'Real-time Analytics Dashboard' project, how do you handle Node.js and Python dependencies?",
+            "difficulty": "Medium",
+            "target_claim": "Tech stack verification",
+            "reasoning": "This question matters as it tests the ability to resolve conflicts between different tech stacks in a project.",
+            "expected_answer_points": [
+                "Identifying the conflicting dependencies",
+                "Proposing a solution to resolve the conflict"
+            ]
+        },
+        {
+            "index": 1,
+            "question": "As a lead developer on the 'Real-time Analytics Dashboard' project, how do you manage tech stack conflicts?",
+            "difficulty": "Medium",
+            "target_claim": "Tech stack verification",
+            "reasoning": "This question matters as it tests the ability to take ownership and lead the team in resolving tech stack conflicts.",
+            "expected_answer_points": [
+                "Analyzing the project requirements",
+                "Communicating with the team to find a solution"
+            ]
+        }
+    ]
+}
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 115, in question_generator_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: Here are the rewritten questions based on the provided feedback:
+
+{
+    "refined_questions": [
+        {
+            "index": 0,
+            "question": "In the 'Real-time Analytics Dashboard' project, how do you handle Node.js and Python dependencies?",
+            "difficulty": "Medium",
+            "target_claim": "Tech stack verification",
+            "reasoning": "This question matters as it tests the ability to resolve conflicts between different tech stacks in a project.",
+            "expected_answer_points": [
+                "Identifying the conflicting dependencies",
+                "Proposing a solution to resolve the conflict"
+            ]
+        },
+        {
+            "index": 1,
+            "question": "As a lead developer on the 'Real-time Analytics Dashboard' project, how do you manage tech stack conflicts?",
+            "difficulty": "Medium",
+            "target_claim": "Tech stack verification",
+            "reasoning": "This question matters as it tests the ability to take ownership and lead the team in resolving tech stack conflicts.",
+            "expected_answer_points": [
+                "Analyzing the project requirements",
+                "Communicating with the team to find a solution"
+            ]
+        }
+    ]
+}
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:43:53 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:43:59 | INFO     | agents.validator | Validator: 1/3 questions passed.
+2026-02-12 18:43:59 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:43:59 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-12 18:44:04 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:44:10 | INFO     | agents.validator | Validator: 1/3 questions passed.
+2026-02-12 18:44:17 | ERROR    | agents.coach | Coach failed: Invalid json output: Based on the candidate's profile and resume, here are the top 3 most critical areas for improvement:
+
+**Insight 1**
+{
+    "topic": "Backend Development",
+    "why": "The candidate mentioned creating a business backend for topics and pricings using FastAPI, but didn't provide any details about the architecture, scalability, or performance.",
+    "advice": "Be ready to explain the design decisions behind the backend, how it handles scalability, and how it integrates with the frontend. Highlight any performance optimizations or caching mechanisms used.",
+    "resource_query": "FastAPI performance optimization, backend architecture design, caching in FastAPI"
+}
+
+**Insight 2**
+{
+    "topic": "API and Authentication",
+    "why": "The candidate mentioned creating a RESTful API for data quality analysis, but didn't provide any details about authentication or authorization.",
+    "advice": "Be ready to explain how the API handles authentication, authorization, and rate limiting. Highlight any security measures implemented to protect the API from potential threats.",
+    "resource_query": "API authentication and authorization, FastAPI security, rate limiting"
+}
+
+**Insight 3**
+{
+    "topic": "Data Analysis and Evaluation Metrics",
+    "why": "The candidate mentioned analyzing datasets and deriving insights using Python, Pandas, and Scikit-learn, but didn't provide any details about the evaluation metrics used.",
+    "advice": "Be ready to explain the evaluation metrics used to measure the performance of the models, how they were chosen, and how they impact the overall performance of the system.",
+    "resource_query": "Evaluation metrics for machine learning, Scikit-learn evaluation metrics, overfitting prevention"
+}
+
+Additionally, considering the candidate's weaknesses in frontend development and public speaking, it would be beneficial for them to prepare explanations for:
+
+- How they would handle frontend development tasks, even if they're not their strong suit.
+- Their approach to public speaking and how they would communicate complex technical ideas to a non-technical audience.
+
+For this, the candidate can prepare by:
+
+- Practicing explaining technical concepts in simple terms.
+- Highlighting any experience they have with frontend development, such as working with a team or contributing to open-source projects.
+- Being prepared to answer questions about their approach to public speaking, such as how they would handle a difficult question or how they would communicate with a non-technical team member.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lokes\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\coach.py", line 109, in coach_node
+    response = chain.invoke(inputs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 207, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2060, in _call_with_config
+    context.run(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\config.py", line 452, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\base.py", line 208, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: Based on the candidate's profile and resume, here are the top 3 most critical areas for improvement:
+
+**Insight 1**
+{
+    "topic": "Backend Development",
+    "why": "The candidate mentioned creating a business backend for topics and pricings using FastAPI, but didn't provide any details about the architecture, scalability, or performance.",
+    "advice": "Be ready to explain the design decisions behind the backend, how it handles scalability, and how it integrates with the frontend. Highlight any performance optimizations or caching mechanisms used.",
+    "resource_query": "FastAPI performance optimization, backend architecture design, caching in FastAPI"
+}
+
+**Insight 2**
+{
+    "topic": "API and Authentication",
+    "why": "The candidate mentioned creating a RESTful API for data quality analysis, but didn't provide any details about authentication or authorization.",
+    "advice": "Be ready to explain how the API handles authentication, authorization, and rate limiting. Highlight any security measures implemented to protect the API from potential threats.",
+    "resource_query": "API authentication and authorization, FastAPI security, rate limiting"
+}
+
+**Insight 3**
+{
+    "topic": "Data Analysis and Evaluation Metrics",
+    "why": "The candidate mentioned analyzing datasets and deriving insights using Python, Pandas, and Scikit-learn, but didn't provide any details about the evaluation metrics used.",
+    "advice": "Be ready to explain the evaluation metrics used to measure the performance of the models, how they were chosen, and how they impact the overall performance of the system.",
+    "resource_query": "Evaluation metrics for machine learning, Scikit-learn evaluation metrics, overfitting prevention"
+}
+
+Additionally, considering the candidate's weaknesses in frontend development and public speaking, it would be beneficial for them to prepare explanations for:
+
+- How they would handle frontend development tasks, even if they're not their strong suit.
+- Their approach to public speaking and how they would communicate complex technical ideas to a non-technical audience.
+
+For this, the candidate can prepare by:
+
+- Practicing explaining technical concepts in simple terms.
+- Highlighting any experience they have with frontend development, such as working with a team or contributing to open-source projects.
+- Being prepared to answer questions about their approach to public speaking, such as how they would handle a difficult question or how they would communicate with a non-technical team member.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-12 18:47:16 | INFO     | parsers.resume_parser | Extracted 2718 characters from PDF
+2026-02-12 18:47:18 | INFO     | parsers.resume_parser | Parsed 6 sections: ['header', 'education', 'experience', 'projects', 'skills', 'certifications']
+2026-02-12 18:47:18 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-12 18:47:18 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant
+2026-02-12 18:47:20 | INFO     | agents.question_strategist | Strategy formulated: Verify junior ML engineer candidate's claims and fundamentals
+2026-02-12 18:47:20 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-12 18:47:24 | INFO     | agents.difficulty_planner | Plan created with 16 steps.
+2026-02-12 18:47:24 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:47:30 | INFO     | agents.question_generator | Generated 33 questions.
+2026-02-12 18:47:30 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:47:49 | INFO     | agents.validator | Validator: 8/33 questions passed.
+2026-02-12 18:47:49 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:47:49 | INFO     | agents.question_generator | Refining 25 failed questions...
+2026-02-12 18:48:14 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:48:38 | INFO     | agents.validator | Validator: 6/33 questions passed.
+2026-02-12 18:48:38 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:48:38 | INFO     | agents.question_generator | Refining 27 failed questions...
+2026-02-12 18:49:06 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:49:29 | INFO     | agents.validator | Validator: 6/33 questions passed.
+2026-02-12 18:49:29 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-12 18:49:29 | INFO     | agents.question_generator | Refining 27 failed questions...
+2026-02-12 18:49:55 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-12 18:50:15 | INFO     | agents.validator | Validator: 6/33 questions passed.
+2026-02-12 18:50:23 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-12 18:50:34 | INFO     | agents.coach | Generated 3 coaching insights.

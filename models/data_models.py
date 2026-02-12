@@ -49,9 +49,11 @@ class SkillGapAnalysis(BaseModel):
     missing_skills: List[str]  # implied but not explicit
 
 class CoachingInsight(BaseModel):
+    category: str  # Strength, Weakness, Tip, Study Area
     topic: str
     advice: str
-    resources: List[str]
+    priority: str = "Medium" # High, Medium, Low
+    resources: List[str] = []
 
 
 

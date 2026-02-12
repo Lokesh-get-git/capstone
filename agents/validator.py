@@ -29,6 +29,10 @@ For each question, determine if it PASSES or FAILS.
 - FAIL: Violates one or more rules. Provide specific, constructive feedback for the Generator to fix it.
 
 OUTPUT FORMAT (JSON):
+STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
+DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
+DO NOT WRAP IN MARKDOWN CODE BLOCKS.
+
 {{
     "validation_results": [
         {{
@@ -72,6 +76,9 @@ def validator_node(state: AgentState) -> dict:
     try:
         response = chain.invoke(inputs)
         
+        if not response:
+            raise ValueError("LLM returned empty response")
+            
         # COST TRACKING
         cost = 0.0
         try:

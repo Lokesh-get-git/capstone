@@ -212,19 +212,31 @@ if st.session_state.results:
     # TAB 3: COACH
     with tab_coach:
         st.subheader("👨‍🏫 Personalized Coaching")
-        st.caption("Source: **Coach Agent** (powered by Tavily Search). Provides actionable advice and learning resources.")
+        st.caption("Source: **Coach Agent** (powered by Tavily Search). Advice is categorized by urgency and impact.")
         insights = results.get("coaching_insights", [])
+        
         if not insights:
             st.warning("No coaching insights generated.")
-        
-        cols = st.columns(3)
-        for i, insight in enumerate(insights):
-            with cols[i % 3]:
-                with st.container(border=True):
-                    st.markdown(f"#### {insight.get('topic')}")
-                    st.write(insight.get('advice'))
-                    if insight.get('resources'):
-                        st.markdown("**Studying Resources:**")
-                        for r in insight.get('resources'):
-                            st.markdown(f"- {r}")
+        else:
+            # Group by Category
+            categories = ["Strength", "Weakness", "Practice Tip", "Study Area"]
+            
+            for cat in categories:
+                cat_insights = [i for i in insights if i.get("category") == cat]
+                if cat_insights:
+                    st.markdown(f"### {cat}s")
+                    cols = st.columns(min(len(cat_insights), 3))
+                    for i, insight in enumerate(cat_insights):
+                        with cols[i % 3]:
+                            priority = insight.get("priority", "Medium")
+                            p_color = {"High": "🔴", "Medium": "🟡", "Low": "🟢"}.get(priority, "⚪")
+                            
+                            with st.container(border=True):
+                                st.markdown(f"**{p_color} {insight.get('topic')}**")
+                                st.write(insight.get('advice'))
+                                if insight.get('resources'):
+                                    with st.expander("Studying Resources"):
+                                        for r in insight.get('resources'):
+                                            st.markdown(f"- {r}")
+                    st.markdown("---")
 

@@ -56,6 +56,10 @@ Output focus areas as verification goals, not topics.
 
 
 OUTPUT FORMAT (JSON):
+STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
+DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
+DO NOT WRAP IN MARKDOWN CODE BLOCKS.
+
 {{
     "interview_strategy": "A concise strategy description...",
     "focus_areas": [
@@ -167,6 +171,9 @@ def question_strategist_node(state: AgentState) -> dict:
         except:
             pass
         
+        if not response:
+            raise ValueError("LLM returned empty response")
+
         strategy_text = response.get("interview_strategy", "Standard Interview")
         focus_areas_list = [
             f"{f['topic']}: {f['rationale']}" 
