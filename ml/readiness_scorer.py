@@ -172,10 +172,11 @@ class ReadinessScorer:
             "readiness_level": self._level(score),
         }
 
-    def predict_with_risk(self, claims: list[dict], risk_classifier) -> dict:
+    def predict_with_risk(self, claims: list[dict], risk_classifier, relevance_score: float = 0.0) -> dict:
         """
         Grounded readiness score using actual risk classifier predictions.
         This is the PRIMARY scoring method for real resumes.
+        If relevance_score > 0, it is factored into the final score (weighted 30%).
         """
         from ml.feature_builder import build_feature_vector
 
@@ -199,9 +200,9 @@ class ReadinessScorer:
 
         # --- Core score: inverse of average risk ---
         avg_risk = sum(risk_probs) / len(risk_probs)
-        base_score = (1 - avg_risk) * 100
+        quality_score = (1 - avg_risk) * 100
 
-        # --- Penalties ---
+        # --- Penalties (Quality based) ---
         n = len(claims)
 
         # Penalty: too few claims (thin resume)
@@ -221,13 +222,24 @@ class ReadinessScorer:
         consistency_penalty = min(10, risk_std * 20)
 
         total_penalty = depth_penalty + metrics_penalty + consistency_penalty
-        final_score = max(0, min(100, round(base_score - total_penalty, 1)))
+        final_quality_score = max(0, min(100, round(quality_score - total_penalty, 1)))
+        
+        # --- Combine with Relevance (if available) ---
+        # If we have a Job Description relevance score, merge it.
+        # Weighting: 70% Quality (resume strength), 30% Relevance (job fit)
+        if relevance_score > 0:
+             final_score = (final_quality_score * 0.7) + (relevance_score * 0.3)
+             final_score = round(final_score, 1)
+        else:
+             final_score = final_quality_score
 
         return {
             "readiness_score": final_score,
             "readiness_level": self._level(final_score),
             "breakdown": {
-                "base_score": round(base_score, 1),
+                "base_quality_score": round(quality_score, 1),
+                "final_quality_score": final_quality_score,
+                "relevance_score": round(relevance_score, 1) if relevance_score else 0,
                 "avg_risk": round(avg_risk, 4),
                 "claims_analyzed": n,
                 "claims_with_metrics": has_metrics_count,

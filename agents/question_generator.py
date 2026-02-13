@@ -24,6 +24,7 @@ Prefer:
 
 
 INPUT:
+Candidate Profile: {candidate_profile}
 Question Plan:
 {plan}
 Resume Claims:
@@ -68,6 +69,7 @@ Some of your previous questions failed validation. You must REWRITE them based o
 
 
 INPUT:
+Candidate Profile: {candidate_profile}
 Failed Questions & Feedback:
 {feedback_context}
 
@@ -130,7 +132,10 @@ def question_generator_node(state: AgentState) -> dict:
         chain = prompt | llm | JsonOutputParser()
         
         try:
-            inputs = {"feedback_context": feedback_context}
+            inputs = {
+                "feedback_context": feedback_context,
+                "candidate_profile": f"Role: {state.get('candidate_profile').target_role}, Weaknesses: {', '.join(state.get('candidate_profile').self_declared_weaknesses)}" if state.get("candidate_profile") else "Unknown"
+            }
             response = chain.invoke(inputs)
 
             # COST TRACKING (Refinement)
@@ -147,11 +152,13 @@ def question_generator_node(state: AgentState) -> dict:
             
             refined_list = response.get("refined_questions", [])
             
-            # Update the original list
+            # Update the original list safely
             new_questions = list(current_questions) # copy
+            
             for r in refined_list:
                 idx = r.get("index")
-                # Only replace if the index was actually marked as failed
+                
+                # Validation: Check if index is valid and was actually failed
                 if idx is not None and idx in failed_indices and 0 <= idx < len(new_questions):
                      new_questions[idx] = GeneratedQuestion(
                         question=r.get("question", "Unknown"),
@@ -160,6 +167,8 @@ def question_generator_node(state: AgentState) -> dict:
                         reasoning=r.get("reasoning", "Refined"),
                         expected_answer_points=r.get("expected_answer_points", [])
                     )
+                else:
+                    logger.warning(f"Refinement returned invalid index {idx} (Expected one of {failed_indices})")
             
             # Increment retry count
             current_retries = state.get("retry_count", 0)
@@ -193,7 +202,11 @@ def question_generator_node(state: AgentState) -> dict:
         claim_context = "No claims detected."
 
     try:
-        inputs = {"plan": plan_str, "claim_context": claim_context}
+        inputs = {
+            "plan": plan_str, 
+            "claim_context": claim_context,
+            "candidate_profile": f"Role: {state.get('candidate_profile').target_role}, Weaknesses: {', '.join(state.get('candidate_profile').self_declared_weaknesses)}" if state.get("candidate_profile") else "Unknown"
+        }
         response = chain.invoke(inputs)
 
         # COST TRACKING (Standard)

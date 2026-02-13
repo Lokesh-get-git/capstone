@@ -16,6 +16,7 @@ You are designing a CLAIM-VERIFICATION interview.
 The purpose of this interview is to verify whether the candidate actually performed the accomplishments written on their resume.
 
 INPUT:
+Profile: {candidate_profile}
 1. Strategy: {strategy}
 2. Focus Areas:
 {focus_areas}
@@ -112,7 +113,8 @@ def difficulty_planner_node(state: AgentState) -> dict:
             "focus_areas": focus_str,
             "readiness_level": readiness.level,
             "readiness_score": readiness.score,
-            "claim_context": claim_context
+            "claim_context": claim_context,
+            "candidate_profile": f"Role: {state.get('candidate_profile').target_role}, Weaknesses: {', '.join(state.get('candidate_profile').self_declared_weaknesses)}" if state.get("candidate_profile") else "Unknown"
     }
     
     try:

@@ -2,6 +2,7 @@
 
 A sophisticated, multi-agent AI system designed to prepare candidates for high-level technical interviews. This project leverages **LangGraph** to orchestrate a team of specialized AI agents, combining **Rule-Based Parsing**, **Machine Learning**, and **Generative AI** to deliver a bespoke interview experience.
 
+# Read improvements.md to know what could be and needs to be improved
 ---
 
 ## 🏗️ Technical Architecture

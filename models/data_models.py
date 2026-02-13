@@ -22,6 +22,7 @@ class ResumeClaim(BaseModel):
 
 class RiskAnalysis(BaseModel):
     claim_risks: List[dict]
+    model_insights: List[tuple] = []  # List of (feature_name, weight)
     summary: str
 
 class VulnerabilityMap(BaseModel):
@@ -34,6 +35,8 @@ class VulnerabilityMap(BaseModel):
 class ReadinessAnalysis(BaseModel):
     score: float
     level: str
+    relevance_score: float = 0.0
+    missing_keywords: List[str] = []
     breakdown: Dict[str, Any]
 
 class GeneratedQuestion(BaseModel):

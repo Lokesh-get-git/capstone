@@ -1,84 +1,69 @@
 
-import sys
-import os
-from pathlib import Path
+import new_resume_parser
+from parsers import resume_parser as old_resume_parser
+import pprint
 
-# Add root to path
-sys.path.append(str(Path(__file__).parent))
+RESUME_FILE = "del_resume.pdf"
 
-from agents.orchestrator import run_interview_pipeline
-from models.data_models import CandidateProfile
+print(f"Comparing Parsers on: {RESUME_FILE}")
 
-from parsers.resume_parser import extract_text
-
-RESUME_FILE = "sample_resume.txt"
-
-def run_pipeline_test():
-    print(f"Running Full Pipeline on {RESUME_FILE}...")
+# --- OLD PARSER (Current Production) ---
+print("\n" + "="*50)
+print("OLD PARSER RESULTS")
+print("="*50)
+claims_old = []
+try:
+    text_old = old_resume_parser.extract_text(RESUME_FILE)
+    sections_old = old_resume_parser.parse_resume_sections(text_old)
+    # The crucial fix was in this function in 'parsers/resume_parser.py'
+    claims_old = old_resume_parser.extract_claims_from_sections(sections_old)
     
-    if not os.path.exists(RESUME_FILE):
-        print(f"File {RESUME_FILE} not found.")
-        return
+    print(f"Text Length: {len(text_old)}")
+    print(f"Sections Detected: {list(sections_old.keys())}")
+    print(f"Total Claims: {len(claims_old)}")
+    print("\nSample Claims (Old):")
+    for c in claims_old[:3]:
+        print(f"- [{c.get('section', 'unk')}] {c['text'][:100]}...")
 
-    # Extract text
-    try:
-        text = extract_text(RESUME_FILE)
-        print(f"Extracted {len(text)} chars.")
-    except Exception as e:
-        print(f"Extraction Failed: {e}")
-        return
+except Exception as e:
+    print(f"Old parser failed: {e}")
+
+
+# --- NEW PARSER (New Module) ---
+print("\n" + "="*50)
+print("NEW PARSER RESULTS")
+print("="*50)
+parsed_new = None
+try:
+    # New parser returns a 'ParsedResume' object
+    parsed_new = new_resume_parser.parse_resume(RESUME_FILE)
     
-    # Run Pipeline
-    print("Invoking LangGraph Orchestrator...")
-    try:
-        profile = CandidateProfile(
-            target_role="Senior Python Developer",
-            experience_years=5,
-            self_declared_weaknesses=["System Design"]
-        )
-        
-        result = run_interview_pipeline(
-            resume_text=text,
-            job_description="Senior Python Developer",
-            candidate_profile=profile
-        )
-    except Exception as e:
-        print(f"Pipeline Failed: {e}")
-        import traceback
-        traceback.print_exc()
-        return
-    
+    print(f"Text Length: {len(parsed_new.raw_text)}")
+    print(f"Sections Detected: {list(parsed_new.sections.keys())}")
+    print(f"Total Claims: {len(parsed_new.claims)}")
+    print("\nSample Claims (New):")
+    for c in parsed_new.claims[:3]:
+        # New claims are objects, not dicts
+        print(f"- [{c.section}] {c.text[:100]}... (Type: {c.claim_type})")
+
+except Exception as e:
+    print(f"New parser failed: {e}")
+    import traceback
+    traceback.print_exc()
+
+# --- COMPARISON SUMMARY ---
+if parsed_new and claims_old:
     print("\n" + "="*50)
-    print("PIPELINE RESULT SUMMARY")
+    print("COMPARISON")
     print("="*50)
-    
-    # Check if data exists
-    if "claims" in result:
-        print(f"Claims Analyzed: {len(result['claims'])}")
-    else:
-        print("❌ No claims found in result.")
-        
-    if "questions" in result:
-        print(f"Questions Generated: {len(result['questions'])}")
-        for q in result['questions']:
-            print(f"  - [{q.get('difficulty')}] {q.get('question', '')[:60]}...")
-    else:
-         print("❌ No questions found.")
-         
-    if "coaching_insights" in result:
-        print(f"Coaching Insights: {len(result['coaching_insights'])}")
-    else:
-        print("❌ No coaching insights found.")
-        
-    # Check Cost Log
-    print("\n" + "="*50)
-    print("COST LOG VERIFICATION")
-    print("="*50)
-    if os.path.exists("cost_log.txt"):
-        with open("cost_log.txt", "r", encoding="utf-8") as f:
-            print(f.read())
-    else:
-        print("❌ cost_log.txt NOT FOUND")
+    diff_claims = len(parsed_new.claims) - len(claims_old)
+    print(f"Claim Difference: {diff_claims} (New - Old)")
 
-if __name__ == "__main__":
-    run_pipeline_test()
+    # Check if section keys match
+    old_keys = set(sections_old.keys())
+    new_keys = set(parsed_new.sections.keys())
+
+    print(f"Only in Old Sections: {old_keys - new_keys}")
+    print(f"Only in New Sections: {new_keys - old_keys}")
+else:
+    print("\nCannot compare: One or both parsers failed.")

@@ -25,6 +25,8 @@ INPUT:
 {vulnerabilities}
 5. Claims interviewers may question:
 {claim_context}
+6. AI Risk Factors (Explainability):
+{model_insights}
 
 TASK:
 Identify specific preparation insights for the candidate.
@@ -99,7 +101,9 @@ def coach_node(state: AgentState) -> dict:
             "missing_skills": ", ".join(missing),
             "risk_summary": risk_summary,
             "vulnerabilities": ", ".join(vuln_list),
-            "claim_context": claim_context
+            "claim_context": claim_context,
+            # NEW: Pass Model Insights for Explainability
+            "model_insights": "\n".join([f"- {feature}: {weight:.2f}" for feature, weight in risk.model_insights]) if risk and risk.model_insights else "No ML insights available."
     }
     
     try:

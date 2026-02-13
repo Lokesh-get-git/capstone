@@ -494,11 +494,14 @@ def extract_sentence_claims(text: str, section: str) -> list[dict]:
 def extract_claims_from_sections(sections):
     claims = []
 
-    target_sections = ["experience", "projects", "achievements"]
+
+    skip_sections = {"header", "contact", "references", "languages", "certifications", "interests"}
 
     bullet_pattern = r"(?:^|\n)[•\-–]\s*(.+)"
 
-    for section in target_sections:
+    for section, sec_data in sections.items():
+        if section.lower() in skip_sections:
+            continue
         sec_data = sections.get(section, {})
         if isinstance(sec_data, dict):
              content = sec_data.get("text", "")

@@ -90,13 +90,30 @@ def resume_analyst_node(state: AgentState) -> dict:
         vulns = [v["label"] for v in analysis["vulnerabilities"]]
         analyzed_claims[i].vulnerabilities = vulns
 
-    # Score Readiness
-    scorer = get_readiness_model()
-    readiness = scorer.predict_with_risk(raw_claims, clf)
+    # 6. TF-IDF Relevance Scoring (NEW)
+    from nlp.tfidf_manager import TfidfManager
+    relevance_score = 0.0
+    missing_keywords = []
     
+    job_description = state.get("job_description", "")
+    
+
+    if job_description:
+        tfidf = TfidfManager()
+        relevance_score = tfidf.calculate_similarity(text, job_description)
+        missing_keywords = tfidf.get_missing_keywords(text, job_description)
+
+    # Score Readiness (with relevance)
+    scorer = get_readiness_model()
+    readiness = scorer.predict_with_risk(raw_claims, clf, relevance_score=relevance_score)
+    
+    # Get Model Insights (Explainability)
+    model_insights = clf.get_feature_importance(5)
+
     # Construct output models
     risk_analysis = RiskAnalysis(
         claim_risks=risk_data,
+        model_insights=model_insights,
         summary=f"Analyzed {len(analyzed_claims)} claims. Average risk score: {readiness['breakdown'].get('avg_risk', 0):.2f}"
     )
     
@@ -111,6 +128,8 @@ def resume_analyst_node(state: AgentState) -> dict:
     readiness_analysis = ReadinessAnalysis(
         score=readiness["readiness_score"],
         level=readiness["readiness_level"],
+        relevance_score=relevance_score,
+        missing_keywords=missing_keywords,
         breakdown=readiness["breakdown"]
     )
 

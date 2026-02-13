@@ -45,7 +45,7 @@ st.markdown("""
 with st.sidebar:
     st.title("🐛 Ai interview capstone")
     st.markdown("### Candidate Profile")
-    target_role = st.text_input("Target Role", "Senior Backend Engineer")
+    target_role = st.text_input(" Role", "Software Engineer")
     experience_years = st.number_input("Years of Experience", 0, 50, 5)
     
     with st.expander("Advanced Settings"):
@@ -175,7 +175,20 @@ if st.session_state.results:
                     st.error("Claims data format issue.")
             else:
                 st.warning("No claims analyzed.")
-                
+
+            # Relevance only if JD provided
+            if job_description:
+                 st.divider()
+                 st.subheader("🎯 Job Fit Analysis")
+                 rel_score = readiness.get("relevance_score", 0)
+                 st.progress(rel_score / 100, text=f"Match Score: {rel_score}%")
+                 
+                 miss_keys = readiness.get("missing_keywords", [])
+                 if miss_keys:
+                     st.warning(f"**Missing Keywords:** {', '.join(miss_keys)}")
+                     st.caption("These important terms from the Job Description are missing from your resume.")
+            else:
+                 st.info("💡 **Tip:** Add a Job Description in the sidebar to get a Relevance Score and Keyword Gap Analysis.")
 
         with col_right:
             st.subheader("⚠️ Vulnerabilities")
@@ -214,6 +227,24 @@ if st.session_state.results:
         st.subheader("👨‍🏫 Personalized Coaching")
         st.caption("Source: **Coach Agent** (powered by Tavily Search). Advice is categorized by urgency and impact.")
         insights = results.get("coaching_insights", [])
+        
+        # --- NEW: Model Insights (Moved from Tab 1) ---
+        if risk.get("model_insights"):
+            with st.expander("🤖 How the AI Graded Your Resume"):
+                st.caption("These are the key signals the ML model used to assess risk:")
+                cols = st.columns(2)
+                for i, (feature, weight) in enumerate(risk.get("model_insights", [])):
+                    with cols[i % 2]:
+                        # Rename for readability
+                        if feature == "sem_num_keywords": display_name = "Technical Depth"
+                        elif feature == "clarity_has_metrics": display_name = "Use of Metrics"
+                        elif feature == "quant_has_weak_language": display_name = "Weak Language"
+                        elif feature == "txt_word_count": display_name = "Detail Level"
+                        else: display_name = feature.replace("_", " ").title()
+                        
+                        icon = "✅ Positive Signal" if weight > 0 else "⚠️ Negative Signal"
+                        st.metric(label=display_name, value=f"{weight:.2f}", delta=icon)
+        # ----------------------------------------------
         
         if not insights:
             st.warning("No coaching insights generated.")
