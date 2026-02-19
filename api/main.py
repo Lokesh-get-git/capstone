@@ -25,7 +25,7 @@ class AnalyzeRequest(BaseModel):
     job_description: str = Field("", description="Optional job description")
     candidate_profile: CandidateProfile = Field(..., description="Candidate's self-declared profile")
 
-# --- Response Models (Optional, for better Docs) ---
+
 
 
 @app.get("/api/health")

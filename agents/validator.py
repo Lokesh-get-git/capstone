@@ -9,56 +9,41 @@ from utils.logger import get_logger
 logger = get_logger(__name__)
 
 VALIDATOR_PROMPT = """
-
 INPUT:
 Candidate Profile: {candidate_profile}
-Questions to Validate:
+Questions to Validate (Indices are important!):
 {questions}
 
 You are a Technical Interview Quality Reviewer.
 
-You are NOT checking if each question is a full interview.
+FRAMEWORK:
+Classify the purpose of each question (OWNERSHIP, IMPLEMENTATION, DEBUGGING, DECISIONS, IMPACT).
 
-Instead classify the PURPOSE of each question.
+DECISION RULES:
+- PASS if: Related to claim AND properly phrased (conversational, clear).
+- FAIL if: Generic trivia, unrelated to claim, academic, or too long.
 
-Each question should serve ONE role:
-
-OWNERSHIP – what the candidate personally did
-IMPLEMENTATION – how they built it
-DEBUGGING – bugs or failures
-DECISIONS – why they chose an approach
-IMPACT – how success was measured
-
-PASS if:
-- related to the claim
-- conversational and realistic
-
-FAIL only if:
-- generic trivia (e.g., "What is REST?")
-- unrelated to claim
-- academic or theoretical
-
-A question does NOT need multiple roles.
-
+OUTPUT INSTRUCTIONS:
+1. Provide validation results ONLY for the question indices listed above. 
+2. Do NOT generate results for questions that are not in the input.
+3. The "status" field MUST be exactly "PASS" or "FAIL". Do not use role names like "IMPACT" as status.
 
 OUTPUT FORMAT (JSON):
 STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
-DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
-DO NOT WRAP IN MARKDOWN CODE BLOCKS.
+DO NOT INCLUDE ANY CONVERSATIONAL TEXT.
 
 {{
     "validation_results": [
         {{
-            "index": 0,
+            "index": 1,
             "status": "PASS",
             "feedback": "Good ownership probe."
         }},
         {{
-            "index": 1,
+            "index": 3,
             "status": "FAIL",
-            "feedback": "Too generic. Rewrite to ask about the specific API endpoint mentioned in the claim."
-        }},
-        ...
+            "feedback": "Too generic. Rewrite to ask about the specific API endpoint."
+        }}
     ]
 }}
 """

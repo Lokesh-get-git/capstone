@@ -112,7 +112,7 @@ def question_generator_node(state: AgentState) -> dict:
     validation_results = state.get("validation_results", [])
     current_questions = state.get("generated_questions", [])
     
-    failed_indices = [v["index"] for v in validation_results if v.get("status") == "FAIL"]
+    failed_indices = [v["index"] for v in validation_results if v.get("status") != "PASS"]
     
     if failed_indices and current_questions:
         logger.info(f"Refining {len(failed_indices)} failed questions...")
@@ -120,7 +120,7 @@ def question_generator_node(state: AgentState) -> dict:
         # Prepare context for refinement
         feedback_context = ""
         for v in validation_results:
-            if v.get("status") == "FAIL":
+            if v.get("status") != "PASS":
                 idx = v["index"]
                 original_q = current_questions[idx]
                 feedback_context += f"Q{idx} (Target: {original_q.target_claim}):\n"
