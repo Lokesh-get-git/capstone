@@ -2200,3 +2200,413 @@ KeyError: "Input to ChatPromptTemplate is missing variables {'claim_context'}.  
 2026-02-18 10:07:30 | INFO     | agents.validator | Validator: 6/6 questions passed.
 2026-02-18 10:07:31 | INFO     | agents.coach | TavilySearchResults tool initialized.
 2026-02-18 10:07:56 | INFO     | agents.coach | Generated 11 coaching insights.
+2026-02-19 15:31:25 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-19 15:31:25 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-19 15:31:25 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-19 15:31:27 | ERROR    | agents.question_strategist | Strategist failed: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=StrategistResponse> {"interview_strategy": "High-level interview strategy for a Mid-Level Software Engineer", "focus_areas": [{"rationale": "System design knowledge gap", "topic": "System Design"}, {"rationale": "Lack of technical specifics in project claims", "topic": "Project: Technical Details"}, {"rationale": "No quantified impact in achievements", "topic": "Achievements: Quantified Impact"}, {"rationale": "Missing action verbs in claims", "topic": "Resume: Action Verb Clarification"}, {"rationale": "Public speaking self-declared weakness", "topic": "Public Speaking: Experience and Comfort Level"}]}'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_strategist.py", line 148, in question_strategist_node
+    response: StrategistResponse = chain.invoke(inputs)
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5695, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=StrategistResponse> {"interview_strategy": "High-level interview strategy for a Mid-Level Software Engineer", "focus_areas": [{"rationale": "System design knowledge gap", "topic": "System Design"}, {"rationale": "Lack of technical specifics in project claims", "topic": "Project: Technical Details"}, {"rationale": "No quantified impact in achievements", "topic": "Achievements: Quantified Impact"}, {"rationale": "Missing action verbs in claims", "topic": "Resume: Action Verb Clarification"}, {"rationale": "Public speaking self-declared weakness", "topic": "Public Speaking: Experience and Comfort Level"}]}'}}
+2026-02-19 15:31:27 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-19 15:31:27 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-02-19 15:31:28 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-02-19 15:31:28 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-19 15:31:28 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-02-19 15:31:32 | ERROR    | agents.question_generator | Generator failed: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=GeneratorResponse> {"questions": [{"difficulty": "Warmup", "target_claim": "Write technical articles about system design and distributed systems", "question": "What topics do you think are most important for beginners to learn about system design?", "reasoning": "Understanding the fundamentals", "expected_answer_points": ["system boundaries", "scalability", " fault tolerance"]}, {"difficulty": "Core", "target_claim": "Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI", "question": "How do you handle rate limiting and caching for high-traffic APIs like the one you built?", "reasoning": "Scalability and performance", "expected_answer_points": ["API gateways", " caching strategies", "load balancing"]}, {"difficulty": "Challenge", "target_claim": "Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days", "question": "Design a CI/CD pipeline for a microservices architecture that includes automated testing, deployment, and rollback", "reasoning": "Automation and reliability", "expected_answer_points": ["pipeline automation", " testing strategies", "deployment orchestration"]}, {"difficulty": "Warmup", "target_claim": "Mentored 4 junior developers through code reviews and pair programming sessions", "question": "What are some key takeaways you\'d share with a junior developer about writing clean and maintainable code?", "reasoning": "Code quality and collaboration", "expected_answer_points": ["code organization", "testing principles", " collaboration strategies"]}, {"difficulty": "Core", "target_claim": "Won first place in company-wide hackathon (2022)", "question": "Can you walk me through your team\'s strategy for building a scalable and efficient system during the hackathon?", "reasoning": "System design and teamwork", "expected_answer_points": ["system design principles", "team collaboration", "agile development"]}, {"difficulty": "Challenge", "target_claim": "Speaker at PyCon Regional Conference on microservices patterns", "question": "Design a microservices architecture for a complex system like an e-commerce platform, and present your design to me", "reasoning": "System design and communication", "expected_answer_points": ["system architecture", "microservices patterns", "design principles"]}, {"difficulty": "Warmup", "target_claim": "Implemented feature engineering module supporting 20+ transformation types", "question": "What are some common feature engineering techniques you\'ve used in the past, and how do you decide which ones to use?", "reasoning": "Data processing and feature engineering", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Core", "target_claim": "Optimized database queries resulting in 60% reduction in API response time", "question": "Explain how you would optimize a slow database query, and what tools or techniques you would use", "reasoning": "Database performance and optimization", "expected_answer_points": ["query optimization", "indexing strategies", "query analysis"]}, {"difficulty": "Challenge", "target_claim": "Architected microservices migration from monolith, improving deployment frequency by 3x", "question": "Design a migration plan for a large monolithic application to a microservices architecture, including deployment strategies and monitoring", "reasoning": "System design and migration", "expected_answer_points": ["migration strategies", "deployment planning", "monitoring and feedback"]}, {"difficulty": "Warmup", "target_claim": "Bachlor of Science in Computer Science | State University | 2019", "question": "Can you tell me about a project you worked on during your time at university that you\'re particularly proud of?", "reasoning": "Relevant coursework and experience", "expected_answer_points": ["project details", "technical skills used", " lessons learned"]}, {"difficulty": "Core", "target_claim": "Developed Python framework for automating ML pipeline workflows with 500+ GitHub stars", "question": "How do you handle data preprocessing and feature engineering for machine learning pipelines, and what tools or techniques do you use?", "reasoning": "Machine learning and data processing", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Challenge", "target_claim": "Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days", "question": "Design a CI/CD pipeline for a large-scale machine learning model deployment, including automated testing, deployment, and rollback", "reasoning": "Automation and reliability", "expected_answer_points": ["pipeline automation", "testing strategies", "deployment orchestration"]}, {"difficulty": "Warmup", "target_claim": "Mentored 4 junior developers through code reviews and pair programming sessions", "question": "What are some key takeaways you\'d share with a junior developer about writing clean and maintainable code?", "reasoning": "Code quality and collaboration", "expected_answer_points": ["code organization", "testing principles", "collaboration strategies"]}, {"difficulty": "Core", "target_claim": "Architected microservices migration from monolith, improving deployment frequency by 3x", "question": "Explain how you would design a monitoring and feedback system for a microservices architecture, and what metrics or tools you would use", "reasoning": "System design and monitoring", "expected_answer_points": ["monitoring strategies", "feedback mechanisms", "metrics and tools"]}, {"difficulty": "Challenge", "target_claim": "Led a team of 8 engineers to redesign the payment processing system, reducing transaction failures by 40%", "question": "Design a payment processing system that includes automated retries, failed transaction handling, and real-time monitoring, and present your design to me", "reasoning": "System design and leadership", "expected_answer_points": ["system architecture", "payment processing logic", "leadership strategies"]}, {"difficulty": "Warmup", "target_claim": "Write technical articles about system design and distributed systems", "question": "What topics do you think are most important for beginners to learn about system design?", "reasoning": "Understanding the fundamentals", "expected_answer_points": ["system boundaries", "scalability", "fault tolerance"]}, {"difficulty": "Core", "target_claim": "Optimized database queries resulting in 60% reduction in API response time", "question": "Explain how you would optimize a slow database query, and what tools or techniques you would use", "reasoning": "Database performance and optimization", "expected_answer_points": ["query optimization", "indexing strategies", "query analysis"]}, {"difficulty": "Challenge", "target_claim": "Speaker at PyCon Regional Conference on microservices patterns", "question": "Design a microservices architecture for a complex system like an e-commerce platform, and present your design to me", "reasoning": "System design and communication", "expected_answer_points": ["system architecture", "microservices patterns", "design principles"]}, {"difficulty": "Warmup", "target_claim": "Mentored 4 junior developers through code reviews and pair programming sessions", "question": "What are some key takeaways you\'d share with a junior developer about writing clean and maintainable code?", "reasoning": "Code quality and collaboration", "expected_answer_points": ["code organization", "testing principles", "collaboration strategies"]}, {"difficulty": "Core", "target_claim": "Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI", "question": "How do you handle rate limiting and caching for high-traffic APIs like the one you built?", "reasoning": "Scalability and performance", "expected_answer_points": ["API gateways", "caching strategies", "load balancing"]}, {"difficulty": "Challenge", "target_claim": "Implemented feature engineering module supporting 20+ transformation types", "question": "Design a feature engineering module for a machine learning pipeline that includes data preprocessing, feature selection, and data transformation, and present your design to me", "reasoning": "Data processing and feature engineering", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Warmup", "target_claim": "Architected microservices migration from monolith, improving deployment frequency by 3x", "question": "What are some key considerations when migrating a monolithic application to a microservices architecture?", "reasoning": "System design and migration", "expected_answer_points": ["migration strategies", "deployment planning", "monitoring and feedback"]}, {"difficulty": "Core", "target_claim": "Developed Python framework for automating ML pipeline workflows with 500+ GitHub stars", "question": "How do you handle data preprocessing and feature engineering for machine learning pipelines, and what tools or techniques do you use?", "reasoning": "Machine learning and data processing", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Challenge", "target_claim": "Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days", "question": "Design a CI/CD pipeline for a large-scale machine learning model deployment, including automated testing, deployment, and rollback", "reasoning": "Automation and reliability", "expected_answer_points": ["pipeline automation", "testing strategies", "deployment orchestration"]}, {"difficulty": "Warmup", "target_claim": "Bachlor of Science in Computer Science | State University | 2019", "question": "Can you tell me about a project you worked on during your time at university that you\'re particularly proud of?", "reasoning": "Relevant coursework and experience", "expected_answer_points": ["project details", "technical skills used",'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_generator.py", line 190, in question_generator_node
+    response: GeneratorResponse = chain.invoke(inputs)
+                                  ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5695, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=GeneratorResponse> {"questions": [{"difficulty": "Warmup", "target_claim": "Write technical articles about system design and distributed systems", "question": "What topics do you think are most important for beginners to learn about system design?", "reasoning": "Understanding the fundamentals", "expected_answer_points": ["system boundaries", "scalability", " fault tolerance"]}, {"difficulty": "Core", "target_claim": "Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI", "question": "How do you handle rate limiting and caching for high-traffic APIs like the one you built?", "reasoning": "Scalability and performance", "expected_answer_points": ["API gateways", " caching strategies", "load balancing"]}, {"difficulty": "Challenge", "target_claim": "Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days", "question": "Design a CI/CD pipeline for a microservices architecture that includes automated testing, deployment, and rollback", "reasoning": "Automation and reliability", "expected_answer_points": ["pipeline automation", " testing strategies", "deployment orchestration"]}, {"difficulty": "Warmup", "target_claim": "Mentored 4 junior developers through code reviews and pair programming sessions", "question": "What are some key takeaways you\'d share with a junior developer about writing clean and maintainable code?", "reasoning": "Code quality and collaboration", "expected_answer_points": ["code organization", "testing principles", " collaboration strategies"]}, {"difficulty": "Core", "target_claim": "Won first place in company-wide hackathon (2022)", "question": "Can you walk me through your team\'s strategy for building a scalable and efficient system during the hackathon?", "reasoning": "System design and teamwork", "expected_answer_points": ["system design principles", "team collaboration", "agile development"]}, {"difficulty": "Challenge", "target_claim": "Speaker at PyCon Regional Conference on microservices patterns", "question": "Design a microservices architecture for a complex system like an e-commerce platform, and present your design to me", "reasoning": "System design and communication", "expected_answer_points": ["system architecture", "microservices patterns", "design principles"]}, {"difficulty": "Warmup", "target_claim": "Implemented feature engineering module supporting 20+ transformation types", "question": "What are some common feature engineering techniques you\'ve used in the past, and how do you decide which ones to use?", "reasoning": "Data processing and feature engineering", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Core", "target_claim": "Optimized database queries resulting in 60% reduction in API response time", "question": "Explain how you would optimize a slow database query, and what tools or techniques you would use", "reasoning": "Database performance and optimization", "expected_answer_points": ["query optimization", "indexing strategies", "query analysis"]}, {"difficulty": "Challenge", "target_claim": "Architected microservices migration from monolith, improving deployment frequency by 3x", "question": "Design a migration plan for a large monolithic application to a microservices architecture, including deployment strategies and monitoring", "reasoning": "System design and migration", "expected_answer_points": ["migration strategies", "deployment planning", "monitoring and feedback"]}, {"difficulty": "Warmup", "target_claim": "Bachlor of Science in Computer Science | State University | 2019", "question": "Can you tell me about a project you worked on during your time at university that you\'re particularly proud of?", "reasoning": "Relevant coursework and experience", "expected_answer_points": ["project details", "technical skills used", " lessons learned"]}, {"difficulty": "Core", "target_claim": "Developed Python framework for automating ML pipeline workflows with 500+ GitHub stars", "question": "How do you handle data preprocessing and feature engineering for machine learning pipelines, and what tools or techniques do you use?", "reasoning": "Machine learning and data processing", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Challenge", "target_claim": "Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days", "question": "Design a CI/CD pipeline for a large-scale machine learning model deployment, including automated testing, deployment, and rollback", "reasoning": "Automation and reliability", "expected_answer_points": ["pipeline automation", "testing strategies", "deployment orchestration"]}, {"difficulty": "Warmup", "target_claim": "Mentored 4 junior developers through code reviews and pair programming sessions", "question": "What are some key takeaways you\'d share with a junior developer about writing clean and maintainable code?", "reasoning": "Code quality and collaboration", "expected_answer_points": ["code organization", "testing principles", "collaboration strategies"]}, {"difficulty": "Core", "target_claim": "Architected microservices migration from monolith, improving deployment frequency by 3x", "question": "Explain how you would design a monitoring and feedback system for a microservices architecture, and what metrics or tools you would use", "reasoning": "System design and monitoring", "expected_answer_points": ["monitoring strategies", "feedback mechanisms", "metrics and tools"]}, {"difficulty": "Challenge", "target_claim": "Led a team of 8 engineers to redesign the payment processing system, reducing transaction failures by 40%", "question": "Design a payment processing system that includes automated retries, failed transaction handling, and real-time monitoring, and present your design to me", "reasoning": "System design and leadership", "expected_answer_points": ["system architecture", "payment processing logic", "leadership strategies"]}, {"difficulty": "Warmup", "target_claim": "Write technical articles about system design and distributed systems", "question": "What topics do you think are most important for beginners to learn about system design?", "reasoning": "Understanding the fundamentals", "expected_answer_points": ["system boundaries", "scalability", "fault tolerance"]}, {"difficulty": "Core", "target_claim": "Optimized database queries resulting in 60% reduction in API response time", "question": "Explain how you would optimize a slow database query, and what tools or techniques you would use", "reasoning": "Database performance and optimization", "expected_answer_points": ["query optimization", "indexing strategies", "query analysis"]}, {"difficulty": "Challenge", "target_claim": "Speaker at PyCon Regional Conference on microservices patterns", "question": "Design a microservices architecture for a complex system like an e-commerce platform, and present your design to me", "reasoning": "System design and communication", "expected_answer_points": ["system architecture", "microservices patterns", "design principles"]}, {"difficulty": "Warmup", "target_claim": "Mentored 4 junior developers through code reviews and pair programming sessions", "question": "What are some key takeaways you\'d share with a junior developer about writing clean and maintainable code?", "reasoning": "Code quality and collaboration", "expected_answer_points": ["code organization", "testing principles", "collaboration strategies"]}, {"difficulty": "Core", "target_claim": "Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI", "question": "How do you handle rate limiting and caching for high-traffic APIs like the one you built?", "reasoning": "Scalability and performance", "expected_answer_points": ["API gateways", "caching strategies", "load balancing"]}, {"difficulty": "Challenge", "target_claim": "Implemented feature engineering module supporting 20+ transformation types", "question": "Design a feature engineering module for a machine learning pipeline that includes data preprocessing, feature selection, and data transformation, and present your design to me", "reasoning": "Data processing and feature engineering", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Warmup", "target_claim": "Architected microservices migration from monolith, improving deployment frequency by 3x", "question": "What are some key considerations when migrating a monolithic application to a microservices architecture?", "reasoning": "System design and migration", "expected_answer_points": ["migration strategies", "deployment planning", "monitoring and feedback"]}, {"difficulty": "Core", "target_claim": "Developed Python framework for automating ML pipeline workflows with 500+ GitHub stars", "question": "How do you handle data preprocessing and feature engineering for machine learning pipelines, and what tools or techniques do you use?", "reasoning": "Machine learning and data processing", "expected_answer_points": ["data preprocessing", "feature selection", "data transformation"]}, {"difficulty": "Challenge", "target_claim": "Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days", "question": "Design a CI/CD pipeline for a large-scale machine learning model deployment, including automated testing, deployment, and rollback", "reasoning": "Automation and reliability", "expected_answer_points": ["pipeline automation", "testing strategies", "deployment orchestration"]}, {"difficulty": "Warmup", "target_claim": "Bachlor of Science in Computer Science | State University | 2019", "question": "Can you tell me about a project you worked on during your time at university that you\'re particularly proud of?", "reasoning": "Relevant coursework and experience", "expected_answer_points": ["project details", "technical skills used",'}}
+2026-02-19 15:31:32 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-19 15:31:32 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-02-19 15:31:34 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-19 15:31:34 | INFO     | agents.coach | Generated 9 coaching insights.
+2026-02-19 15:32:58 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-19 15:32:58 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-19 15:32:58 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-19 15:33:00 | ERROR    | agents.question_strategist | Strategist failed: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=StrategistResponse> {"interview_strategy": "Mid-level system design and architecture discussion with a focus on implementation details, addressing system design and public speaking weaknesses, and exploring key sections such as experience, projects, and achievements.", "focus_areas": [{"topic": "System design and implementation details in the experience section", "rationale": "The candidate mentioned system design as a weakness and the experience section has claims that could be probed for system design implementation details"}, {"topic": "Public speaking skills in the achievements section", "rationale": "The candidate self-declared public speaking as a weakness and the achievements section has claims that could be probed for public speaking skills"}, {"topic": "Technical details in the projects section", "rationale": "The candidate\'s projects section has claims that could be probed for technical specifics, such as technologies and tools used"}, {"topic": "Quantifiable impact in the achievements section", "rationale": "The achievements section has claims that could be probed for quantifiable impact, such as how winning first place in the hackathon affected the company"}, {"topic": "Action verbs in the experience section", "rationale": "The experience section has claims that could be probed for action verbs, such as what the candidate actually built or did"}, {"topic": "Action verbs in the achievements section", "rationale": "The achievements section has claims that could be probed for action verbs, such as what the candidate actually did to win the hackathon"}, {"topic": "Technical specifics in the projects section", "rationale": "The projects section has claims that could be probed for technical specifics, such as what technologies and tools were used to automate the ML pipeline"}]}'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\question_strategist.py", line 148, in question_strategist_node
+    response: StrategistResponse = chain.invoke(inputs)
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5695, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=StrategistResponse> {"interview_strategy": "Mid-level system design and architecture discussion with a focus on implementation details, addressing system design and public speaking weaknesses, and exploring key sections such as experience, projects, and achievements.", "focus_areas": [{"topic": "System design and implementation details in the experience section", "rationale": "The candidate mentioned system design as a weakness and the experience section has claims that could be probed for system design implementation details"}, {"topic": "Public speaking skills in the achievements section", "rationale": "The candidate self-declared public speaking as a weakness and the achievements section has claims that could be probed for public speaking skills"}, {"topic": "Technical details in the projects section", "rationale": "The candidate\'s projects section has claims that could be probed for technical specifics, such as technologies and tools used"}, {"topic": "Quantifiable impact in the achievements section", "rationale": "The achievements section has claims that could be probed for quantifiable impact, such as how winning first place in the hackathon affected the company"}, {"topic": "Action verbs in the experience section", "rationale": "The experience section has claims that could be probed for action verbs, such as what the candidate actually built or did"}, {"topic": "Action verbs in the achievements section", "rationale": "The achievements section has claims that could be probed for action verbs, such as what the candidate actually did to win the hackathon"}, {"topic": "Technical specifics in the projects section", "rationale": "The projects section has claims that could be probed for technical specifics, such as what technologies and tools were used to automate the ML pipeline"}]}'}}
+2026-02-19 15:33:00 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-19 15:33:00 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-02-19 15:33:02 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-02-19 15:33:02 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-19 15:33:02 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-02-19 15:33:05 | INFO     | agents.question_generator | Generated 11 questions.
+2026-02-19 15:33:05 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-19 15:33:05 | INFO     | agents.validator | Validating 11 waiting questions (Skipped 0 passed)...
+2026-02-19 15:33:05 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-19 15:33:06 | ERROR    | agents.validator | Validator failed: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=ValidatorResponse> {"validation_results": [{"index": 0, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 1, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 2, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 3, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 4, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 5, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 6, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 7, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 8, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 9, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 10, "status": "PASS", "feedback": "Related to claim and properly phrased"}]}'}}
+Traceback (most recent call last):
+  File "D:\work\training\capstone\agents\validator.py", line 90, in validator_node
+    response: ValidatorResponse = chain.invoke(inputs)
+                                  ^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5695, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1121, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 931, in generate
+    self._generate_with_cache(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1233, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langchain_groq\chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\groq\_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=ValidatorResponse> {"validation_results": [{"index": 0, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 1, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 2, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 3, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 4, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 5, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 6, "status": "PASS", "feedback": "Related to claim and properly phrased"}, {"index": 7, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 8, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 9, "status": "FAIL", "feedback": "Too generic and unrelated to claim"}, {"index": 10, "status": "PASS", "feedback": "Related to claim and properly phrased"}]}'}}
+2026-02-19 15:33:06 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-02-19 15:33:10 | INFO     | agents.coach | TavilySearchResults tool initialized (legacy).
+2026-02-19 15:33:10 | INFO     | agents.coach | Generated 41 coaching insights.
+2026-02-19 15:40:02 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-19 15:40:02 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-19 15:40:02 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-19 15:40:05 | INFO     | agents.question_strategist | Strategy formulated: Dig into system design and architecture, while also exploring the candidate's ability to communicate complex ideas and quantify impact.
+2026-02-19 15:40:05 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-19 15:40:05 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-02-19 15:40:06 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-02-19 15:40:06 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-19 15:40:06 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-02-19 15:40:08 | INFO     | agents.question_generator | Generated 12 questions.
+2026-02-19 15:40:08 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-19 15:40:08 | INFO     | agents.validator | Validating 12 waiting questions (Skipped 0 passed)...
+2026-02-19 15:40:08 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-19 15:40:10 | INFO     | agents.validator | Validator: 10/12 questions passed.
+2026-02-19 15:40:10 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-19 15:40:10 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-19 15:40:10 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-19 15:40:11 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-19 15:40:11 | INFO     | agents.validator | Validating 2 waiting questions (Skipped 10 passed)...
+2026-02-19 15:40:11 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-19 15:40:12 | INFO     | agents.validator | Validator: 11/12 questions passed.
+2026-02-19 15:40:12 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-19 15:40:12 | INFO     | agents.question_generator | Refining 1 failed questions...
+2026-02-19 15:40:12 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-19 15:40:13 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-19 15:40:13 | INFO     | agents.validator | Validating 1 waiting questions (Skipped 11 passed)...
+2026-02-19 15:40:13 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-19 15:40:15 | INFO     | agents.validator | Validator: 12/12 questions passed.
+2026-02-19 15:40:15 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-02-19 15:40:23 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-19 15:40:48 | INFO     | agents.coach | Generated 10 coaching insights.
+2026-02-20 10:39:04 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-20 10:39:10 | ERROR    | api.main | Analysis failed: 'RandomForestClassifier' object has no attribute 'coef_'
+Traceback (most recent call last):
+  File "D:\work\training\capstone\api\main.py", line 70, in analyze_resume
+    result = run_interview_pipeline(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\agents\orchestrator.py", line 122, in run_interview_pipeline
+    final_state = app.invoke(initial_state)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\main.py", line 3071, in invoke
+    for chunk in self.stream(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\main.py", line 2646, in stream
+    for _ in runner.tick(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\_runner.py", line 167, in tick
+    run_with_retry(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 656, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 400, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\agents\resume_analyst.py", line 111, in resume_analyst_node
+    model_insights = clf.get_feature_importance(5)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\ml\risk_classifier.py", line 226, in get_feature_importance
+    weights = self.base_model.coef_[0]
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'RandomForestClassifier' object has no attribute 'coef_'
+During task with name 'resume_analyst' and id '3fe6e1da-dd4f-d1e5-0930-050d7e23698e'
+2026-02-20 10:41:31 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-20 10:41:38 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-20 10:41:38 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-20 10:41:40 | INFO     | agents.question_strategist | Strategy formulated: Focus on mid-level system design, architecture, and technical implementation, while addressing self-declared weaknesses and resume vulnerabilities.
+2026-02-20 10:41:40 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-20 10:41:40 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-02-20 10:41:41 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-02-20 10:41:41 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-20 10:41:41 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-02-20 10:41:43 | INFO     | agents.question_generator | Generated 6 questions.
+2026-02-20 10:41:43 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-20 10:41:43 | INFO     | agents.validator | Validating 6 waiting questions (Skipped 0 passed)...
+2026-02-20 10:41:43 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-20 10:41:44 | INFO     | agents.validator | Validator: 5/6 questions passed.
+2026-02-20 10:41:44 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-20 10:41:44 | INFO     | agents.question_generator | Refining 1 failed questions...
+2026-02-20 10:41:44 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-20 10:41:45 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-20 10:41:45 | INFO     | agents.validator | Validating 1 waiting questions (Skipped 5 passed)...
+2026-02-20 10:41:45 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-20 10:41:46 | INFO     | agents.validator | Validator: 6/6 questions passed.
+2026-02-20 10:41:46 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-02-20 10:41:49 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-20 10:42:18 | INFO     | agents.coach | Generated 13 coaching insights.
+2026-02-20 11:01:33 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-20 11:01:40 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-20 11:01:40 | ERROR    | utils.llm | GROQ_API_KEY not found in config or env vars.
+2026-02-20 11:01:40 | ERROR    | api.main | Analysis failed: GROQ_API_KEY not set
+Traceback (most recent call last):
+  File "D:\work\training\capstone\api\main.py", line 70, in analyze_resume
+    result = run_interview_pipeline(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\agents\orchestrator.py", line 122, in run_interview_pipeline
+    final_state = app.invoke(initial_state)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\main.py", line 3071, in invoke
+    for chunk in self.stream(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\main.py", line 2646, in stream
+    for _ in runner.tick(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\_runner.py", line 167, in tick
+    run_with_retry(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 656, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 400, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\agents\question_strategist.py", line 140, in question_strategist_node
+    llm = get_llm(temperature=0.7)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\utils\llm.py", line 19, in get_llm
+    raise ValueError("GROQ_API_KEY not set")
+ValueError: GROQ_API_KEY not set
+During task with name 'question_strategist' and id 'e97cdd8e-a448-f8ca-83e7-af0b7284098e'
+2026-02-20 11:02:12 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-20 11:02:18 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-20 11:02:18 | ERROR    | utils.llm | GROQ_API_KEY not found in config or env vars.
+2026-02-20 11:02:18 | ERROR    | api.main | Analysis failed: GROQ_API_KEY not set
+Traceback (most recent call last):
+  File "D:\work\training\capstone\api\main.py", line 70, in analyze_resume
+    result = run_interview_pipeline(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\agents\orchestrator.py", line 122, in run_interview_pipeline
+    final_state = app.invoke(initial_state)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\main.py", line 3071, in invoke
+    for chunk in self.stream(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\main.py", line 2646, in stream
+    for _ in runner.tick(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\_runner.py", line 167, in tick
+    run_with_retry(
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\pregel\_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 656, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 400, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\agents\question_strategist.py", line 140, in question_strategist_node
+    llm = get_llm(temperature=0.7)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\work\training\capstone\utils\llm.py", line 19, in get_llm
+    raise ValueError("GROQ_API_KEY not set")
+ValueError: GROQ_API_KEY not set
+During task with name 'question_strategist' and id '1580785c-a5fa-3540-4114-271b72289d8a'
+2026-02-20 11:02:51 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-20 11:02:57 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-20 11:02:57 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-20 11:02:59 | INFO     | agents.question_strategist | Strategy formulated: Explore system design and architectural decisions, fundamentals and coding, and address self-declared and resume vulnerabilities
+2026-02-20 11:02:59 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-20 11:02:59 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-02-20 11:03:01 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-02-20 11:03:01 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-20 11:03:01 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-02-20 11:03:03 | INFO     | agents.question_generator | Generated 6 questions.
+2026-02-20 11:03:03 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-20 11:03:03 | INFO     | agents.validator | Validating 6 waiting questions (Skipped 0 passed)...
+2026-02-20 11:03:03 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-20 11:03:04 | INFO     | agents.validator | Validator: 4/6 questions passed.
+2026-02-20 11:03:04 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-20 11:03:04 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-20 11:03:04 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-20 11:03:05 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-20 11:03:05 | INFO     | agents.validator | Validating 2 waiting questions (Skipped 4 passed)...
+2026-02-20 11:03:05 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-20 11:03:06 | INFO     | agents.validator | Validator: 4/6 questions passed.
+2026-02-20 11:03:06 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-20 11:03:06 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-20 11:03:06 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-20 11:03:07 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-20 11:03:07 | INFO     | agents.validator | Validating 2 waiting questions (Skipped 4 passed)...
+2026-02-20 11:03:07 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-20 11:03:09 | INFO     | agents.validator | Validator: 6/6 questions passed.
+2026-02-20 11:03:09 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-02-20 11:03:13 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-20 11:03:30 | INFO     | agents.coach | Generated 11 coaching insights.
+2026-02-24 14:37:05 | INFO     | parsers.resume_parser | Parsed 7 sections: ['header', 'experience', 'projects', 'education', 'skills', 'certifications', 'achievements']
+2026-02-24 14:37:11 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-02-24 14:37:11 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-24 14:37:13 | INFO     | agents.question_strategist | Strategy formulated: Mid-Level Software Engineer Technical Interview: Focus on System Design and Implementation Details, with an emphasis on bridging skill gaps.
+2026-02-24 14:37:13 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-02-24 14:37:13 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-02-24 14:37:14 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-02-24 14:37:14 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-24 14:37:14 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-02-24 14:37:16 | INFO     | agents.question_generator | Generated 6 questions.
+2026-02-24 14:37:16 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-24 14:37:16 | INFO     | agents.validator | Validating 6 waiting questions (Skipped 0 passed)...
+2026-02-24 14:37:16 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-24 14:37:17 | INFO     | agents.validator | Validator: 4/6 questions passed.
+2026-02-24 14:37:17 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-02-24 14:37:17 | INFO     | agents.question_generator | Refining 2 failed questions...
+2026-02-24 14:37:17 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-02-24 14:37:18 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-02-24 14:37:18 | INFO     | agents.validator | Validating 2 waiting questions (Skipped 4 passed)...
+2026-02-24 14:37:18 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-02-24 14:37:19 | INFO     | agents.validator | Validator: 6/6 questions passed.
+2026-02-24 14:37:19 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-02-24 14:37:21 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-02-24 14:37:44 | INFO     | agents.coach | Generated 14 coaching insights.
+2026-05-31 20:01:18 | INFO     | parsers.resume_parser | Extracted 2291 characters from PDF
+2026-05-31 20:01:20 | INFO     | parsers.resume_parser | Parsed 9 sections: ['header', 'education', 'experience', 'interview preparation assistant:', '(python, numpy, pytorch)', 'on ml libraries.', 'skills', 'fastapi, postgresql, pytorch', 'certifications']
+2026-05-31 20:01:29 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-05-31 20:01:29 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-05-31 20:01:32 | INFO     | agents.question_strategist | Strategy formulated: Conduct a mid-level technical interview focusing on system design, project implementation details, and addressing self-declared weaknesses, while probing areas of vulnerability in the resume, such as quantifiable impact, technical specifics, and action verbs.
+2026-05-31 20:01:32 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-05-31 20:01:32 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-05-31 20:01:33 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-05-31 20:01:33 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-05-31 20:01:33 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-05-31 20:01:36 | INFO     | agents.question_generator | Generated 6 questions.
+2026-05-31 20:01:36 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-05-31 20:01:36 | INFO     | agents.validator | Validating 6 waiting questions (Skipped 0 passed)...
+2026-05-31 20:01:36 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-05-31 20:01:37 | INFO     | agents.validator | Validator: 5/6 questions passed.
+2026-05-31 20:01:37 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-05-31 20:01:37 | INFO     | agents.question_generator | Refining 1 failed questions...
+2026-05-31 20:01:37 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-05-31 20:01:39 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-05-31 20:01:39 | INFO     | agents.validator | Validating 1 waiting questions (Skipped 5 passed)...
+2026-05-31 20:01:39 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-05-31 20:01:40 | INFO     | agents.validator | Validator: 6/6 questions passed.
+2026-05-31 20:01:40 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-05-31 20:01:43 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-05-31 20:02:06 | INFO     | agents.coach | Generated 12 coaching insights.
+2026-05-31 20:26:46 | INFO     | parsers.resume_parser | Extracted 2961 characters from PDF
+2026-05-31 20:26:46 | INFO     | parsers.resume_parser | Parsed 11 sections: ['header', 'education', 'experience', 'transcription.', '(llms, rag, langchain, fastapi, faiss)', 'and case summarization.', 'engineering', '(llms, langchain, fastapi, whisper)', 'skills', 'redis', 'certifications']
+2026-05-31 20:26:57 | INFO     | agents.question_strategist | Strategist Agent: formulating strategy...
+2026-05-31 20:26:57 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.7)
+2026-05-31 20:26:59 | INFO     | agents.question_strategist | Strategy formulated: Focus on fundamentals and coding for Junior AI/ML Engineer with emphasis on quantifying impact and providing technical specifics.
+2026-05-31 20:26:59 | INFO     | agents.difficulty_planner | Planner Agent: creating question plan...
+2026-05-31 20:26:59 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.4)
+2026-05-31 20:27:00 | INFO     | agents.difficulty_planner | Plan created with 6 steps.
+2026-05-31 20:27:00 | INFO     | agents.question_generator | Generator Agent: creating/refining questions...
+2026-05-31 20:27:00 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.6)
+2026-05-31 20:27:03 | INFO     | agents.question_generator | Generated 6 questions.
+2026-05-31 20:27:03 | INFO     | agents.validator | Validator Agent: validating questions...
+2026-05-31 20:27:03 | INFO     | agents.validator | Validating 6 waiting questions (Skipped 0 passed)...
+2026-05-31 20:27:03 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.1)
+2026-05-31 20:27:04 | INFO     | agents.validator | Validator: 6/6 questions passed.
+2026-05-31 20:27:04 | INFO     | utils.llm | Initializing Groq LLM: llama-3.1-8b-instant (temp=0.5)
+2026-05-31 20:27:07 | INFO     | agents.coach | TavilySearchResults tool initialized.
+2026-05-31 20:27:24 | INFO     | agents.coach | Generated 14 coaching insights.

@@ -90,7 +90,7 @@ def resume_analyst_node(state: AgentState) -> dict:
         vulns = [v["label"] for v in analysis["vulnerabilities"]]
         analyzed_claims[i].vulnerabilities = vulns
 
-    # 6. TF-IDF Relevance Scoring (NEW)
+    # 6. TF-IDF Relevance Scoring
     from nlp.tfidf_manager import TfidfManager
     relevance_score = 0.0
     missing_keywords = []

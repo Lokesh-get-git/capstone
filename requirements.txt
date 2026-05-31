@@ -19,3 +19,4 @@ dotenv
 pdfplumber
 tiktoken
 langchain-community
+langgraph

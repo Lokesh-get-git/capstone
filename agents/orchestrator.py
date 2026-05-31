@@ -1,6 +1,6 @@
 import logging
 from typing import Literal
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, START, END
 from agents.state import AgentState
 from models.data_models import (
     RiskAnalysis, ReadinessAnalysis, VulnerabilityMap, SkillGapAnalysis, CandidateProfile
@@ -60,7 +60,7 @@ def build_interview_graph():
     workflow.add_node("coach", coach_node)
     
     # Add Edges
-    workflow.set_entry_point("entry")
+    workflow.add_edge(START, "entry")
     workflow.add_edge("entry", "resume_analyst")
     workflow.add_edge("resume_analyst", "question_strategist")
     workflow.add_edge("question_strategist", "difficulty_planner")

@@ -5,7 +5,7 @@ from nlp.keyword_extractor import extractor
 from nlp.tokenizer import count_tokens
 
 # =========================================================
-# ---- COMMIT 18: TEXTUAL FEATURES (10 features) ----------
+# ---- TEXTUAL FEATURES (10 features) ----------
 # =========================================================
 
 def extract_textual_features(text: str) -> dict:
@@ -27,7 +27,7 @@ def extract_textual_features(text: str) -> dict:
     }
 
 # =========================================================
-# ---- COMMIT 19: QUANT + ACTION FEATURES (8 features) ----
+# ----QUANT + ACTION FEATURES (8 features) ----
 # =========================================================
 
 def extract_quant_features(text: str) -> dict:
@@ -60,7 +60,7 @@ def extract_quant_features(text: str) -> dict:
     }
 
 # =========================================================
-# ---- COMMIT 20: STRUCTURAL FEATURES (8 features) --------
+# ----  STRUCTURAL FEATURES (8 features) --------
 # =========================================================
 def extract_structural_features(text: str, section: str = "") -> dict:
     lower = text.lower()
@@ -103,7 +103,7 @@ def extract_structural_features(text: str, section: str = "") -> dict:
     }
 
 # =========================================================
-# ---- COMMIT 21: SEMANTIC FEATURES (8 features) ----------
+# ---- SEMANTIC FEATURES (8 features) ----------
 # =========================================================
 
 def extract_semantic_features(text: str) -> dict:

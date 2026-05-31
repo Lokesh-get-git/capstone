@@ -1,120 +1,68 @@
-# 🚀 Intelligent Interview Prep System - Setup Guide
+# ⚙️ Hackathon Setup & Verification Guide
 
-This guide will walk you through setting up the project from scratch on your local machine.
-
-## 📋 Prerequisites
-
-Ensure you have the following installed:
-1.  **Git**: [Download Git](https://git-scm.com/downloads)
-2.  **Python 3.10+**: [Download Python](https://www.python.org/downloads/)
-    *   *Note: Ensure "Add Python to PATH" is checked during installation.*
-3.  **VS Code** (Optional but recommended): [Download VS Code](https://code.visualstudio.com/)
+This quick setup sheet will guide you through spinning up and validating the **Intelligent Interview Prep System** in under 2 minutes.
 
 ---
 
-## 🛠️ Installation Steps
+## 🛠️ Step-by-Step Installation
 
-### 1. Clone the Repository
-Open your terminal (Command Prompt, PowerShell, or Git Bash) and run:
+### Step 1: Initialize Virtual Environment & Dependencies
+Open your PowerShell, Command Prompt, or terminal in the project directory:
 ```bash
-git clone https://github.com/Lokesh-get-git/capstone
-cd capstone
-```
-
-### 2. Create a Virtual Environment
-It's best practice to isolate dependencies.
-```bash
-# Windows
+# 1. Create Python Virtual Environment
 python -m venv venv
 
-# Mac/Linux
-python3 -m venv venv
-```
-
-### 3. Activate the Virtual Environment
-```bash
-# Windows (PowerShell)
+# 2. Activate Virtual Environment
+# On Windows (PowerShell):
 .\venv\Scripts\Activate
-
-# Windows (Command Prompt)
+# On Windows (Cmd):
 venv\Scripts\activate.bat
-
-# Mac/Linux
+# On macOS/Linux:
 source venv/bin/activate
-```
 
-
-### 4. Install Dependencies
-```bash
+# 3. Install Required Libraries
 pip install -r requirements.txt
 ```
 
-```bash
-pip install langchain langchain-groq langgraph fastapi uvicorn streamlit python-dotenv pdfplumber scikit-learn pandas sentence-transformers
-```
-
----
-
-## ⚙️ Configuration
-
-1.  **Create a [.env] file** in the root directory (`capstone/`).
-2.  Add your API keys. You will need a **Groq API Key** for the LLM.
-
-**[.env] content:**
+### Step 2: Establish Credentials
+Create a file named `.env` in the project root and add your Groq API credentials:
 ```ini
-GROQ_API_KEY=gsk_...  <-- Replace with your actual key
+GROQ_API_KEY=gsk_...
 ```
-*Get a free key at [console.groq.com](https://console.groq.com)*
+*(Get a free instant key at [console.groq.com](https://console.groq.com) if you do not have one).*
 
-3.  (Optional) If using Tavily for search:
-```ini
-TAVILY_API_KEY=tvly-...
-```
-
----
-
-## 🏃‍♂️ Running the Application
-
-The system consists of a **FastAPI Backend** and a **Streamlit UI**. You need to run both.
-
-### Option A: Run Both (Recommended for Dev)
-Open **two separate terminal windows**. Ensure [(venv)] is active in both.
-
-**Terminal 1 (Backend API):**
+### Step 3: Run the Unified Service
+Start the FastAPI server (which hosts both the APIs and the React Dashboard concurrently):
 ```bash
-uvicorn api.main:app --reload
+uvicorn api.main:app
 ```
-*You should see: `Uvicorn running on http://127.0.0.1:8000`*
-
-**Terminal 2 (Frontend UI):**
-```bash
-streamlit run ui/app.py
-```
-*This will automatically open your browser to `http://localhost:8501`*
-
----
----
-
-## 📂 Project Structure
-- `agents/`: Core logic for AI agents (Strategist, Generator, etc.).
-- [ml/]: Machine Learning models for risk and readiness.
-- `api/`: FastAPI backend endpoints.
-- [ui/]: Streamlit frontend code.
-- `services/`: Utility services like CostTracking.
-- `parsers/`: PDF and text parsing logic.
+*(You will see a log indicating `Uvicorn running on http://127.0.0.1:8000`).*
 
 ---
 
-## ❓ Troubleshooting
+## 🔍 Validation Checklist
 
-**Issue: "Module not found"**
-*   Fix: Ensure your virtual environment is active ([(venv)]) and you ran `pip install -r requirements.txt`.
+1. **Access Web Portal**:
+   Open **[http://localhost:8000](http://localhost:8000)** in your web browser. You should see a cyber-dark, glassmorphic welcome page titled **"AI Interview Preparation System"** showing the active agent state diagram.
 
-**Issue: "Groq API Key not found"**
-*   Fix: Check that your [.env] file exists and has the correct variable name `GROQ_API_KEY`.
+2. **Upload Test Resume**:
+   - In the left sidebar, click the **"Upload Resume"** drag-and-drop box.
+   - Choose the provided file: **`sample_resume.txt`** located in the project's root folder.
+   - Set Years of Experience to `5` and Target Role to `Software Engineer`.
+   - Click **🚀 Analyze Resume**.
 
-**Issue: "File not found: sample_resume.txt"**
-*   Fix: Ensure a text file named [sample_resume.txt] exists in the root folder for testing.
+3. **Verify Orchestration Steps**:
+   You will see an animated checklist sequence through all seven agent nodes (Analyst, Strategist, Planner, Generator, Validator, and Coach).
 
-## NOTE
-a log file and cost log file will be generated in your root upon using.
+4. **Explore Dashboard Tabs**:
+   Once finished, verify that the following components render:
+   - **📊 Resume Analysis**: Review extracted claims and their associated ML risk labels (Red/Amber/Green).
+   - **🎤 Practice Interview**: Click the tailored questions to expand the collapse panels and view answer checklists.
+   - **💡 AI Coach**: Toggle open the **"AI Grading Breakdown"** to view features and weights, and review specific advice cards.
+
+---
+
+## 📂 Hackathon Package Checklist
+- **`sample_resume.txt`**: The pre-packaged candidate resume provided for quick testing.
+- **`synthetic_resume_training.csv`**: Used to train the ML ensemble risk classifiers.
+- **`frontend/dist/`**: The pre-built, production-optimized React SPA static client folder.

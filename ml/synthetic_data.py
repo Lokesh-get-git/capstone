@@ -71,6 +71,28 @@ WEAK_CLAIMS = [
     "Part of the team working on {system}",
 ]
 
+
+# ------- HIGH RISK: Weak claims that still include numbers (anti-shortcut) -------
+WEAK_WITH_METRICS = [
+    "Responsible for {system} handling for {n} months",
+    "Helped maintain {system} used by {n},000 users",
+    "Assisted in reducing incidents by {pct}% without owning delivery",
+    "Worked on {system} that processed {n}+ requests per second",
+    "Supported migration of {system} completed in {n} weeks",
+    "Involved in monitoring {system} with {n}% uptime goals",
+]
+
+# ------- BORDERLINE/AMBIGUOUS CLAIMS (to stabilize medium risk band) -------
+AMBIGUOUS_CLAIMS = [
+    "Implemented authentication using JWT and OAuth2",
+    "Developed a full-stack web application using React and FastAPI",
+    "Improved API reliability through logging and retries",
+    "Built internal tools for deployment automation",
+    "Enhanced database performance with indexing and query tuning",
+    "Created dashboards for operational metrics",
+    "Contributed to microservices migration initiative",
+    "Integrated third-party APIs for payments and notifications",
+]
 # ------- HIGH RISK: Buzzword stuffing -------
 BUZZWORD_CLAIMS = [
     "Worked on scalable microservices architecture using {tech} and Docker",
@@ -135,7 +157,7 @@ TOOLS = [
 
 METRICS = ["latency", "errors", "failures", "processing time", "response time"]
 
-SECTIONS = ["experience", "projects"]
+SECTIONS = ["experience", "projects", "summary"]
 
 
 # =========================================================
@@ -243,22 +265,31 @@ def generate_synthetic_dataset(n_per_class: int = 200) -> pd.DataFrame:
         rows.append(features)
 
         # ===== MEDIUM (label varies) =====
-
-        if random.random() < 0.5:
+        # ===== HIGH RISK WITH METRICS (anti-shortcut examples) =====
+        if random.random() < 0.45:
+            text = _fill_template(random.choice(WEAK_WITH_METRICS))
+            claim = {"text": text, "section": section}
+            features = build_feature_vector(claim)
+            features["label"] = 1
+            features["text"] = text
+            rows.append(features)
+        if random.random() < 0.4:
             text = _fill_simple(random.choice(MEDIUM_CLAIMS))
-        else:
+        elif random.random() < 0.7:
             text = random.choice(BELIEVABLE_CLAIMS)
             text = add_noise(text)
+        else:
+            text = add_noise(random.choice(AMBIGUOUS_CLAIMS))
 
         claim = {"text": text, "section": section}
         features = build_feature_vector(claim)
         # medium claims: slight bias toward low risk (they ARE decent)
-        features["label"] = 0 if random.random() < 0.6 else 1
+        features["label"] = 0 if random.random() < 0.52 else 1
         features["text"] = text
         rows.append(features)
         # Short strong claims (VERY IMPORTANT)
         text = random.choice(SHORT_STRONG_CLAIMS)
-        claim = {"text": text, "section": random.choice(["experience", "projects"])}
+        claim = {"text": text, "section": random.choice(["experience", "projects","summary"])}
         features = build_feature_vector(claim)
         features["label"] = 0  # LOW risk
         features["text"] = text

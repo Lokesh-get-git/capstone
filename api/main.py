@@ -11,6 +11,15 @@ app = FastAPI(
     version=get_config_val("app.version", "0.1.0")
 )
 
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 from fastapi import UploadFile, File, HTTPException, Body
 from pydantic import BaseModel, Field
 import shutil
@@ -77,6 +86,23 @@ async def analyze_resume(request: AnalyzeRequest):
     except Exception as e:
         logger.error(f"Analysis failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
+
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+# Serve compiled React frontend if built
+if os.path.exists("frontend/dist"):
+    app.mount("/assets", StaticFiles(directory="frontend/dist/assets"), name="assets")
+
+    @app.get("/")
+    async def serve_index():
+        return FileResponse("frontend/dist/index.html")
+
+    @app.get("/{catchall:path}")
+    async def catch_all(catchall: str):
+        if catchall.startswith("api"):
+            raise HTTPException(status_code=404, detail="API endpoint not found")
+        return FileResponse("frontend/dist/index.html")
 
 if __name__ == "__main__":
     import uvicorn

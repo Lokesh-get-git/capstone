@@ -1,6 +1,7 @@
+from typing import List, Optional
+from pydantic import BaseModel, Field
 from langchain_core.messages import SystemMessage
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
 from utils.llm import get_llm
 from agents.state import AgentState
 from models.data_models import GeneratedQuestion
@@ -8,8 +9,31 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-GENERATOR_PROMPT = """
-You are an expert Technical Interview Question Generator.
+# --- Structured Output Models ---
+class QuestionItem(BaseModel):
+    question: str = Field(description="The actual question string")
+    difficulty: str = Field(description="Easy/Medium/Hard")
+    target_claim: str = Field(description="The topic or claim being tested")
+    reasoning: str = Field(description="Why this question matters")
+    expected_answer_points: List[str] = Field(description="Key points expected in the answer")
+
+class GeneratorResponse(BaseModel):
+    questions: List[QuestionItem] = Field(description="List of generated interview questions")
+
+class RefinedQuestionItem(BaseModel):
+    index: int = Field(description="Index of the original question being refined")
+    question: str = Field(description="The REWRITTEN question")
+    difficulty: str = Field(description="Original difficulty")
+    target_claim: str = Field(description="Original target")
+    reasoning: str = Field(description="Why this question matters")
+    expected_answer_points: List[str] = Field(description="Key points expected in the answer")
+
+class RefinedResponse(BaseModel):
+    refined_questions: List[RefinedQuestionItem] = Field(description="List of refined questions")
+
+# --- Prompts ---
+GENERATOR_PROMPT = ChatPromptTemplate.from_messages([
+    ("system", """You are an expert Technical Interview Question Generator.
 The interviewer is a busy software engineer speaking casually.
 
 Avoid phrases:
@@ -22,20 +46,6 @@ Prefer:
 "What broke first?"
 "How did you debug it?"
 
-
-INPUT:
-Candidate Profile: {candidate_profile}
-Question Plan:
-{plan}
-Resume Claims:
-{claim_context}
-Every question must be grounded in the provided claims.
-Do NOT invent companies, conferences, hackathons, or metrics not mentioned in the claims.
-
-
-TASK:
-For EACH item in the plan, generate a concrete, actionable interview question.
-Ensure the question aligns with the difficulty level implied by the plan (Warmup vs Core vs Challenge).
 Rules:
 - Each question must be ONE clear thought.
 - Do not combine multiple questions.
@@ -43,62 +53,63 @@ Rules:
 - Ask follow-up style questions like a real interviewer.
 - Avoid long descriptive sentences.
 - Maximum 20 words per question.
+- Every question must be grounded in the provided claims.
+- Do NOT invent companies, conferences, hackathons, or metrics not mentioned in the claims.
 
-OUTPUT FORMAT (JSON):
-STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
-DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
-DO NOT WRAP IN MARKDOWN CODE BLOCKS.
-
+You MUST respond with valid JSON matching this exact schema:
 {{
-    "questions": [
-        {{
-            "question": "The actual question string...",
-            "difficulty": "Easy/Medium/Hard",
-            "target_claim": "The topic or claim being tested",
-            "reasoning": "Why this question matters...",
-            "expected_answer_points": ["Point 1", "Point 2"]
-        }},
-        ...
-    ]
-}}
-"""
+  "questions": [
+    {{
+      "question": "string - The actual question",
+      "difficulty": "string - Easy/Medium/Hard",
+      "target_claim": "string - The topic or claim being tested",
+      "reasoning": "string - Why this question matters",
+      "expected_answer_points": ["string - key point 1", "string - key point 2"]
+    }}
+  ]
+}}"""),
+    ("human", """INPUT:
+Candidate Profile: {candidate_profile}
+Question Plan:
+{plan}
+Resume Claims:
+{claim_context}
 
-REFINE_PROMPT = """
-You are an expert Technical Interview Question Generator.
+TASK:
+For EACH item in the plan, generate a concrete, actionable interview question.
+Ensure the question aligns with the difficulty level implied by the plan (Warmup vs Core vs Challenge).""")
+])
+
+REFINE_PROMPT = ChatPromptTemplate.from_messages([
+    ("system", """You are an expert Technical Interview Question Generator.
 Some of your previous questions failed validation. You must REWRITE them based on the feedback.
 
+Rules:
+- You MUST use the same 'index', 'difficulty', and 'target_claim' as the failed question.
+- Do NOT generate questions for indices that are not in the input.
+- Follow the original rules: ONE clear thought, conversational, max 20 words.
 
-INPUT:
+You MUST respond with valid JSON matching this exact schema:
+{{
+  "refined_questions": [
+    {{
+      "index": 0,
+      "question": "string - The REWRITTEN question",
+      "difficulty": "string - Original difficulty",
+      "target_claim": "string - Original target",
+      "reasoning": "string - Why this question matters",
+      "expected_answer_points": ["string - key point 1", "string - key point 2"]
+    }}
+  ]
+}}"""),
+    ("human", """INPUT:
 Candidate Profile: {candidate_profile}
 Failed Questions & Feedback:
 {feedback_context}
 
 TASK:
-Rewrite ONLY the failed questions.
-- You MUST use the same 'index', 'difficulty', and 'target_claim' as the failed question.
-- Do NOT generate questions for indices that are not in the input.
-- Follow the original rules: ONE clear thought, conversational, max 20 words.
-
-OUTPUT FORMAT (JSON):
-STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
-DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
-DO NOT WRAP IN MARKDOWN CODE BLOCKS.
-
-{{
-    "refined_questions": [
-        {{
-            "index": 0,
-            "question": "The REWRITTEN question...",
-            "difficulty": "Original difficulty",
-            "target_claim": "Original target",
-            "reasoning": "Why this question matters...",
-            "expected_answer_points": ["Point 1", "Point 2"]
-
-        }},
-        ...
-    ]
-}}
-"""
+Rewrite ONLY the failed questions.""")
+])
 
 def question_generator_node(state: AgentState) -> dict:
     """
@@ -107,16 +118,16 @@ def question_generator_node(state: AgentState) -> dict:
     Also handles REFINEMENT if validation feedback is present.
     """
     logger.info("Generator Agent: creating/refining questions...")
-    
+
     # Check for feedback first
     validation_results = state.get("validation_results", [])
     current_questions = state.get("generated_questions", [])
-    
+
     failed_indices = [v["index"] for v in validation_results if v.get("status") != "PASS"]
-    
+
     if failed_indices and current_questions:
         logger.info(f"Refining {len(failed_indices)} failed questions...")
-        
+
         # Prepare context for refinement
         feedback_context = ""
         for v in validation_results:
@@ -126,60 +137,57 @@ def question_generator_node(state: AgentState) -> dict:
                 feedback_context += f"Q{idx} (Target: {original_q.target_claim}):\n"
                 feedback_context += f"  - Original: {original_q.question}\n"
                 feedback_context += f"  - Feedback: {v['feedback']}\n\n"
-        
-        prompt = ChatPromptTemplate.from_template(REFINE_PROMPT)
-        llm = get_llm(temperature=0.7) # Creativity to fix issues
-        chain = prompt | llm | JsonOutputParser()
-        
+
+        llm = get_llm(temperature=0.7)
+        chain = REFINE_PROMPT | llm.with_structured_output(RefinedResponse, method="json_mode")
+
         try:
             inputs = {
                 "feedback_context": feedback_context,
                 "candidate_profile": f"Role: {state.get('candidate_profile').target_role}, Weaknesses: {', '.join(state.get('candidate_profile').self_declared_weaknesses)}" if state.get("candidate_profile") else "Unknown"
             }
-            response = chain.invoke(inputs)
+            response: RefinedResponse = chain.invoke(inputs)
 
             # COST TRACKING (Refinement)
             cost = 0.0
             try:
                 from services.cost_tracker import CostTracker
-                input_len = len(prompt.format(**inputs))
-                output_len = len(str(response))
+                input_len = len(REFINE_PROMPT.format(**inputs))
+                output_len = len(str(response.model_dump()))
                 cost = CostTracker.track_cost("Generator (Refine)", input_len//4, output_len//4)
             except:
                 pass
-            if not response:
-                 raise ValueError("LLM returned empty response during refinement")
-            
-            refined_list = response.get("refined_questions", [])
-            
+
+            refined_list = response.refined_questions
+
             # Update the original list safely
             new_questions = list(current_questions) # copy
-            
+
             for r in refined_list:
-                idx = r.get("index")
-                
+                idx = r.index
+
                 # Validation: Check if index is valid and was actually failed
                 if idx is not None and idx in failed_indices and 0 <= idx < len(new_questions):
                      new_questions[idx] = GeneratedQuestion(
-                        question=r.get("question", "Unknown"),
-                        difficulty=r.get("difficulty", "Medium"),
-                        target_claim=r.get("target_claim", "General"),
-                        reasoning=r.get("reasoning", "Refined"),
-                        expected_answer_points=r.get("expected_answer_points", [])
+                        question=r.question,
+                        difficulty=r.difficulty,
+                        target_claim=r.target_claim,
+                        reasoning=r.reasoning,
+                        expected_answer_points=r.expected_answer_points
                     )
                 else:
                     logger.warning(f"Refinement returned invalid index {idx} (Expected one of {failed_indices})")
-            
+
             # Increment retry count
             current_retries = state.get("retry_count", 0)
-            
+
             return {
                 "generated_questions": new_questions,
                 "retry_count": current_retries + 1,
                 "messages": [SystemMessage(content=f"Refined {len(refined_list)} questions")],
                 "total_cost": cost
             }
-            
+
         except Exception as e:
              logger.error(f"Refinement failed: {e}", exc_info=True)
              return {"errors": [str(e)]}
@@ -189,13 +197,12 @@ def question_generator_node(state: AgentState) -> dict:
     if not plan:
         logger.warning("No plan found. generating default.")
         plan = ["Warmup: Introduction"]
-        
+
     plan_str = "\n".join([f"{i+1}. {item}" for i, item in enumerate(plan)])
-    
-    prompt = ChatPromptTemplate.from_template(GENERATOR_PROMPT)
+
     llm = get_llm(temperature=0.6)
-    chain = prompt | llm | JsonOutputParser()
-    
+    chain = GENERATOR_PROMPT | llm.with_structured_output(GeneratorResponse, method="json_mode")
+
     claims = state.get("claims", [])
     claim_context = "\n".join([f"- {c.text}" for c in claims])
     if not claim_context:
@@ -203,45 +210,41 @@ def question_generator_node(state: AgentState) -> dict:
 
     try:
         inputs = {
-            "plan": plan_str, 
+            "plan": plan_str,
             "claim_context": claim_context,
             "candidate_profile": f"Role: {state.get('candidate_profile').target_role}, Weaknesses: {', '.join(state.get('candidate_profile').self_declared_weaknesses)}" if state.get("candidate_profile") else "Unknown"
         }
-        response = chain.invoke(inputs)
+        response: GeneratorResponse = chain.invoke(inputs)
 
         # COST TRACKING (Standard)
         cost = 0.0
         try:
             from services.cost_tracker import CostTracker
-            input_len = len(prompt.format(**inputs))
-            output_len = len(str(response))
+            input_len = len(GENERATOR_PROMPT.format(**inputs))
+            output_len = len(str(response.model_dump()))
             cost = CostTracker.track_cost("Generator", input_len//4, output_len//4)
         except:
             pass
-        
-        if not response:
-            raise ValueError("LLM returned empty response")
 
-        raw_questions = response.get("questions", [])
         generated_questions = []
-        
-        for q in raw_questions:
+
+        for q in response.questions:
             generated_questions.append(GeneratedQuestion(
-                question=q.get("question", "Unknown Question"),
-                difficulty=q.get("difficulty", "Medium"),
-                target_claim=q.get("target_claim", "General"),
-                reasoning=q.get("reasoning", ""),
-                expected_answer_points=q.get("expected_answer_points", [])
+                question=q.question,
+                difficulty=q.difficulty,
+                target_claim=q.target_claim,
+                reasoning=q.reasoning,
+                expected_answer_points=q.expected_answer_points
             ))
-            
+
         logger.info(f"Generated {len(generated_questions)} questions.")
-        
+
         return {
             "generated_questions": generated_questions,
             "messages": [SystemMessage(content=f"Generated {len(generated_questions)} questions")],
             "total_cost": cost
         }
-        
+
     except Exception as e:
         logger.error(f"Generator failed: {e}", exc_info=True)
         return {

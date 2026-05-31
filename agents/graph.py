@@ -1,4 +1,4 @@
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, START, END
 from agents.state import AgentState
 from models.data_models import InterviewQuestion, ResumeClaim
 from parsers.resume_parser import parse_resume_sections, extract_claims_from_sections, extract_text
@@ -45,7 +45,7 @@ def analyst_node(state: AgentState):
 def build_graph():
     workflow = StateGraph(AgentState)
     workflow.add_node("analyst", analyst_node)
-    workflow.set_entry_point("analyst")
+    workflow.add_edge(START, "analyst")
     workflow.add_edge("analyst", END)
     return workflow.compile()
 

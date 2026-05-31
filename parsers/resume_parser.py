@@ -7,9 +7,7 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-# =========================================================
-# ---------------- FILE HANDLING ---------------------------
-# =========================================================
+
 
 def _reset_stream(file):
     """Reset file pointer (important for FastAPI UploadFile)."""

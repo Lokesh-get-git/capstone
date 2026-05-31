@@ -1,30 +1,25 @@
+from typing import List
+from pydantic import BaseModel, Field
 from langchain_core.messages import SystemMessage
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
 from utils.llm import get_llm
 from agents.state import AgentState
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-PLANNER_PROMPT = """
-You are an expert Technical Interview Planner.
+# --- Structured Output Model ---
+class PlannerResponse(BaseModel):
+    rationale: str = Field(description="Brief explanation of the investigation flow")
+    plan: List[str] = Field(description="List of conversation beats for the interview")
+
+PLANNER_PROMPT = ChatPromptTemplate.from_messages([
+    ("system", """You are an expert Technical Interview Planner.
 
 You are NOT designing a normal software engineering interview.
 You are designing a CLAIM-VERIFICATION interview.
 
 The purpose of this interview is to verify whether the candidate actually performed the accomplishments written on their resume.
-
-INPUT:
-Profile: {candidate_profile}
-1. Strategy: {strategy}
-2. Focus Areas:
-{focus_areas}
-3. Candidate Readiness: {readiness_level} ({readiness_score})
-4. Key Resume Claims To Verify:
-{claim_context}
-5. Time Constraints: ~45 minutes
-
 
 IMPORTANT DEFINITIONS:
 A "claim" is a statement about something the candidate says they personally accomplished.
@@ -33,7 +28,6 @@ TASK:
 The interview should feel like a natural conversation, not a scripted questionnaire.
 Questions should evolve based on curiosity and suspicion, not categories.
 
-
 Each plan item MUST:
 • reference a specific claim
 • probe ownership ("what did YOU personally do?")
@@ -41,7 +35,7 @@ Each plan item MUST:
 • avoid generic theory questions
 
 Do NOT introduce unrelated technologies, frameworks, or hypothetical projects.
-TASK:
+
 You are creating a conversation flow, not a questionnaire.
 
 Create EXACTLY 6 conversation beats.
@@ -63,21 +57,21 @@ Rules:
 - Do NOT write interview questions
 - Do NOT use academic wording
 
-
-OUTPUT FORMAT (JSON):
-STRICT REQUIREMENT: YOUR RESPONSE MUST BE A VALID JSON OBJECT ONLY. 
-DO NOT INCLUDE ANY CONVERSATIONAL TEXT, PREAMBLE, OR POSTAMBLE.
-DO NOT WRAP IN MARKDOWN CODE BLOCKS.
-
+You MUST respond with valid JSON matching this exact schema:
 {{
-    "rationale": "Brief explanation of the investigation flow...",
-    "plan": [
-        "Warmup: ...",
-        "Core: ...",
-        "Deep Dive: ..."
-    ]
-}}
-"""
+  "rationale": "string - Brief explanation of the investigation flow",
+  "plan": ["string - conversation beat 1", "string - conversation beat 2", ...]
+}}"""),
+    ("human", """INPUT:
+Profile: {candidate_profile}
+1. Strategy: {strategy}
+2. Focus Areas:
+{focus_areas}
+3. Candidate Readiness: {readiness_level} ({readiness_score})
+4. Key Resume Claims To Verify:
+{claim_context}
+5. Time Constraints: ~45 minutes""")
+])
 
 
 def difficulty_planner_node(state: AgentState) -> dict:
@@ -86,7 +80,7 @@ def difficulty_planner_node(state: AgentState) -> dict:
     Orders the topics into a logical flow (Warmup -> Core -> Challenge).
     """
     logger.info("Planner Agent: creating question plan...")
-    
+
     strategy = state.get("interview_strategy", "Standard Interview")
     focus_areas = state.get("focus_areas", [])
     readiness = state["readiness_analysis"]
@@ -103,11 +97,10 @@ def difficulty_planner_node(state: AgentState) -> dict:
 
     # Format focus areas
     focus_str = "\n".join([f"- {f}" for f in focus_areas])
-    
-    prompt = ChatPromptTemplate.from_template(PLANNER_PROMPT)
-    llm = get_llm(temperature=0.4) # Slightly higher temp for creative flow
-    chain = prompt | llm | JsonOutputParser()
-    
+
+    llm = get_llm(temperature=0.4)
+    chain = PLANNER_PROMPT | llm.with_structured_output(PlannerResponse, method="json_mode")
+
     inputs = {
             "strategy": strategy,
             "focus_areas": focus_str,
@@ -116,33 +109,29 @@ def difficulty_planner_node(state: AgentState) -> dict:
             "claim_context": claim_context,
             "candidate_profile": f"Role: {state.get('candidate_profile').target_role}, Weaknesses: {', '.join(state.get('candidate_profile').self_declared_weaknesses)}" if state.get("candidate_profile") else "Unknown"
     }
-    
+
     try:
-        response = chain.invoke(inputs)
-        
-        if not response:
-            raise ValueError("LLM returned empty response")
-            
+        response: PlannerResponse = chain.invoke(inputs)
+
         # COST TRACKING
         cost = 0.0
         try:
             from services.cost_tracker import CostTracker
-            input_len = len(prompt.format(**inputs))
-            output_len = len(str(response))
+            input_len = len(PLANNER_PROMPT.format(**inputs))
+            output_len = len(str(response.model_dump()))
             cost = CostTracker.track_cost("Planner", input_len//4, output_len//4)
         except:
              pass
 
-        
-        plan = response.get("plan", [])
+        plan = response.plan
         logger.info(f"Plan created with {len(plan)} steps.")
-        
+
         return {
             "question_plan": plan,
             "messages": [SystemMessage(content=f"Plan Created: {len(plan)} items")],
             "total_cost": cost
         }
-        
+
     except Exception as e:
         logger.error(f"Planner failed: {e}", exc_info=True)
         return {
