@@ -10,6 +10,7 @@ env/
 build/
 develop-eggs/
 dist/
+!frontend/dist/
 downloads/
 eggs/
 .eggs/
@@ -22,7 +23,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-models/
+# models/
+!models/
 # Virtual Environment
 venv/
 venv39/
