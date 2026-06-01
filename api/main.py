@@ -108,7 +108,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 # Serve compiled React frontend if built
-if os.path.exists("frontend/dist"):
+if os.path.exists("frontend/dist/assets"):
     app.mount("/assets", StaticFiles(directory="frontend/dist/assets"), name="assets")
 
     @app.get("/")
