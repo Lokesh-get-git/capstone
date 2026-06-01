@@ -104,22 +104,44 @@ async def analyze_resume(request: AnalyzeRequest):
         logger.error(f"Analysis failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
-# Serve compiled React frontend if built
-if os.path.exists("frontend/dist/assets"):
-    app.mount("/assets", StaticFiles(directory="frontend/dist/assets"), name="assets")
+# Serve compiled React frontend
+dist_dir = "frontend/dist"
+assets_dir = os.path.join(dist_dir, "assets")
+index_path = os.path.join(dist_dir, "index.html")
 
-    @app.get("/")
-    async def serve_index():
-        return FileResponse("frontend/dist/index.html")
+# Ensure the assets directory exists so Starlette doesn't crash on startup
+os.makedirs(assets_dir, exist_ok=True)
 
-    @app.get("/{catchall:path}")
-    async def catch_all(catchall: str):
-        if catchall.startswith("api"):
-            raise HTTPException(status_code=404, detail="API endpoint not found")
-        return FileResponse("frontend/dist/index.html")
+app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+@app.get("/")
+async def serve_index():
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return HTMLResponse(
+        content="""
+        <html>
+            <head><title>System Setup</title></head>
+            <body style="font-family: sans-serif; padding: 2rem; background: #08090f; color: #ffffff; text-align: center;">
+                <h1 style="color: #00f2fe; margin-top: 5rem;">Frontend Not Built Yet</h1>
+                <p style="color: #8b949e; font-size: 1.1rem;">The backend is running, but the frontend React application has not been compiled.</p>
+                <p style="color: #8b949e;">Please make sure the <code>frontend/dist/</code> directory is committed to Git and pushed, or run <code>npm run build</code> in the frontend folder.</p>
+            </body>
+        </html>
+        """,
+        status_code=503
+    )
+
+@app.get("/{catchall:path}")
+async def catch_all(catchall: str):
+    if catchall.startswith("api"):
+        raise HTTPException(status_code=404, detail="API endpoint not found")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    raise HTTPException(status_code=503, detail="Frontend build files missing")
 
 if __name__ == "__main__":
     import uvicorn
