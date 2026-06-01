@@ -35,6 +35,23 @@ class AnalyzeRequest(BaseModel):
     candidate_profile: CandidateProfile = Field(..., description="Candidate's self-declared profile")
 
 
+@app.get("/api/sample-resume", summary="Get sample resume text")
+async def get_sample_resume():
+    """
+    Get the text of the sample resume.
+    """
+    try:
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        file_path = os.path.join(base_dir, "sample_resume.txt")
+        if not os.path.exists(file_path):
+            raise HTTPException(status_code=404, detail="sample_resume.txt not found in workspace root.")
+        
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        return {"filename": "sample_resume.txt", "text": content}
+    except Exception as e:
+        logger.error(f"Failed to read sample resume: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/api/health")

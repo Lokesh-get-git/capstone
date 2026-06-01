@@ -27,6 +27,49 @@ const API_URL = window.location.origin.includes("5173")
   ? "http://localhost:8000/api"
   : "/api";
 
+const FALLBACK_SAMPLE_RESUME = `John Doe
+Email: john.doe@email.com | Phone: (555) 123-4567 | LinkedIn: linkedin.com/in/johndoe
+
+Summary
+Experienced software engineer with 5+ years building scalable web applications. Passionate about clean code and system design.
+
+Experience
+Senior Software Engineer | TechCorp Inc. | 2021 - Present
+- Led a team of 8 engineers to redesign the payment processing system, reducing transaction failures by 40%
+- Architected microservices migration from monolith, improving deployment frequency by 3x
+- Implemented CI/CD pipeline using Jenkins and Docker, cutting release time from 2 weeks to 2 days
+- Mentored 4 junior developers through code reviews and pair programming sessions
+
+Software Engineer | StartupXYZ | 2019 - 2021
+- Developed RESTful APIs serving 50,000 daily active users using Python and FastAPI
+- Optimized database queries resulting in 60% reduction in API response time
+- Worked on various projects involving machine learning and data analysis
+- Participated in agile ceremonies and helped with sprint planning
+
+Education
+Bachelor of Science in Computer Science | State University | 2019
+- GPA: 3.7/4.0
+- Relevant coursework: Algorithms, Data Structures, Machine Learning, Databases
+
+Skills
+Python, Java, JavaScript, React, Node.js, PostgreSQL, MongoDB, Docker, Kubernetes, AWS, Git, Jenkins, FastAPI, Flask, Redis, Kafka
+
+Projects
+Open Source Contribution - ML Pipeline Framework
+- Built a Python framework for automating ML pipeline workflows with 500+ GitHub stars
+- Implemented feature engineering module supporting 20+ transformation types
+
+Personal Blog
+- Write technical articles about system design and distributed systems
+
+Certifications
+- AWS Certified Solutions Architect - Associate (2022)
+- Google Cloud Professional Data Engineer (2023)
+
+Achievements
+- Won first place in company-wide hackathon (2022)
+- Speaker at PyCon Regional Conference on microservices patterns`;
+
 function App() {
   // --- Form States ---
   const [targetRole, setTargetRole] = useState("Software Engineer");
@@ -40,6 +83,7 @@ function App() {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const [dragActive, setDragActive] = useState(false);
+  const [showTestNotice, setShowTestNotice] = useState(false);
   const fileInputRef = useRef(null);
 
   // --- Pipeline / Results States ---
@@ -92,6 +136,39 @@ function App() {
 
   const triggerFileInput = () => {
     fileInputRef.current.click();
+  };
+
+  const handleUploadSample = async () => {
+    try {
+      let text = FALLBACK_SAMPLE_RESUME;
+      let filename = "sample_resume.txt";
+      
+      try {
+        const response = await fetch(`${API_URL}/sample-resume`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.text) {
+            text = data.text;
+            filename = data.filename || "sample_resume.txt";
+          }
+        }
+      } catch (err) {
+        console.warn("Could not fetch sample resume from backend, using embedded fallback:", err);
+      }
+      
+      const sampleFile = new File([text], filename, { type: "text/plain" });
+      setFile(sampleFile);
+      
+      // Ensure targetRole and experienceYears are set correctly for the sample
+      setTargetRole("Software Engineer");
+      setExperienceYears(5);
+      
+      // Say that this button is for testing only, and note the Groq free tier limit
+      setShowTestNotice(true);
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Failed to prepare sample resume: " + err.message);
+    }
   };
 
   // --- Analyze Resume Trigger ---
@@ -236,8 +313,20 @@ function App() {
               <span className="file-upload-subtext">Supports PDF or TXT</span>
             </div>
 
+            <button
+              type="button"
+              className="btn-testing"
+              onClick={handleUploadSample}
+              disabled={isAnalyzing}
+            >
+              📄 Load Sample Resume
+            </button>
+            <span className="testing-note">
+              ⚠️ For testing only. Uses Groq free tier—please use mindfully.
+            </span>
+
             {file && (
-              <div className="file-selected-badge">
+              <div className="file-selected-badge" style={{ marginTop: '0.4rem' }}>
                 <FileText size={14} />
                 <span>{file.name}</span>
               </div>
@@ -911,6 +1000,27 @@ function App() {
         )}
 
       </main>
+
+      {showTestNotice && (
+        <div className="modal-backdrop" onClick={() => setShowTestNotice(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header-icon">⚠️</div>
+            <h3 className="modal-title">Testing Only</h3>
+            <div className="modal-body">
+              <p>This button is for testing purposes only.</p>
+              <div className="modal-highlight-box" style={{ marginTop: '1rem' }}>
+                <strong>Important Notice:</strong>
+                <span>We are using the Groq free tier, so please use the site mindfully.</span>
+              </div>
+            </div>
+            <div className="modal-actions">
+              <button type="button" className="btn-primary" style={{ minWidth: '120px' }} onClick={() => setShowTestNotice(false)}>
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
