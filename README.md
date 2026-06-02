@@ -48,6 +48,11 @@ This Capstone & Hackathon edition consolidates both the **FastAPI backend** and 
 ├── services/           # Utility integrations (Token tracking & cost counters)
 └── utils/              # Config systems and logger helpers
 ```
+# More information:
+
+-Live link: https://graphprep-interview-coach.onrender.com/
+
+-Deep dive into the project: https://devpost.com/software/graphprep-multi-agent-ai-interview-preparation-system
 
 ---
 
